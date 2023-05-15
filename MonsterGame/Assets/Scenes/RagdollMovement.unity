@@ -242,6 +242,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2222727191923724224, guid: 220ad6ec0b442dc429f90944dca84277,
         type: 3}
+      propertyPath: m_Anchor.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222727191923724224, guid: 220ad6ec0b442dc429f90944dca84277,
+        type: 3}
       propertyPath: m_AngularYMotion
       value: 0
       objectReference: {fileID: 0}
@@ -254,6 +259,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: -0.4000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222727191923724224, guid: 220ad6ec0b442dc429f90944dca84277,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.60714483
       objectReference: {fileID: 0}
     - target: {fileID: 2222727191923724224, guid: 220ad6ec0b442dc429f90944dca84277,
         type: 3}
@@ -568,6 +578,11 @@ PrefabInstance:
     - target: {fileID: 7019166044238153521, guid: 220ad6ec0b442dc429f90944dca84277,
         type: 3}
       propertyPath: m_Anchor.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019166044238153521, guid: 220ad6ec0b442dc429f90944dca84277,
+        type: 3}
+      propertyPath: m_Anchor.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7019166044238153521, guid: 220ad6ec0b442dc429f90944dca84277,
