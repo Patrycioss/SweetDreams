@@ -76,14 +76,14 @@ namespace _Scripts.Ragdoll_Movement
 		{
 			if (_moveForward.IsPressed())
 			{
-				_animator.SetBool(_Walking, true);
+				// _animator?.SetBool(_Walking, true);
 				
 				if (_run.IsPressed()) {
 					_hips.AddForce(_hips.transform.forward * (_speed * _runSpeedModifier));
 				}
 				else _hips.AddForce(_hips.transform.forward * _speed);
 			}
-			else _animator.SetBool(_Walking,false);
+			// else _animator.SetBool(_Walking,false);
 
 			if (_moveLeft.IsPressed())
 			{
