@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,12 +8,15 @@ namespace _Scripts.Ragdoll_Movement
 	public class PlayerController : MonoBehaviour
 	{
 		[SerializeField] private InputActionAsset _keyMap;
+
+		[SerializeField] private Animator _animator;
 		
 		[SerializeField] private float _speed = 150;
 		[SerializeField] private float _strafeSpeed = 100;
 		[SerializeField] private float _jumpForce = 0;
+		[SerializeField] private float _runSpeedModifier = 1.5f;
 
-		[SerializeField] private bool _isGrounded;
+		private bool _isGrounded = true;
 
 		private Rigidbody _hips;
 
@@ -25,13 +29,32 @@ namespace _Scripts.Ragdoll_Movement
 		private InputAction _jump;
 		private InputAction _run;
 
+		private Action _do;
+		private Action<float, string, float> _doFloat;
+		
+		private static readonly int _Walking = Animator.StringToHash("Walking");
+
+		public void RegisterCollision(string pLimbName)
+		{
+			if (pLimbName == "LeftFoot" || pLimbName == "RightFoot")
+			{
+				_isGrounded = true;
+			}
+		}
+		
 		private void OnValidate()
 		{
 			if (_keyMap == null) Debug.LogError("Player Controls not assigned!");
+			if (_animator == null) Debug.LogError("Animator not assigned!");
 		}
 
 		private void Awake()
 		{
+			_do += () =>
+			{
+				Debug.Log("hoi");
+			};
+			
 			_hips = GetComponent<Rigidbody>();
 			_playerActionMap = _keyMap.FindActionMap("Player");
 			
@@ -53,8 +76,38 @@ namespace _Scripts.Ragdoll_Movement
 		{
 			if (_moveForward.IsPressed())
 			{
-				Debug.Log( "works");
-				_hips.AddForce(_hips.transform.forward * _speed);
+				_animator.SetBool(_Walking, true);
+				
+				if (_run.IsPressed()) {
+					_hips.AddForce(_hips.transform.forward * (_speed * _runSpeedModifier));
+				}
+				else _hips.AddForce(_hips.transform.forward * _speed);
+			}
+			else _animator.SetBool(_Walking,false);
+
+			if (_moveLeft.IsPressed())
+			{
+				_hips.AddForce(_hips.transform.right * -_strafeSpeed);
+			}
+			
+			if (_moveRight.IsPressed())
+			{
+				_hips.AddForce(_hips.transform.right * _strafeSpeed);
+			}
+			
+			if (_moveBackward.IsPressed())
+			{
+				_hips.AddForce(_hips.transform.forward * -_speed);
+			}
+
+			if (_jump.IsPressed())
+			{
+				if (_isGrounded)
+				{
+					_hips.AddForce(_hips.transform.up * _jumpForce);
+					_isGrounded = false;
+				}
+				 
 			}
 		}
 	}
