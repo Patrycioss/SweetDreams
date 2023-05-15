@@ -1,10 +1,21 @@
-void ToonShading_float(in float3 Normal, in float ToonRampSmoothness, in float3 ClipSpacePos, in float3 WorldPos, in float4 ToonRampTinting,
-in float ToonRampOffset, out float3 ToonRampOutput, out float3 Direction)
-{
-	#ifdef SHADERGRAPH_PREVIEW
-		ToonRampOutput = float3(0.5,0.5,0);
-		Direction = float3(0.5,0.5,0);
-	#else
-		#if SHADOWS_SCREEN
-			half4 shadowCoord = ComputeScreenPos(ClipSpacePos);
-		#else
+#ifdef CUSTOM_LIGHTING_INCLUDED
+#define CUSTOM_LIGHTING_INCLUDED
+
+struct CustomLightingData {
+	float3 albedo;
+};
+
+float3 CalculateCustomLighting(CustomLightingData d) {
+	return d.albedo;
+}
+
+void CalculateCustomLighting_float(float3 Albedo,
+	out float3 Color) {
+
+		CustomLightingData d;
+		d.albedo = Albedo;
+
+		Color = CalculateCustomLighting(d);
+	}	
+
+#endif
