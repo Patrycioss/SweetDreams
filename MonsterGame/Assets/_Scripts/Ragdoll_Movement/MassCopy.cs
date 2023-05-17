@@ -16,15 +16,16 @@ namespace _Scripts.Ragdoll_Movement
 
 		private void MatchChildren(Transform a, Transform b)
 		{
-			if (transform.childCount != _target.childCount)
-			{
-				Debug.LogError("Child count mismatch! for " + a.name + " and " + b.name);
-			}
+			// if (transform.childCount != _target.childCount)
+			// {
+			// 	Debug.LogError("Child count mismatch! for " + a.name + " and " + b.name);
+			// }
 
 			
 			for (int i = 0; i < a.childCount; i++)
 			{
 				Transform childA = a.GetChild(i);
+				if (i >= b.childCount) continue; //Debug.LogError("Child count mismatch! for " + a.name + " and " + b.name
 				Transform childB = b.GetChild(i);
 
 				if (childA == null || childB == null)
