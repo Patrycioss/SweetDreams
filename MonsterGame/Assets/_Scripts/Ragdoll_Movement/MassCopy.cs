@@ -27,7 +27,16 @@ namespace _Scripts.Ragdoll_Movement
 				Transform childA = a.GetChild(i);
 				Transform childB = b.GetChild(i);
 
-				childA.gameObject.AddComponent<CopyMotion>()._followTarget = childB;
+				if (childA == null || childB == null)
+				{
+					Debug.Log("Why the fuck?");
+					continue;
+				}
+
+				if (childA.gameObject.GetComponent<ConfigurableJoint>() != null)
+				{
+					childA.gameObject.AddComponent<CopyMotion>()._followTarget = childB;
+				}
 
 				MatchChildren(childA, childB);
 			}

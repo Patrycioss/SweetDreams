@@ -16,6 +16,10 @@ namespace _Scripts.Ragdoll_Movement
 		[SerializeField] private float _jumpForce = 0;
 		[SerializeField] private float _runSpeedModifier = 1.5f;
 
+		[SerializeField] private float _smoothingFactor = .1f;
+		
+		
+		
 		private bool _isGrounded = true;
 
 		private Rigidbody _hips;
@@ -32,6 +36,8 @@ namespace _Scripts.Ragdoll_Movement
 
 		private Transform _leftShin;
 		private Transform _rightShin;
+
+		private ConfigurableJoint _joint;
 		
 
 		
@@ -53,6 +59,7 @@ namespace _Scripts.Ragdoll_Movement
 		private void Awake()
 		{
 			_hips = GetComponent<Rigidbody>();
+			_joint = GetComponent<ConfigurableJoint>();
 			_playerActionMap = _keyMap.FindActionMap("Player");
 			
 			if (_playerActionMap == null) Debug.LogError("Input map has no action map called 'Player'");
@@ -85,7 +92,7 @@ namespace _Scripts.Ragdoll_Movement
 			
 			if (_moveLeft.IsPressed())
 			{
-				direction += Vector3.back;
+				direction += Vector3.left;
 				walking = true;
 			}
 			
@@ -97,16 +104,45 @@ namespace _Scripts.Ragdoll_Movement
 			
 			if (_moveBackward.IsPressed())
 			{
-				direction += Vector3.left;
+				direction += Vector3.back;
 				walking = true;
 			}
 
 			direction.Normalize();
-
+			
+			float map(float x, float in_min, float in_max, float out_min, float out_max)
+			{
+				return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+			}
+			
+			
 			if (walking)
 			{
-				// _animator.SetBool(_Walking,true);
-				_hips.AddForce(Vector3.forward * _speed);
+
+				float targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
+				
+				Debug.Log($"Target angle: {targetAngle}");
+				_joint.targetRotation = Quaternion.Euler(0, targetAngle - 90, 0);
+				
+				
+				
+				// // _animator.SetBool(_Walking,true);
+				// Debug.Log(Quaternion.LookRotation(direction).eulerAngles);
+				//
+				//
+				// float angle = Vector3.Angle(direction, transform.forward);
+				// float newSmooth =  1 - (angle / 180);
+				//
+				// float resultingSmooth = newSmooth * _smoothingFactor - _smoothingFactor + 1;
+				//
+				// Debug.Log($"Angle: {angle}, Result: {resultingSmooth}");
+				//
+				//
+				// _hips.rotation = Quaternion.Slerp(_hips.rotation, Quaternion.LookRotation(direction), resultingSmooth);
+			
+				// transform.LookAt(transform.position + direction);
+				// _hips.rotation = Quaternion.LookRotation(direction);
+				_hips.AddForce(direction * _speed);
 			}
 			// else _animator.SetBool(_Walking, false);
 			
