@@ -1,4 +1,5 @@
 ﻿using System;
+using _Scripts.Ragdoll_Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,7 @@ namespace _Scripts
 	[RequireComponent(typeof(Animator))]
 	public class AnimationMovement : MonoBehaviour
 	{
+		[SerializeField] private PlayerController _playerController;
 		[SerializeField] private InputActionAsset _inputActionAsset;
 		private InputActionMap _inputActionMap;
 
@@ -17,17 +19,18 @@ namespace _Scripts
 		private InputAction _moveBackward;
 		private InputAction _moveLeft;
 		private InputAction _moveRight;
-		
+
 		private void Awake()
 		{
 			_animator = GetComponent<Animator>();
+			
 		}
 
 		private void Start()
 		{
 			if (_inputActionAsset != null)
 			{
-				_inputActionMap = _inputActionAsset.FindActionMap("Player");
+				_inputActionMap = _inputActionAsset.FindActionMap("Player" + _playerController.number);
 				if (_inputActionMap != null)
 				{
 					_inputActionMap.Enable();
