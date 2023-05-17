@@ -15,10 +15,10 @@ namespace _Scripts
         // Update is called once per frame
         void Update()
         {
-            if (!Input.GetKeyDown(KeyCode.A))
-                return;
-            health -= 1;
-            EventBus<PlayerDamagedEvent>.Publish(new PlayerDamagedEvent(this));
+            // if (!Input.GetKeyDown(KeyCode.A))
+            //     return;
+            // health -= 1;
+            // EventBus<PlayerDamagedEvent>.Publish(new PlayerDamagedEvent(this));
         }
 
         public int Health
