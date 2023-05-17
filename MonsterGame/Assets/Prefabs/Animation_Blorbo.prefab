@@ -67,6 +67,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Animation_Blorbo
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 30d694ad5b2965046b72dde3be411b42,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 17ea5ec1b2adab44cbf3c2810dc44037, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30d694ad5b2965046b72dde3be411b42, type: 3}
 --- !u!1 &7178466203548485966 stripped
@@ -87,5 +92,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14791e1ef9e413fa95571a821572ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputActionAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018,
+  _playerController: {fileID: 0}
+  _inputActionAsset: {fileID: -944628639613478452, guid: 3332ec466576cf44c9bebc78579daf61,
     type: 3}
