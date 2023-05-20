@@ -10,7 +10,7 @@ namespace _Scripts.Ragdoll_Movement
 
 		private void Start()
 		{
-			if (transform.childCount != _target.childCount) Debug.LogError("Child count mismatch!");
+			// if (transform.childCount != _target.childCount) Debug.LogError("Child count mismatch!");
 			MatchChildren(transform, _target);
 		}
 

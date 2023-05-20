@@ -112,13 +112,15 @@ namespace _Scripts.Ragdoll_Movement
 			}
 
 			direction.Normalize();
+
+			direction *= -1;
 			
 			if (walking)
 			{
 
 				float targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
 				
-				_joint.targetRotation = Quaternion.Euler(0, targetAngle - 90, 0);
+				_joint.targetRotation = Quaternion.Euler(0, targetAngle - 270, 0);
 				_hips.AddForce(direction * _speed);
 			}
 			//
