@@ -16,7 +16,7 @@ public class CubeMovement : MonoBehaviour
 
     private void Awake()
     {
-        _inputActionMap = _inputActionAsset.FindActionMap("Player");
+        _inputActionMap = _inputActionAsset.FindActionMap("Player1");
         _inputActionMap.Enable();
         _inputActionJump = _inputActionMap.FindAction("jump");
         _inputActionMoveForward = _inputActionMap.FindAction("move_forward");

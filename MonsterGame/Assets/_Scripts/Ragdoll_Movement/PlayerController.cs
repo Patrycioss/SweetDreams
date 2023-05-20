@@ -85,31 +85,41 @@ namespace _Scripts.Ragdoll_Movement
 			Vector3 direction = Vector3.zero;
 			
 			bool walking = false;
-			
 
 			if (_moveForward.IsPressed())
 			{
 				direction += Vector3.forward;
 				walking = true;
 			}
-			
+		
 			if (_moveLeft.IsPressed())
 			{
 				direction += Vector3.left;
 				walking = true;
 			}
-			
+		
 			if (_moveRight.IsPressed())
 			{
 				direction += Vector3.right;
 				walking = true;
 			}
-			
+		
 			if (_moveBackward.IsPressed())
 			{
 				direction += Vector3.back;
 				walking = true;
 			}
+
+			if (_playerNumber == 2)
+			{
+				float inputHor = Input.GetAxis("Horizontal");
+				float inputVer = Input.GetAxis("Vertical");
+				if (inputHor <= 0.01 && inputVer <= 0.01 && inputHor >= -0.01 && inputVer >= -0.01)
+					return;
+				direction = new Vector3(inputHor, 0, inputVer);
+				walking = true;
+			}
+
 
 			direction.Normalize();
 

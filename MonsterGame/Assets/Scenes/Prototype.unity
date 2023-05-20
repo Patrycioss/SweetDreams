@@ -6346,7 +6346,7 @@ MonoBehaviour:
   players:
   - {fileID: 464765368}
   - {fileID: 1367077430}
-  offset: {x: 12, y: 7, z: 0}
+  offset: {x: 0, y: 7, z: 12}
   baseOffset: {x: 0, y: 10, z: 12}
 --- !u!114 &2085257594
 MonoBehaviour:
