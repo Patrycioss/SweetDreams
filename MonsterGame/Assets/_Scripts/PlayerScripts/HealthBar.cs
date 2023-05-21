@@ -1,31 +1,31 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace _Scripts
+namespace _Scripts.PlayerScripts
 {
     public class HealthBar : MonoBehaviour
     {
-        [SerializeField] private Player playerToFollow;
-        [SerializeField] private Vector3 offset;
-        [SerializeField] private List<Sprite> healthBarImages;
+        [SerializeField] private Transform _transformToFollow;
+        [SerializeField] private Vector3 _offset;
+        [SerializeField] private List<Sprite> _healthBarImages;
+        [SerializeField] private Player _targetPlayer;
 
-        private Transform _playerTransform;
-        private Vector3 _prevPlayerPosition;
+        private Vector3 _prevFollowPosition;
 
         private void Start()
         {
-            if (playerToFollow == null)
+            if (_transformToFollow == null)
                 Debug.LogError("Player to follow not assigned to " + name);
             else
             {
-                _playerTransform = playerToFollow.transform;
                 
-                Vector3 playerPosition = _playerTransform.position;
+                Vector3 playerPosition = _transformToFollow.position;
                 transform.position = playerPosition;
-                transform.position += offset;
+                transform.position += _offset;
                 
-                _prevPlayerPosition = playerPosition;
+                _prevFollowPosition = playerPosition;
             }
             
             
@@ -40,18 +40,18 @@ namespace _Scripts
         private void ChangeHealthBar(PlayerDamagedEvent pEvent)
         {
             Player player = pEvent.Player;
-            if (!player.Equals(playerToFollow))
+            if (!player.Equals(_targetPlayer))
                 return;
             Image image = transform.GetChild(0).GetComponent<Image>();
-            image.sprite = healthBarImages[player.Health];
+            image.sprite = _healthBarImages[player.health];
         }
 
         private void Update()
         {
-            Vector3 position = playerToFollow.transform.position;
-            Vector3 diff = position - _prevPlayerPosition;
+            Vector3 position = _transformToFollow.transform.position;
+            Vector3 diff = position - _prevFollowPosition;
             transform.position += new Vector3(diff.x, 0, diff.z);
-            _prevPlayerPosition = _playerTransform.position;
+            _prevFollowPosition = _transformToFollow.position;
         }
     }
 }

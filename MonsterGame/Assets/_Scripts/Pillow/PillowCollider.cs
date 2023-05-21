@@ -1,3 +1,4 @@
+using _Scripts.PlayerScripts;
 using UnityEngine;
 
 namespace _Scripts.Pillow
@@ -14,7 +15,7 @@ namespace _Scripts.Pillow
             Rigidbody body = obj.transform.GetChild(0).GetComponent<Rigidbody>();
             body.AddForce(gameObject.transform.forward * 20000);
             Player player = obj.GetComponent<Player>();
-            player.Health -= 1;
+            player.health -= 1;
             EventBus<PlayerDamagedEvent>.Publish(new PlayerDamagedEvent(player));
         }
     }
