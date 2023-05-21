@@ -160,7 +160,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &8514723776687263223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,11 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e9542f829ac9f44b6089a4706f7ae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerToFollow: {fileID: 0}
-  offset: {x: 0, y: 1, z: 0}
-  healthBarImages:
-  - {fileID: 21300000, guid: 68c7ff6f290e1a4429f2cf628b91c2c7, type: 3}
-  - {fileID: 21300000, guid: c77e7c184bec8ed46a6a70574d253173, type: 3}
-  - {fileID: 21300000, guid: ddd91ecafefdcfd4e8ed1ad91d5fc105, type: 3}
-  - {fileID: 21300000, guid: 2160f497a0b189f4baae98cf01d9ebd8, type: 3}
-  - {fileID: 21300000, guid: 97bb55eab9281984582f6e0a47c988d1, type: 3}
+  _transformToFollow: {fileID: 0}
+  _offset: {x: 0, y: 0, z: 0}
+  _healthBarImages: []
+  _targetPlayer: {fileID: 0}

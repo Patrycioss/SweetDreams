@@ -28,9 +28,9 @@ namespace _Scripts
     {
         protected Player _player;
 
-        protected PlayerEvent(Player player)
+        protected PlayerEvent(Player pPlayer)
         {
-            _player = player;
+            _player = pPlayer;
         }
         
         public Player Player => _player;
@@ -39,14 +39,14 @@ namespace _Scripts
     public sealed class PlayerDamagedEvent : PlayerEvent
     {
 
-        public PlayerDamagedEvent(Player player) : base(player){}
+        public PlayerDamagedEvent(Player pPlayer) : base(pPlayer){}
 
     }
 
     public sealed class PlayerBootedEvent : PlayerEvent
     {
 
-        public PlayerBootedEvent(Player player) : base(player){}
+        public PlayerBootedEvent(Player pPlayer) : base(pPlayer){}
 
     }
 

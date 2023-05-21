@@ -15,7 +15,7 @@ namespace _Scripts.Pillow
             Rigidbody body = obj.transform.GetChild(0).GetComponent<Rigidbody>();
             body.AddForce(gameObject.transform.forward * 20000);
             Player player = obj.GetComponent<Player>();
-            player.health -= 1;
+            player.sleepiness.Tire(1);
             EventBus<PlayerDamagedEvent>.Publish(new PlayerDamagedEvent(player));
         }
     }

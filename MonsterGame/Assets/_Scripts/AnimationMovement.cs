@@ -20,37 +20,46 @@ namespace _Scripts
 		private InputAction _moveLeft;
 		private InputAction _moveRight;
 
+		public bool walkingEnabled { get; private set; }
+
+		
 		private void Awake()
 		{
 			_animator = GetComponent<Animator>();
-			
+			walkingEnabled = false;
 		}
 
-		private void Start()
+		public void Enable(bool pEnable)
 		{
-			if (_inputActionAsset != null)
-			{
-				_inputActionMap = _inputActionAsset.FindActionMap("Player" + _playerController.number);
-				if (_inputActionMap != null)
-				{
-					_inputActionMap.Enable();
-					
-					_moveForward = _inputActionMap.FindAction("move_forward");
-					_moveBackward = _inputActionMap.FindAction("move_backward");
-					_moveLeft = _inputActionMap.FindAction("move_left");
-					_moveRight = _inputActionMap.FindAction("move_right");
-				}
-				else Debug.LogError("Player Action Map not found!");
-			}
+			walkingEnabled = pEnable;
+            _animator.SetBool(_Walking, pEnable);
 		}
-
-		private void FixedUpdate()
-		{
-			if (_moveForward.IsPressed() || _moveBackward.IsPressed() || _moveLeft.IsPressed() || _moveRight.IsPressed())
-			{
-				_animator.SetBool(_Walking, true);
-			}
-			else _animator.SetBool(_Walking, false);
-		}
+		
+		// private void Start()
+		// {
+		// 	if (_inputActionAsset != null)
+		// 	{
+		// 		_inputActionMap = _inputActionAsset.FindActionMap("Player" + _playerController.number);
+		// 		if (_inputActionMap != null)
+		// 		{
+		// 			_inputActionMap.Enable();
+		// 			
+		// 			_moveForward = _inputActionMap.FindAction("move_forward");
+		// 			_moveBackward = _inputActionMap.FindAction("move_backward");
+		// 			_moveLeft = _inputActionMap.FindAction("move_left");
+		// 			_moveRight = _inputActionMap.FindAction("move_right");
+		// 		}
+		// 		else Debug.LogError("Player Action Map not found!");
+		// 	}
+		// }
+		//
+		// private void FixedUpdate()
+		// {
+		// 	if (_moveForward.IsPressed() || _moveBackward.IsPressed() || _moveLeft.IsPressed() || _moveRight.IsPressed())
+		// 	{
+		// 		_animator.SetBool(_Walking, true);
+		// 	}
+		// 	else _animator.SetBool(_Walking, false);
+		// }
 	}
 }

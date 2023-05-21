@@ -27,23 +27,19 @@ namespace _Scripts.PlayerScripts
                 
                 _prevFollowPosition = playerPosition;
             }
-            
-            
-            EventBus<PlayerDamagedEvent>.Subscribe(ChangeHealthBar);
+
+            _targetPlayer.sleepiness.OnTiredChanged += ChangeHealthBar;
         }
 
         private void OnDisable()
         {
-            EventBus<PlayerDamagedEvent>.UnSubscribe(ChangeHealthBar);
+            _targetPlayer.sleepiness.OnTiredChanged -= ChangeHealthBar;
         }
 
-        private void ChangeHealthBar(PlayerDamagedEvent pEvent)
+        private void ChangeHealthBar(int pAmount)
         {
-            Player player = pEvent.Player;
-            if (!player.Equals(_targetPlayer))
-                return;
             Image image = transform.GetChild(0).GetComponent<Image>();
-            image.sprite = _healthBarImages[player.health];
+            image.sprite = _healthBarImages[pAmount];
         }
 
         private void Update()

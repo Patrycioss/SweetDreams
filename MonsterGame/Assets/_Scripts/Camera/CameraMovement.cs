@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace _Scripts
+namespace _Scripts.Camera
 {
     public class CameraMovement : MonoBehaviour
     {
@@ -11,8 +11,18 @@ namespace _Scripts
         [SerializeField] private Vector3 offset;
         [Header("Offset (Added raw)")]
         [SerializeField] private Vector3 baseOffset;
+
+        public void AddPlayer(GameObject pPlayer)
+        {
+            players.Add(pPlayer);
+        }
         
-        void Update()
+        public void RemovePlayer(GameObject pPlayer)
+        {
+            players.Remove(pPlayer);
+        }
+        
+        private void Update()
         {
             Vector3 original = players[0].transform.position;
             float distanceMod = 0.0f;
@@ -25,7 +35,7 @@ namespace _Scripts
             transform.position = original + (offset * distanceMod + baseOffset);
         }
 
-        void Reset()
+        private void Reset()
         {
             offset = new Vector3(12, 7, 0);
             baseOffset = new Vector3(1, 2, 0);

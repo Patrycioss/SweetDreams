@@ -2,7 +2,7 @@
     "name": "KeyMap",
     "maps": [
         {
-            "name": "Player1",
+            "name": "Player",
             "id": "25838504-bffe-451f-8091-ceca898e16c9",
             "actions": [
                 {
