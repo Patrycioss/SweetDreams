@@ -80,9 +80,34 @@ namespace _Scripts.Ragdoll_Movement
 			// }
 		}
 
+		public void Disable()
+		{
+			_hips.constraints = RigidbodyConstraints.None;
+			_joint.targetRotation = Quaternion.Euler(90, _hips.rotation.eulerAngles.y, 0);
+
+			DisableConstraints(transform);
+			
+			void DisableConstraints(Transform pTransform)
+			{
+				for (int i = 0; i < pTransform.childCount; i++)
+				{
+					Transform child = pTransform.GetChild(i);
+					ConfigurableJoint joint = child.gameObject.GetComponent<ConfigurableJoint>();
+					if (joint != null)
+					{
+						joint.angularXMotion = ConfigurableJointMotion.Free;
+						joint.angularYMotion = ConfigurableJointMotion.Free;
+						joint.angularZMotion = ConfigurableJointMotion.Free;
+					}
+					DisableConstraints(child);
+				}
+			}
+			// transform.parent.rotation = Quaternion.Euler(0, transform.parent.rotation.eulerAngles.y, 0);
+		}
+
 		public void Move(Vector2 pDirection)
 		{
-			Debug.Log($"Speed: {new Vector3(pDirection.x, 0, pDirection.y) * _speed}");
+			// Debug.Log($"Speed: {new Vector3(pDirection.x, 0, pDirection.y) * _speed}");
 			float targetAngle = Mathf.Atan2(pDirection.y, pDirection.x) * Mathf.Rad2Deg;
 				
 			_joint.targetRotation = Quaternion.Euler(0, targetAngle - 90, 0);

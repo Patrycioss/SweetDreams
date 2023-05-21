@@ -1,3 +1,4 @@
+using System;
 using _Scripts.Ragdoll_Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -39,6 +40,7 @@ namespace _Scripts.PlayerScripts
             
             _playerInput = GetComponent<PlayerInput>();
             _sleepiness = new Sleepiness(this,_maxSleepiness);
+            _sleepiness.OnSleep += Disable;
 
             int layer = LayerMask.NameToLayer(playerCount.ToString());
             SetGameLayerRecursive(gameObject,layer);
@@ -51,6 +53,18 @@ namespace _Scripts.PlayerScripts
                 if (_move == null) 
                     Debug.LogError("No action with name Move found in action map: 'Player'");
             }
+        }
+
+        public void Disable()
+        {
+            _inputActionMap.Disable();
+            _controller.Disable();
+            
+        }
+
+        private void OnDisable()
+        {
+            _sleepiness.OnSleep -= Disable;
         }
 
         private void FixedUpdate()
