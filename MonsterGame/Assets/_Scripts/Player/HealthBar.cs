@@ -40,6 +40,8 @@ namespace _Scripts
         private void ChangeHealthBar(PlayerDamagedEvent pEvent)
         {
             Player player = pEvent.Player;
+            if (!player.Equals(playerToFollow))
+                return;
             Image image = transform.GetChild(0).GetComponent<Image>();
             image.sprite = healthBarImages[player.Health];
         }
