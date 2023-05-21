@@ -18,6 +18,7 @@ namespace _Scripts.Pillow
             {
                 if (obj.layer == LayerMask.NameToLayer(i.ToString()))
                 {
+                    if (obj.layer == gameObject.layer) return;
                     isPlayer = true;
                     break;
                 }

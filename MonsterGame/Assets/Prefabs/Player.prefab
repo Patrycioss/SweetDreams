@@ -116,10 +116,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad88face7511994ab90f5865b3c9162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSleepiness: 3
+  _maxSleepiness: 4
   _controller: {fileID: 8696315032198855142}
   _animationMovement: {fileID: 4076991353772819507}
-  _invincibilityDuration: 1
+  _invincibilityDuration: 3
 --- !u!114 &480830126944423385
 MonoBehaviour:
   m_ObjectHideFlags: 0
