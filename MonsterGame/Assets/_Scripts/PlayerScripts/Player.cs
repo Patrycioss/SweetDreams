@@ -1,4 +1,3 @@
-using System;
 using _Scripts.Ragdoll_Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,6 +5,7 @@ using UnityEngine.InputSystem;
 namespace _Scripts.PlayerScripts
 {
     [RequireComponent(typeof(PlayerInput))]
+    [RequireComponent(typeof(SimpleTimer))]
     public class Player : MonoBehaviour
     {
         private static int playerCount = 0;
@@ -13,6 +13,8 @@ namespace _Scripts.PlayerScripts
         [SerializeField] private int _maxSleepiness;
         [SerializeField] private PlayerController _controller;
         [SerializeField] private AnimationMovement _animationMovement;
+        [SerializeField] private float _invincibilityDuration;
+        
         public PlayerController controller => _controller;
         public AnimationMovement animationMovement => _animationMovement;
 
@@ -22,6 +24,10 @@ namespace _Scripts.PlayerScripts
         private PlayerInput _playerInput;
         private InputActionMap _inputActionMap;
         private InputAction _move;
+
+        private SimpleTimer _timer;
+
+        public bool invincible { get; private set; } = false;
 
         private void SetGameLayerRecursive(GameObject pGameObject, int pLayer)
         {
@@ -36,11 +42,14 @@ namespace _Scripts.PlayerScripts
 
         private void Awake()
         {
+            _timer = GetComponent<SimpleTimer>();
+            
             playerCount++;
             
             _playerInput = GetComponent<PlayerInput>();
             _sleepiness = new Sleepiness(this,_maxSleepiness);
             _sleepiness.OnSleep += Disable;
+            _sleepiness.OnTiredChanged += OnTiredChanged;
 
             int layer = LayerMask.NameToLayer(playerCount.ToString());
             SetGameLayerRecursive(gameObject,layer);
@@ -55,6 +64,12 @@ namespace _Scripts.PlayerScripts
             }
         }
 
+        private void OnTiredChanged(int pAmount)
+        {
+            invincible = true;
+            _timer.StartTimer(_invincibilityDuration, () => invincible = false);
+        }
+
         public void Disable()
         {
             _inputActionMap.Disable();
@@ -65,6 +80,7 @@ namespace _Scripts.PlayerScripts
         private void OnDisable()
         {
             _sleepiness.OnSleep -= Disable;
+            _sleepiness.OnTiredChanged -= OnTiredChanged;
         }
 
         private void FixedUpdate()

@@ -8,8 +8,6 @@ namespace _Scripts.Pillow
         [SerializeField] private float _force = 1000;
         [SerializeField] private int _amountTiredApplied = 1;
         
-        
-        
         private void OnCollisionEnter(Collision collision)
         {
             GameObject obj = collision.collider.gameObject;
@@ -29,11 +27,14 @@ namespace _Scripts.Pillow
             
             Debug.Log("Hit");
 
+            //This is awful xD
             GameObject pelvis = FindPelvis(obj.transform);
+            Player player = pelvis.transform.parent.parent.parent.GetComponent<Player>();
+            if (player == null) Debug.LogError("Couldn't find player?");
+            if (player.invincible) return;
             
             Rigidbody body = pelvis.transform.GetChild(0).GetComponent<Rigidbody>();
             body.AddForce(gameObject.transform.forward * _force);
-            Player player = pelvis.transform.parent.parent.parent.GetComponent<Player>();
             player.sleepiness.Tire(_amountTiredApplied);
             // EventBus<PlayerDamagedEvent>.Publish(new PlayerDamagedEvent(player));
         }
