@@ -3,20 +3,43 @@ using UnityEngine;
 
 namespace _Scripts.Ragdoll_Movement
 {
-    [RequireComponent(typeof(ConfigurableJoint))]
     public class CopyMotion : MonoBehaviour
     {
-        [SerializeField] private Transform _followTarget;
+        public Transform _followTarget;
+
         private ConfigurableJoint _joint;
+
+        private Quaternion _targetInitialRotation;
+        
+        private void Awake()
+        {
+            
+            
+            _joint = GetComponent<ConfigurableJoint>();
+            // Debug.Log($"Joint: {_joint}");
+            //
+            // Debug.Log($"Target: {_followTarget}");
+
+            
+      
+            
+
+        }
 
         private void Start()
         {
-            _joint = GetComponent<ConfigurableJoint>();
+            _targetInitialRotation = _followTarget.localRotation;
+
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            _joint.targetRotation = _followTarget.rotation;
+            _joint.targetRotation = CopyRotation();
+        }
+
+        private Quaternion CopyRotation()
+        {
+            return Quaternion.Inverse(_followTarget.localRotation) * _targetInitialRotation;
         }
     }
-}
+} 
