@@ -4,26 +4,31 @@ using UnityEngine;
 
 namespace _Scripts.Powerup
 {
-    public abstract class CandyPowerup : MonoBehaviour
+    public abstract class Powerup : MonoBehaviour
     {
-        [Header("Duration of Powerup in seconds.")]
+        [Tooltip("Duration of Powerup in seconds.")]
         [SerializeField] private float _duration;
-
-        public abstract void power();
-        public abstract void pickup(Collider other);
-        public abstract void end();
+        
+        protected abstract void Power();
+        protected abstract void Pickup(Collider pOther);
+        protected abstract void End();
 
         protected IEnumerator EndPowerUp()
         {
             yield return new WaitForSeconds(_duration);
-            end();
+            End();
         }
+
+        protected abstract void DisplayEffect();
         
         private void OnTriggerEnter(Collider other)
         {
+            //TODO: BETTER WAY TO DO THIS
             if (!other.tag.Equals("Player"))
                 return;
-            pickup(other);
+            Pickup(other);
         }
+        
+        
     }
 }

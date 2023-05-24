@@ -3,26 +3,31 @@ using UnityEngine;
 
 namespace _Scripts.Powerup
 {
-    public class PillowSizeIncrease : CandyPowerup
+    public class PillowSizeIncrease : Powerup
     {
         private GameObject _makeBigger;
-        public override void power()
+
+        protected override void Power()
         {
             _makeBigger.transform.localScale = transform.localScale * 2;
             StartCoroutine(EndPowerUp());
             gameObject.SetActive(false);
         }
 
-        public override void pickup(Collider other)
+        protected override void Pickup(Collider pOther)
         {
-            _makeBigger = other.gameObject;
-            power();
+            _makeBigger = pOther.gameObject;
+            Power();
         }
 
-        public override void end()
+        protected override void End()
         {
             _makeBigger.transform.localScale = transform.localScale / 2;
-            Destroy(gameObject);
+            Destroy(gameObject);        }
+
+        protected override void DisplayEffect()
+        {
+            throw new NotImplementedException();
         }
     }
 }
