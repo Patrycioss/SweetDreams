@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts.PlayerScripts;
+using _Scripts.Ragdoll_Movement;
 using UnityEngine;
 
 namespace _Scripts.Powerup
@@ -8,9 +10,11 @@ namespace _Scripts.Powerup
     {
         [Tooltip("Duration of Powerup in seconds.")]
         [SerializeField] private float _duration;
+
+        protected Player target;
         
         protected abstract void Power();
-        protected abstract void Pickup(Collider pOther);
+        protected abstract void OnPickup();
         protected abstract void End();
 
         protected IEnumerator EndPowerUp()
@@ -23,12 +27,12 @@ namespace _Scripts.Powerup
         
         private void OnTriggerEnter(Collider other)
         {
-            //TODO: BETTER WAY TO DO THIS
-            if (!other.tag.Equals("Player"))
-                return;
-            Pickup(other);
+            Limb limb = other.GetComponent<Limb>();
+            if (limb != null)
+            {
+                target = limb.player;
+                OnPickup();
+            }
         }
-        
-        
     }
 }

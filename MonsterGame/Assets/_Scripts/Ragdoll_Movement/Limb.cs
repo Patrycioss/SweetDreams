@@ -1,35 +1,25 @@
 using System;
+using _Scripts.PlayerScripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Ragdoll_Movement
 {
-    public class CopyMotion : MonoBehaviour
+    public class Limb : MonoBehaviour
     {
-        public Transform _followTarget;
+        public Transform followTarget;
+        public Player player;
 
         private ConfigurableJoint _joint;
-
         private Quaternion _targetInitialRotation;
-        
         private void Awake()
         {
-            
-            
             _joint = GetComponent<ConfigurableJoint>();
-            // Debug.Log($"Joint: {_joint}");
-            //
-            // Debug.Log($"Target: {_followTarget}");
-
-            
-      
-            
-
         }
 
         private void Start()
         {
-            _targetInitialRotation = _followTarget.localRotation;
-
+            _targetInitialRotation = followTarget.localRotation;
         }
 
         private void FixedUpdate()
@@ -39,7 +29,7 @@ namespace _Scripts.Ragdoll_Movement
 
         private Quaternion CopyRotation()
         {
-            return Quaternion.Inverse(_followTarget.localRotation) * _targetInitialRotation;
+            return Quaternion.Inverse(followTarget.localRotation) * _targetInitialRotation;
         }
     }
 } 

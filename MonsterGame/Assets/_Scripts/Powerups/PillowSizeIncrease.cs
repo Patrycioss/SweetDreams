@@ -14,10 +14,10 @@ namespace _Scripts.Powerup
             gameObject.SetActive(false);
         }
 
-        protected override void Pickup(Collider pOther)
+        protected override void OnPickup()
         {
-            _makeBigger = pOther.gameObject;
-            Power();
+            // _makeBigger = pOther.gameObject;
+            // Power();
         }
 
         protected override void End()

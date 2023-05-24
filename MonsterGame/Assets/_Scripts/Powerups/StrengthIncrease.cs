@@ -9,7 +9,7 @@ namespace _Scripts.Powerup
             throw new System.NotImplementedException();
         }
 
-        protected override void Pickup(Collider pOther)
+        protected override void OnPickup()
         {
             throw new System.NotImplementedException();
         }
