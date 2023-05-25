@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using _Scripts.PlayerScripts;
 using UnityEngine;
 
@@ -7,12 +8,13 @@ namespace _Scripts.Pillow
     {
         [SerializeField] private float _force = 1000;
         [SerializeField] private int _amountTiredApplied = 1;
+        [SerializeField] private List<GameObject> self;
         
         private void OnCollisionEnter(Collision collision)
         {
             GameObject obj = collision.collider.gameObject;
 
-            bool isPlayer = false;
+            /*bool isPlayer = false;
             
             for (int i = 1; i < 5; i++)
             {
@@ -24,20 +26,24 @@ namespace _Scripts.Pillow
                 }
             }
 
-            if (!isPlayer) return;
-            
+            if (!isPlayer) return;*/
+
+            if (!obj.CompareTag("Body")) return;
+
+            if (self.Contains(obj)) return;
+                
             Debug.Log("Hit");
 
             //This is awful xD
             GameObject pelvis = FindPelvis(obj.transform);
-            Player player = pelvis.transform.parent.parent.parent.GetComponent<Player>();
+            Player player = obj.GetComponentInParent<Player>();
             if (player == null) Debug.LogError("Couldn't find player?");
             if (player.invincible) return;
-            
             Rigidbody body = pelvis.transform.GetChild(0).GetComponent<Rigidbody>();
-            body.AddForce(gameObject.transform.forward * _force);
+            //body.AddForce(gameObject.transform.forward * _force);
+            body.AddForce(collision.GetContact(0).normal * gameObject.GetComponent<Rigidbody>().velocity.magnitude * -1 * _force);
             player.sleepiness.Tire(_amountTiredApplied);
-            // EventBus<PlayerDamagedEvent>.Publish(new PlayerDamagedEvent(player));
+            EventBus<PlayerDamagedEvent>.Publish(new PlayerDamagedEvent(player));
         }
 
         private GameObject FindPelvis(Transform pStart)
