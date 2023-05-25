@@ -11,12 +11,20 @@ namespace _Scripts.Powerup
         [Tooltip("Duration of Powerup in seconds.")]
         [SerializeField] private float _duration;
 
+        private bool _onPlayer = false;
+        public bool onPlayer
+        {
+            get { return _onPlayer; }
+            set { _onPlayer = value; }
+        }
+
         protected Player target;
         
         protected abstract void Power();
         protected abstract void OnPickup();
         protected abstract void End();
-
+        
+        protected abstract void ValuesToCopyToOther(Powerup pOther);
         protected IEnumerator EndPowerUp()
         {
             yield return new WaitForSeconds(_duration);
@@ -25,13 +33,20 @@ namespace _Scripts.Powerup
 
         protected abstract void DisplayEffect();
         
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider otherCollider)
         {
-            Limb limb = other.GetComponent<Limb>();
+            if (onPlayer) return;
+            Limb limb = otherCollider.GetComponent<Limb>();
             if (limb != null)
             {
                 target = limb.player;
                 OnPickup();
+                Powerup otherPowerup = (Powerup) target.gameObject.AddComponent(this.GetType());
+                otherPowerup.onPlayer = true;
+                otherPowerup.target = target;
+                otherPowerup._duration = _duration;
+                ValuesToCopyToOther(otherPowerup);
+                Destroy(gameObject);
             }
         }
     }

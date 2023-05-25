@@ -25,6 +25,11 @@ namespace _Scripts.Powerup
             _makeBigger.transform.localScale = transform.localScale / 2;
             Destroy(gameObject);        }
 
+        protected override void ValuesToCopyToOther(Powerup pOther)
+        {
+            throw new NotImplementedException();
+        }
+
         protected override void DisplayEffect()
         {
             throw new NotImplementedException();
