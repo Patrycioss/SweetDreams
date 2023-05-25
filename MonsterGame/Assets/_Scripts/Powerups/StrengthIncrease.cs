@@ -4,12 +4,7 @@ namespace _Scripts.Powerup
 {
     public class StrengthIncrease : Powerup
     {
-        protected override void Power()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void OnPickup()
+        protected override void Begin()
         {
             throw new System.NotImplementedException();
         }

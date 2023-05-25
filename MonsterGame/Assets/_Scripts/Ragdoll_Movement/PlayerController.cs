@@ -13,10 +13,8 @@ namespace _Scripts.Ragdoll_Movement
 		[SerializeField] private float _speed = 150;
 
 		private Rigidbody _hips;
-		
 		private Transform _leftShin;
 		private Transform _rightShin;
-
 		private ConfigurableJoint _joint;
 	
 		private void OnValidate()
