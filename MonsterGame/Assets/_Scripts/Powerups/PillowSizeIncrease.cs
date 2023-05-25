@@ -7,15 +7,10 @@ namespace _Scripts.Powerup
     {
         private GameObject _makeBigger;
 
-        protected override void Power()
+        protected override void Begin()
         {
             _makeBigger.transform.localScale = transform.localScale * 2;
-            StartCoroutine(EndPowerUp());
             gameObject.SetActive(false);
-        }
-
-        protected override void OnPickup()
-        {
             // _makeBigger = pOther.gameObject;
             // Power();
         }

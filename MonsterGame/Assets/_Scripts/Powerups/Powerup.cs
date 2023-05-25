@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using _Scripts.PlayerScripts;
 using _Scripts.Ragdoll_Movement;
 using UnityEngine;
@@ -10,7 +11,6 @@ namespace _Scripts.Powerup
     {
         [Tooltip("Duration of Powerup in seconds.")]
         [SerializeField] private float _duration;
-
         private bool _onPlayer = false;
         public bool onPlayer
         {
@@ -19,19 +19,9 @@ namespace _Scripts.Powerup
         }
 
         protected Player target;
-        
-        protected abstract void Power();
-        protected abstract void OnPickup();
+        protected abstract void Begin();
         protected abstract void End();
-        
         protected abstract void ValuesToCopyToOther(Powerup pOther);
-        protected IEnumerator EndPowerUp()
-        {
-            yield return new WaitForSeconds(_duration);
-            Debug.LogError("change");
-            End();
-        }
-
         protected abstract void DisplayEffect();
         
         private void OnTriggerEnter(Collider otherCollider)
@@ -41,12 +31,14 @@ namespace _Scripts.Powerup
             if (limb != null)
             {
                 target = limb.player;
-                OnPickup();
                 Powerup otherPowerup = (Powerup) target.gameObject.AddComponent(this.GetType());
                 otherPowerup.onPlayer = true;
                 otherPowerup.target = target;
                 otherPowerup._duration = _duration;
                 ValuesToCopyToOther(otherPowerup);
+                
+                otherPowerup.Begin();
+                Utils.Timer.StartTimer(_duration, () => { otherPowerup.End(); });
                 Destroy(gameObject);
             }
         }
