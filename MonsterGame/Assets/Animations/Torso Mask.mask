@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Torso Mask
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: blorbo deform
+    m_Weight: 0
+  - m_Path: blorbo deform/pelvis
+    m_Weight: 0
+  - m_Path: blorbo deform/pelvis/spine
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/clavicle.L
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/clavicle.L/upperarm.L
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/clavicle.L/upperarm.L/lowerarm.L
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/clavicle.L/upperarm.L/lowerarm.L/hand.L
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/clavicle.L/upperarm.L/lowerarm.L/hand.L/finger1.L
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/clavicle.L/upperarm.L/lowerarm.L/hand.L/finger2.L
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/clavicle.R
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/clavicle.R/upperarm.R
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/clavicle.R/upperarm.R/lowerarm.R
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/clavicle.R/upperarm.R/lowerarm.R/hand.R
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/clavicle.R/upperarm.R/lowerarm.R/hand.R/finger1.R
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/clavicle.R/upperarm.R/lowerarm.R/hand.R/finger2.R
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head/antenna.L
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head/antenna.L/antenna.L.002
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head/antenna.L/antenna.L.002/antenna.L.001
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head/antenna.R
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head/antenna.R/antenna.R.002
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head/antenna.R/antenna.R.002/antenna.R.001
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head/ear.L
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head/ear.L/ear.L.002
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head/ear.L/ear.L.002/ear.L.001
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head/ear.R
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head/ear.R/ear.R.002
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head/ear.R/ear.R.002/ear.R.001
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head/eye.L
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head/eye.R
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head/lowerjaw
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/spine/chest/head/upperjaw
+    m_Weight: 1
+  - m_Path: blorbo deform/pelvis/thigh.L
+    m_Weight: 0
+  - m_Path: blorbo deform/pelvis/thigh.L/shin.L
+    m_Weight: 0
+  - m_Path: blorbo deform/pelvis/thigh.L/shin.L/foot.L
+    m_Weight: 0
+  - m_Path: blorbo deform/pelvis/thigh.L/shin.L/foot.L/toe.L
+    m_Weight: 0
+  - m_Path: blorbo deform/pelvis/thigh.L/shin.L/foot.L/toe.L/toeleaf.L
+    m_Weight: 0
+  - m_Path: blorbo deform/pelvis/thigh.R
+    m_Weight: 0
+  - m_Path: blorbo deform/pelvis/thigh.R/shin.R
+    m_Weight: 0
+  - m_Path: blorbo deform/pelvis/thigh.R/shin.R/foot.R
+    m_Weight: 0
+  - m_Path: blorbo deform/pelvis/thigh.R/shin.R/foot.R/toe.R
+    m_Weight: 0
+  - m_Path: blorbo deform/pelvis/thigh.R/shin.R/foot.R/toe.R/toeleaf.R
+    m_Weight: 0
+  - m_Path: goober.001
+    m_Weight: 0

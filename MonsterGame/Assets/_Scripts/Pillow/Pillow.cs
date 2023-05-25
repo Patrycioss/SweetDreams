@@ -1,5 +1,6 @@
-using System.Collections.Generic;
+using System;
 using _Scripts.PlayerScripts;
+using _Scripts.Ragdoll_Movement;
 using UnityEngine;
 
 namespace _Scripts.Pillow
@@ -8,42 +9,31 @@ namespace _Scripts.Pillow
     {
         [SerializeField] private float _force = 1000;
         [SerializeField] private int _amountTiredApplied = 1;
-        [SerializeField] private List<GameObject> self;
-        
+
+        private Limb _limb;        
+        private void Start()
+        {
+            _limb = GetComponent<Limb>();
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
             GameObject obj = collision.collider.gameObject;
 
-            /*bool isPlayer = false;
-            
-            for (int i = 1; i < 5; i++)
+            Limb limb = obj.GetComponent<Limb>();
+            if (limb != null)
             {
-                if (obj.layer == LayerMask.NameToLayer(i.ToString()))
-                {
-                    if (obj.layer == gameObject.layer) return;
-                    isPlayer = true;
-                    break;
-                }
+                if (_limb == null) _limb = GetComponent<Limb>();
+
+                Player player = limb.player;
+                if (player == _limb.player) return;
+                if (player.invincible) return;
+
+                GameObject pelvis = player.controller.gameObject;
+                Rigidbody body = pelvis.transform.GetChild(0).GetComponent<Rigidbody>();
+                body.AddForce(gameObject.transform.forward * _force);
+                player.sleepiness.Tire(_amountTiredApplied);
             }
-
-            if (!isPlayer) return;*/
-
-            if (!obj.CompareTag("Body")) return;
-
-            if (self.Contains(obj)) return;
-                
-            Debug.Log("Hit");
-
-            //This is awful xD
-            GameObject pelvis = FindPelvis(obj.transform);
-            Player player = obj.GetComponentInParent<Player>();
-            if (player == null) Debug.LogError("Couldn't find player?");
-            if (player.invincible) return;
-            Rigidbody body = pelvis.transform.GetChild(0).GetComponent<Rigidbody>();
-            //body.AddForce(gameObject.transform.forward * _force);
-            body.AddForce(collision.GetContact(0).normal * gameObject.GetComponent<Rigidbody>().velocity.magnitude * -1 * _force);
-            player.sleepiness.Tire(_amountTiredApplied);
-            EventBus<PlayerDamagedEvent>.Publish(new PlayerDamagedEvent(player));
         }
 
         private GameObject FindPelvis(Transform pStart)
@@ -52,6 +42,4 @@ namespace _Scripts.Pillow
             return FindPelvis(pStart.parent);
         }
     }
-    
-    
 }
