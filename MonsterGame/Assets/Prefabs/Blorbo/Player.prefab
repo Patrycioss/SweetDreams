@@ -119,6 +119,8 @@ MonoBehaviour:
   _maxSleepiness: 4
   _controller: {fileID: 8696315032198855142}
   _animationMovement: {fileID: 4076991353772819507}
+  _pillow1: {fileID: 8261115313909322702}
+  _pillow2: {fileID: 252505043699481008}
   _invincibilityDuration: 3
 --- !u!114 &480830126944423385
 MonoBehaviour:
@@ -461,6 +463,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b93b2f72023cdb4da7226b7e0e2e727, type: 3}
+--- !u!114 &252505043699481008 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8876198549905997901, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
+    type: 3}
+  m_PrefabInstance: {fileID: 8696315031900371453}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18bf3b7a432e7c34b98000ead41f3f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2443612505318882187 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6433093903543714422, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
@@ -473,6 +487,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8696315031900371453}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8261115313909322702 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 723642382164519475, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
+    type: 3}
+  m_PrefabInstance: {fileID: 8696315031900371453}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8763637309362216876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18bf3b7a432e7c34b98000ead41f3f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8696315032198855142 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 374702107, guid: 0b93b2f72023cdb4da7226b7e0e2e727,

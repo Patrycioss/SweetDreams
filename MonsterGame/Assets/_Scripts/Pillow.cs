@@ -3,7 +3,7 @@ using _Scripts.PlayerScripts;
 using _Scripts.Ragdoll_Movement;
 using UnityEngine;
 
-namespace _Scripts.Pillow
+namespace _Scripts
 {
     public class Pillow : MonoBehaviour
     {

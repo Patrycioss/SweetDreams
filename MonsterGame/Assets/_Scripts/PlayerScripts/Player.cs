@@ -13,10 +13,14 @@ namespace _Scripts.PlayerScripts
         [SerializeField] private int _maxSleepiness;
         [SerializeField] private PlayerController _controller;
         [SerializeField] private AnimationMovement _animationMovement;
+        [SerializeField] private Pillow _pillow1;
+        [SerializeField] private Pillow _pillow2;
         [SerializeField] private float _invincibilityDuration;
         
         public PlayerController controller => _controller;
         public AnimationMovement animationMovement => _animationMovement;
+        public Pillow pillow1 => _pillow1;
+        public Pillow pillow2 => _pillow2;
 
         private Sleepiness _sleepiness;
         public Sleepiness sleepiness => _sleepiness;
