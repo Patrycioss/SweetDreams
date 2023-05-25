@@ -28,6 +28,7 @@ namespace _Scripts.Powerup
         protected IEnumerator EndPowerUp()
         {
             yield return new WaitForSeconds(_duration);
+            Debug.LogError("change");
             End();
         }
 
