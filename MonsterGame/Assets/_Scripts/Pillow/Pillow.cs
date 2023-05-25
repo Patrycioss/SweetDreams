@@ -10,8 +10,7 @@ namespace _Scripts.Pillow
         [SerializeField] private float _force = 1000;
         [SerializeField] private int _amountTiredApplied = 1;
 
-        private Limb _limb;
-        
+        private Limb _limb;        
         private void Start()
         {
             _limb = GetComponent<Limb>();

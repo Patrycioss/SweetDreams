@@ -204,10 +204,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8837964928735249901}
   - component: {fileID: 238478953908557632}
-  - component: {fileID: 538640288057813554}
   - component: {fileID: 5570999840217408230}
   m_Layer: 0
-  m_Name: MainCamera
+  m_Name: SubCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,7 +236,7 @@ Camera:
   m_GameObject: {fileID: 1864120339887839304}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -271,14 +270,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &538640288057813554
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1864120339887839304}
-  m_Enabled: 1
 --- !u!114 &5570999840217408230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +285,7 @@ MonoBehaviour:
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 1
+  m_CameraType: 0
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
@@ -530,7 +521,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8679080691150952309}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.15670013, y: -3.001414, z: 15.971198}
+  m_LocalPosition: {x: 0, y: -3.001414, z: 14.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -551,6 +542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3484730166534180356}
   - component: {fileID: 707850612654012486}
+  - component: {fileID: 2329393721365602425}
   m_Layer: 0
   m_Name: CharacterScrollers
   m_TagString: Untagged
@@ -566,7 +558,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9112416325790987690}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -100, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -587,6 +579,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b924cebb0294dfe42919f5161e79f493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrolling: {fileID: 0}
-  _inputActionAsset: {fileID: -944628639613478452, guid: 3332ec466576cf44c9bebc78579daf61,
+  scrolling:
+  - {fileID: 1607320484957737748}
+  - {fileID: 7119739908539553041}
+  - {fileID: 1976302094630879050}
+  - {fileID: 755796177213154155}
+--- !u!114 &2329393721365602425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112416325790987690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 3332ec466576cf44c9bebc78579daf61,
     type: 3}
+  m_NotificationBehavior: 3
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

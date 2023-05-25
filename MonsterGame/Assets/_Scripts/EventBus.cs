@@ -50,19 +50,38 @@ namespace _Scripts
 
     }
 
-    public sealed class ScrollLeftEvent : UnityEvent
+    public sealed class PlayerSelectedEvent : UnityEvent
     {
-        public ScrollLeftEvent()
-        {
-            
-        }
+        
     }
-    
-    public sealed class ScrollRightEvent : UnityEvent
+
+    public sealed class PlayerReadyUpEvent : UnityEvent
     {
-        public ScrollRightEvent()
+        private Guid _id;
+        private int _currentCharacter;
+
+        public PlayerReadyUpEvent(Guid id, int currentCharacter)
         {
-            
+            _id = id;
+            _currentCharacter = currentCharacter;
         }
+
+        public Guid ID => _id;
+        public int CurrentCharacter => _currentCharacter;
+    }
+
+    public sealed class PlayerReadyDownEvent : UnityEvent
+    {
+        private Guid _id;
+        private int _currentCharacter;
+        
+        public PlayerReadyDownEvent(Guid id, int currentCharacter)
+        {
+            _id = id;
+            _currentCharacter = currentCharacter;
+        }
+
+        public Guid ID => _id;
+        public int CurrentCharacter => _currentCharacter;
     }
 }
