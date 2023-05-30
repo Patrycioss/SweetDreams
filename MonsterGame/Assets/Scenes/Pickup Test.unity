@@ -1574,6 +1574,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286989209}
   m_Mesh: {fileID: -2432090755550338912, guid: d6f61f0ce0057354bb675bf8b3d5537b, type: 3}
+--- !u!1 &292073655 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6918161039761807598, guid: a92a94884cbe31445a73fa45e2c304b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1445515844}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &292073656 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1445515844}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292073655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1a09d3fba26c524a8787254ebce74e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &292073658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292073655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8306e0b233dc3c845bc734730a0ef53e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _powerupSpawner: {fileID: 292073656}
 --- !u!1 &304240253
 GameObject:
   m_ObjectHideFlags: 0
@@ -5321,7 +5352,7 @@ PrefabInstance:
     - target: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
         type: 3}
       propertyPath: spawnPositions.Array.size
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
         type: 3}
@@ -5361,37 +5392,47 @@ PrefabInstance:
     - target: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
         type: 3}
       propertyPath: spawnPositions.Array.data[4].x
-      value: -7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
         type: 3}
       propertyPath: spawnPositions.Array.data[4].y
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
+        type: 3}
+      propertyPath: spawnPositions.Array.data[4].z
+      value: -3.4569514
       objectReference: {fileID: 0}
     - target: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
         type: 3}
       propertyPath: spawnPositions.Array.data[5].x
-      value: -7
+      value: -3.85332
       objectReference: {fileID: 0}
     - target: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
         type: 3}
       propertyPath: spawnPositions.Array.data[5].z
-      value: 2
+      value: -3.4569514
       objectReference: {fileID: 0}
     - target: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
         type: 3}
       propertyPath: spawnPositions.Array.data[6].x
-      value: -7
+      value: -3.85332
       objectReference: {fileID: 0}
     - target: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
         type: 3}
       propertyPath: spawnPositions.Array.data[6].z
-      value: 4
+      value: 4.4841824
       objectReference: {fileID: 0}
     - target: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
         type: 3}
       propertyPath: spawnPositions.Array.data[7].x
-      value: 1
+      value: 6.5638914
+      objectReference: {fileID: 0}
+    - target: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
+        type: 3}
+      propertyPath: spawnPositions.Array.data[7].z
+      value: 4.4841824
       objectReference: {fileID: 0}
     - target: {fileID: 6918161039761807598, guid: a92a94884cbe31445a73fa45e2c304b2,
         type: 3}
@@ -5411,7 +5452,7 @@ PrefabInstance:
     - target: {fileID: 8815738876934723186, guid: a92a94884cbe31445a73fa45e2c304b2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 8815738876934723186, guid: a92a94884cbe31445a73fa45e2c304b2,
         type: 3}
@@ -6174,6 +6215,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TestPowerup
+      objectReference: {fileID: 0}
+    - target: {fileID: 3543708307657455926, guid: 14db929b900a68240aa0c6f7b954e6bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4334709066617708161, guid: 14db929b900a68240aa0c6f7b954e6bf,
         type: 3}
@@ -7253,6 +7299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DoublePillow
+      objectReference: {fileID: 0}
+    - target: {fileID: 472705279114728391, guid: 98fa06e9e1a677841a8178ebfb55ec33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5878011213144184733, guid: 98fa06e9e1a677841a8178ebfb55ec33,
         type: 3}

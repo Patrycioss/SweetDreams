@@ -10,30 +10,37 @@ public class PowerupSpawner : MonoBehaviour
 {
 	public List<Vector3> spawnPositions = new List<Vector3>();
 	
-	[FormerlySerializedAs("powerupsPrefabs")] [SerializeField] private List<GameObject> powerupPrefabs = new List<GameObject>();
+	[SerializeField] private List<GameObject> powerupPrefabs = new List<GameObject>();
 	
 	
-	private Dictionary<GameObject, int> _powerupCounts = new Dictionary<GameObject, int>();
-	private Dictionary<Vector3, int> _positionCounts = new Dictionary<Vector3, int>();
+	private Dictionary<GameObject, (int index,int count)> _powerupCounts = new Dictionary<GameObject, (int index, int count)>();
+	private Dictionary<Vector3, (int index, int count)> _positionCounts = new Dictionary<Vector3, (int index, int count)>();
 
 	public void Start()
 	{
-		foreach (Vector3 pos in spawnPositions) 
-			_positionCounts.Add(pos, 0);
+		for (int index = 0; index < spawnPositions.Count; index++) 
+			_positionCounts.Add(spawnPositions[index], (index, 1));
+
+		for (int index = 0; index < powerupPrefabs.Count; index++) 
+			_powerupCounts.Add(powerupPrefabs[index], (index, 1));
 	}
 
 	public void SpawnPowerup()
 	{
-		int index = GetRandomWeightedIndex(_positionCounts.Values);
-		Vector3 position = spawnPositions[index];
-		GameObject powerup = powerupPrefabs[GetRandomWeightedIndex(_powerupCounts.Values)];
+		int posIndex = GetRandomWeightedIndex(_positionCounts.Values);
+		Vector3 position = spawnPositions[_positionCounts.Values.ElementAt(posIndex).index];
+		
+		int powerupIndex = GetRandomWeightedIndex(_powerupCounts.Values);
+		GameObject powerup = powerupPrefabs[_powerupCounts.Values.ElementAt(powerupIndex).index];
 		Instantiate(powerup, position, Quaternion.identity);
 		
 		for (int i = 0; i < spawnPositions.Count; i++)
 		{
 			if (spawnPositions[i] != position)
 			{
-				_positionCounts[spawnPositions[i]]++;
+				(int,int count) pair = _positionCounts[spawnPositions[i]];
+				pair.count++;
+				_positionCounts[spawnPositions[i]] = pair;
 				break;
 			}
 		}
@@ -42,24 +49,33 @@ public class PowerupSpawner : MonoBehaviour
 		{
 			if (powerupPrefabs[i] != powerup)
 			{
-				_powerupCounts[powerupPrefabs[i]]++;
+				(int,int count) pair = _powerupCounts[powerupPrefabs[i]];
+				pair.count++;
+				_powerupCounts[powerupPrefabs[i]] = pair;
 				break;
 			}
 		}
 	}
-
-	public int GetRandomWeightedIndex(ICollection<int> pCounts)
+	
+	public int GetRandomWeightedIndex(ICollection<(int, int count)> pCounts)
 	{
-		int total = pCounts.Sum();
+		int total = 0;
+		foreach ((int, int count) pair in pCounts) 
+			total += pair.Item2;
+
 		int randomIndex = UnityEngine.Random.Range(0, total);
-		int currentIndex = 0;
-		foreach (int count in pCounts)
+		int countIndex = 0;
+		
+		for (int i = 0; i < pCounts.Count; i++)
 		{
-			if (randomIndex < count + currentIndex)
-				return currentIndex;
-			currentIndex += count;
+			(int, int count) tuple = pCounts.ElementAt(i);
+			
+			if (randomIndex < tuple.count + countIndex)
+				return i;
+
+			countIndex += tuple.count;
 		}
-		return currentIndex;
+		return -1;
 	}
 	
 	private void OnDrawGizmos()
