@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -28,6 +29,7 @@ namespace _Scripts.Menu
             _b = _map.FindAction("b");
             _move = _map.FindAction("move");
             _b.started += PressB;
+            _interact.started += PressA;
         }
 
         private void OnDisable()
@@ -48,6 +50,15 @@ namespace _Scripts.Menu
             }
         }
 
+        void PressA(InputAction.CallbackContext context)
+        {
+            if (!_ready)
+            {
+                _ready = true;
+                EventBus<PlayerReadyUpEvent>.Publish(new PlayerReadyUpEvent(_id, _currentIndex));
+            }
+        }
+
         void Update()
         {
             Vector2 movement = _move.ReadValue<Vector2>();
@@ -60,11 +71,6 @@ namespace _Scripts.Menu
             {
                 ScrollLeft();
                 _currentIndex -= 1;
-            }
-            if (_interact.IsPressed() && !_ready)
-            {
-                _ready = true;
-                EventBus<PlayerReadyUpEvent>.Publish(new PlayerReadyUpEvent(_id, _currentIndex));
             }
         }
         

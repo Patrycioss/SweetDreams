@@ -10,15 +10,11 @@ namespace _Scripts.Menu
         private Scroller _scroller;
         private GameObject _display;
 
-        public Character(Scroller scroller, GameObject display, Guid guid)
+        public Character(Scroller scroller, GameObject display, int deviceId)
         {
             _scroller = scroller;
             _display = display;
-            _guid = guid;
-        }
-
-        public Character(int deviceId)
-        {
+            _guid = _scroller.ID;
             _deviceId = deviceId;
         }
 
