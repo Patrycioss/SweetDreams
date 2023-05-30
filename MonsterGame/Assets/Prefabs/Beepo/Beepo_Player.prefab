@@ -389,6 +389,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8295259343949263153}
     m_Modifications:
+    - target: {fileID: 848739063582830100, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 848739063582830100, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 848739063582830100, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 848739063582830100, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 848739063582830100, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 878155781701220531, guid: ab0e2e2a29a8d9b41870e7007182efea,
         type: 3}
       propertyPath: _player
@@ -399,6 +424,36 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 192812458730664770}
+    - target: {fileID: 1009042765157322939, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_AngularYMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845270548226074744, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845270548226074744, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845270548226074744, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845270548226074744, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845270548226074744, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5177932109540060576, guid: ab0e2e2a29a8d9b41870e7007182efea,
         type: 3}
       propertyPath: m_Name
@@ -457,6 +512,41 @@ PrefabInstance:
     - target: {fileID: 5517021132257572634, guid: ab0e2e2a29a8d9b41870e7007182efea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136056780034224276, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_AngularYMotion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136056780034224276, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_AngularYZDrive.positionDamper
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179783511339992546, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_AngularYLimit.limit
+      value: 15.839912
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179783511339992546, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_AngularYZDrive.positionDamper
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497870956208130853, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_AngularYMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497870956208130853, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_AngularYLimit.limit
+      value: 45.480015
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497870956208130853, guid: ab0e2e2a29a8d9b41870e7007182efea,
+        type: 3}
+      propertyPath: m_AngularYZDrive.positionDamper
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

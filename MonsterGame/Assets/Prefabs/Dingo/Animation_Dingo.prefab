@@ -156,6 +156,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Animation_Dingo
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: af39f8309ccc3a5479851ea5cb3e43de,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 17ea5ec1b2adab44cbf3c2810dc44037, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af39f8309ccc3a5479851ea5cb3e43de, type: 3}
 --- !u!1 &3286625984983714303 stripped
