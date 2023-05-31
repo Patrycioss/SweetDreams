@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using _Scripts.PlayerScripts;
+using UnityEngine;
 
 namespace _Scripts.Ragdoll_Movement
 {
 	public class MassCopy : MonoBehaviour
 	{
 		[SerializeField] private Transform _target;
+		[SerializeField] private Player _player;
 
 		private void Start()
 		{
@@ -27,7 +29,9 @@ namespace _Scripts.Ragdoll_Movement
 
 				if (childA.gameObject.GetComponent<ConfigurableJoint>() != null)
 				{
-					childA.gameObject.AddComponent<CopyMotion>()._followTarget = childB;
+					Limb limb = childA.gameObject.AddComponent<Limb>();
+					limb.followTarget = childB;
+					limb.player = _player;
 				}
 
 				MatchChildren(childA, childB);
