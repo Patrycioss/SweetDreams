@@ -98,6 +98,7 @@ namespace _Scripts.Menu.States
             Scroller scroll = transform1.GetComponent<Scroller>();
             scroll.ID = Guid.NewGuid();
             Character character = new Character(scroll, _toEnable[_playerInputManager.playerCount - 1], scroll.ID);
+            Debug.Log(pPlayerInput.user.pairedDevices[0].name);
             character.DeviceID = pPlayerInput.user.pairedDevices[0].deviceId;
             _characters.Add(character);
             character.Display.SetActive(true);
@@ -107,14 +108,6 @@ namespace _Scripts.Menu.States
                 _first = true;
             }
             characterIndex++;
-        }
-        
-        private void SetupScroller(Transform transform1)
-        {
-            transform1.parent = transform;
-            transform1.position += new Vector3(0, 10 + 10 * characterIndex, 0);
-            UnityEngine.Camera cam = transform1.GetComponentInChildren<UnityEngine.Camera>();
-            cam.targetTexture = _textures[_playerInputManager.playerCount - 1];
         }
         
         private void OnPlayerLeft(PlayerInput pPlayerInput)
@@ -177,20 +170,23 @@ namespace _Scripts.Menu.States
                 _characters.Remove(character);
                 for (int i = index; i < 4; i++)
                 {
-                    Character tempChar = _characters[i];
-                    RenderTexture text = _textures[i];
-                    GameObject arrows = _toEnable[i];
-                    UnityEngine.Camera cam = tempChar.Scroller.GetComponentInChildren<UnityEngine.Camera>();
-                    cam.targetTexture = text;
-                    tempChar.Display.SetActive(false);
-                    tempChar.Display = arrows;
-                    if (!tempChar.Scroller.Ready)
+                    if (i < _characters.Count)
                     {
-                        tempChar.Display.SetActive(true);
-                    }
-                    else
-                    {
+                        Character tempChar = _characters[i];
+                        RenderTexture text = _textures[i];
+                        GameObject arrows = _toEnable[i];
+                        UnityEngine.Camera cam = tempChar.Scroller.GetComponentInChildren<UnityEngine.Camera>();
+                        cam.targetTexture = text;
                         tempChar.Display.SetActive(false);
+                        tempChar.Display = arrows;
+                        if (!tempChar.Scroller.Ready)
+                        {
+                            tempChar.Display.SetActive(true);
+                        }
+                        else
+                        {
+                            tempChar.Display.SetActive(false);
+                        }
                     }
                     else
                     {
@@ -198,8 +194,6 @@ namespace _Scripts.Menu.States
                         _textures[i].Create();
                     }
                 }
-                RenderTexture text1 = _textures[_characters.Count - 1];
-                text1.Release();
             }
         }
     }
