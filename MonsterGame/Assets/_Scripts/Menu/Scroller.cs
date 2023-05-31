@@ -62,15 +62,13 @@ namespace _Scripts.Menu
         void Update()
         {
             Vector2 movement = _move.ReadValue<Vector2>();
-            if (movement.x >= 0.5f && !_ready && !_busy && _currentIndex < scrolling.Count - 1)
+            if (movement.x >= 0.5f && !_ready && !_busy)
             {
                 ScrollRight();
-                _currentIndex += 1;
             }
-            else if (movement.x <= -0.5f && !_ready && !_busy && _currentIndex > 0)
+            else if (movement.x <= -0.5f && !_ready && !_busy)
             {
                 ScrollLeft();
-                _currentIndex -= 1;
             }
         }
         
@@ -78,12 +76,21 @@ namespace _Scripts.Menu
         {
             if (_busy) return;
             _busy = true;
-            foreach (GameObject obj in scrolling)
+            if (_currentIndex <= 0)
             {
-                obj.transform.DOMoveX(obj.transform.position.x + 5, 1).onComplete += () =>
+                _currentIndex = scrolling.Count - 1;
+                foreach (GameObject obj in scrolling)
                 {
-                    _busy = false;
-                };
+                    obj.transform.DOMoveX(obj.transform.position.x - 5 * (scrolling.Count - 1), 1).onComplete += () => { _busy = false; };
+                }
+            }
+            else
+            {
+                _currentIndex -= 1;
+                foreach (GameObject obj in scrolling)
+                {
+                    obj.transform.DOMoveX(obj.transform.position.x + 5, 1).onComplete += () => { _busy = false; };
+                }
             }
         }
 
@@ -91,12 +98,27 @@ namespace _Scripts.Menu
         {
             if (_busy) return;
             _busy = true;
-            foreach (GameObject obj in scrolling)
+            if (_currentIndex >= scrolling.Count - 1)
             {
-                obj.transform.DOMoveX(obj.transform.position.x - 5, 1).onComplete += () =>
+                _currentIndex = 0;
+                foreach (GameObject obj in scrolling)
                 {
-                    _busy = false;
-                };
+                    obj.transform.DOMoveX(obj.transform.position.x + 5 * (scrolling.Count - 1), 1).onComplete += () =>
+                    {
+                        _busy = false;
+                    };
+                } 
+            }
+            else
+            {
+                _currentIndex += 1;
+                foreach (GameObject obj in scrolling)
+                {
+                    obj.transform.DOMoveX(obj.transform.position.x - 5, 1).onComplete += () =>
+                    {
+                        _busy = false;
+                    };
+                } 
             }
         }
 
