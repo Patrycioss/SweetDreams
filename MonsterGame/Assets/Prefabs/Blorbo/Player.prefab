@@ -119,8 +119,8 @@ MonoBehaviour:
   _maxSleepiness: 4
   _controller: {fileID: 8696315032198855142}
   _animationMovement: {fileID: 4076991353772819507}
-  _pillow1: {fileID: 0}
-  _pillow2: {fileID: 0}
+  _pillow1: {fileID: 8534708124889186545}
+  _pillow2: {fileID: 9016126376461106936}
   _invincibilityDuration: 3
 --- !u!114 &480830126944423385
 MonoBehaviour:
@@ -471,6 +471,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8696315031900371453}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8534708124889186545 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1071535243059968268, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
+    type: 3}
+  m_PrefabInstance: {fileID: 8696315031900371453}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18bf3b7a432e7c34b98000ead41f3f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8696315032198855142 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 374702107, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
@@ -481,5 +493,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b71356496542a5c47bb4beab3f146a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9016126376461106936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 409884024336664325, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
+    type: 3}
+  m_PrefabInstance: {fileID: 8696315031900371453}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18bf3b7a432e7c34b98000ead41f3f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
