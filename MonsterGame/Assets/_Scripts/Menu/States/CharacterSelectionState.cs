@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using Random = System.Random;
 
 namespace _Scripts.Menu.States
 {
@@ -74,7 +74,14 @@ namespace _Scripts.Menu.States
             character.Display.SetActive(false);
             if (_ready != _playerInputManager.playerCount)
                 return;
-            SceneManager.LoadScene("Prototype");
+            Directory.CreateDirectory("Assets/Scenes/UserInterface");
+            string[] ids = new string[4];
+            for (int i = 0; i < _characters.Count; i++)
+            {
+                ids[i] = _characters[i].DeviceID + "";
+            }
+            File.WriteAllLines("Assets/Scenes/UserInterface/Backup.txt", ids);
+            SceneManager.LoadScene("PrototypeCopy");
         }
         
         private void PlayerDown(PlayerReadyDownEvent pEvent)
@@ -118,11 +125,8 @@ namespace _Scripts.Menu.States
             switch (change)
             {
                 case InputDeviceChange.Removed:
-                    Debug.Log("Is it?");
                     if (character == null)
                         return;
-                    Debug.Log("Removed");
-                    Debug.Log(character.Display.name);
                     UpdateOrder(character);
                     break;
                 case InputDeviceChange.Added:
@@ -164,26 +168,32 @@ namespace _Scripts.Menu.States
                 character.Display.SetActive(false);
                 Destroy(character.Scroller.gameObject);
                 _characters.Remove(character);
-                for (int i = index; i < _characters.Count; i++)
+                for (int i = index; i < 4; i++)
                 {
-                    Character tempChar = _characters[i];
-                    RenderTexture text = _textures[i];
-                    GameObject arrows = _toEnable[i];
-                    UnityEngine.Camera cam = tempChar.Scroller.GetComponentInChildren<UnityEngine.Camera>();
-                    cam.targetTexture = text;
-                    tempChar.Display.SetActive(false);
-                    tempChar.Display = arrows;
-                    if (!tempChar.Scroller.Ready)
+                    if (i < _characters.Count)
                     {
-                        tempChar.Display.SetActive(true);
+                        Character tempChar = _characters[i];
+                        RenderTexture text = _textures[i];
+                        GameObject arrows = _toEnable[i];
+                        UnityEngine.Camera cam = tempChar.Scroller.GetComponentInChildren<UnityEngine.Camera>();
+                        cam.targetTexture = text;
+                        tempChar.Display.SetActive(false);
+                        tempChar.Display = arrows;
+                        if (!tempChar.Scroller.Ready)
+                        {
+                            tempChar.Display.SetActive(true);
+                        }
+                        else
+                        {
+                            tempChar.Display.SetActive(false);
+                        }
                     }
                     else
                     {
-                        tempChar.Display.SetActive(false);
+                        _textures[i].Release();
+                        _textures[i].Create();
                     }
                 }
-                RenderTexture text1 = _textures[_characters.Count - 1];
-                text1.Release();
             }
         }
     }
