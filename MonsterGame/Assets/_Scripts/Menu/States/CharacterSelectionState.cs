@@ -1,11 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using Random = System.Random;
 
 namespace _Scripts.Menu.States
 {
@@ -42,7 +41,6 @@ namespace _Scripts.Menu.States
             _playerInputManager.onPlayerLeft += OnPlayerLeft;
             InputSystem.onDeviceChange += OnDeviceChange;
             
-            Debug.Log("Started");
             foreach (Gamepad gamepad in Gamepad.all)
             {
                 characterIndex++;
@@ -72,21 +70,23 @@ namespace _Scripts.Menu.States
         private void PlayersReady(PlayerReadyUpEvent pEvent)
         {
             _ready += 1;
-            Character character = _characters.Find(x =>
-            {
-                Debug.Log(x.ID);
-                Debug.Log(pEvent.ID);
-                return x.ID == pEvent.ID;
-            });
+            Character character = _characters.Find(x => x.ID.Equals(pEvent.ID));
             character.Display.SetActive(false);
             if (_ready != _playerInputManager.playerCount)
                 return;
-            SceneManager.LoadScene("Prototype");
+            Directory.CreateDirectory("Assets/Scenes/UserInterface");
+            string[] ids = new string[4];
+            for (int i = 0; i < _characters.Count; i++)
+            {
+                ids[i] = _characters[i].DeviceID + "";
+            }
+            File.WriteAllLines("Assets/Scenes/UserInterface/Backup.txt", ids);
+            SceneManager.LoadScene("PrototypeCopy");
         }
         
         private void PlayerDown(PlayerReadyDownEvent pEvent)
         {
-            Character character = _characters.Find(x => x.ID == pEvent.ID);
+            Character character = _characters.Find(x => x.ID.Equals(pEvent.ID));
             character.Display.SetActive(true);
             _ready -= 1;
         }
@@ -97,15 +97,15 @@ namespace _Scripts.Menu.States
             SetupScroller(transform1);
             Scroller scroll = transform1.GetComponent<Scroller>();
             scroll.ID = Guid.NewGuid();
-            Debug.Log("Device: " + scroll.ID);
-            Character character = new Character(scroll, _toEnable[_playerInputManager.playerCount - 1], pPlayerInput.user.pairedDevices[0].deviceId);
+            Character character = new Character(scroll, _toEnable[_playerInputManager.playerCount - 1], scroll.ID);
+            character.DeviceID = pPlayerInput.user.pairedDevices[0].deviceId;
             _characters.Add(character);
             character.Display.SetActive(true);
-            /*if (!_first)
+            if (!_first)
             {
                 scroll.First = true;
                 _first = true;
-            }*/
+            }
             characterIndex++;
         }
         
@@ -119,7 +119,8 @@ namespace _Scripts.Menu.States
         
         private void OnPlayerLeft(PlayerInput pPlayerInput)
         {
-            
+            /*if(_toEnable[_playerInputManager.playerCount] != null) _toEnable[_playerInputManager.playerCount].SetActive(false);
+            if(pPlayerInput.gameObject != null) Destroy(pPlayerInput.gameObject);*/
         }
         
         private void OnDeviceChange(InputDevice device, InputDeviceChange change)
@@ -133,17 +134,23 @@ namespace _Scripts.Menu.States
                 case InputDeviceChange.Removed:
                     if (character == null)
                         return;
-                    Debug.Log(character.Display.name);
                     UpdateOrder(character);
                     break;
                 case InputDeviceChange.Added:
                     if (character != null)
                         return;
-                    Debug.Log("Added yo");
                     characterIndex++;
                     _playerInputManager.JoinPlayer(characterIndex, -1, null, device);
                     break;
             }
+        }
+
+        private void SetupScroller(Transform transform1)
+        {
+            transform1.parent = transform;
+            transform1.position += new Vector3(0, 10 + 10 * characterIndex, 0);
+            UnityEngine.Camera cam = transform1.GetComponentInChildren<UnityEngine.Camera>();
+            cam.targetTexture = _textures[_playerInputManager.playerCount - 1];
         }
 
         private void UpdateOrder(Character character)
@@ -168,14 +175,13 @@ namespace _Scripts.Menu.States
                 character.Display.SetActive(false);
                 Destroy(character.Scroller.gameObject);
                 _characters.Remove(character);
-                for (int i = index; i < _characters.Count; i++)
+                for (int i = index; i < 4; i++)
                 {
                     Character tempChar = _characters[i];
                     RenderTexture text = _textures[i];
                     GameObject arrows = _toEnable[i];
                     UnityEngine.Camera cam = tempChar.Scroller.GetComponentInChildren<UnityEngine.Camera>();
                     cam.targetTexture = text;
-                    text.ResolveAntiAliasedSurface(text);
                     tempChar.Display.SetActive(false);
                     tempChar.Display = arrows;
                     if (!tempChar.Scroller.Ready)
@@ -186,7 +192,14 @@ namespace _Scripts.Menu.States
                     {
                         tempChar.Display.SetActive(false);
                     }
+                    else
+                    {
+                        _textures[i].Release();
+                        _textures[i].Create();
+                    }
                 }
+                RenderTexture text1 = _textures[_characters.Count - 1];
+                text1.Release();
             }
         }
     }
