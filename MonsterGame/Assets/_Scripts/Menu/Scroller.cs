@@ -55,6 +55,8 @@ namespace _Scripts.Menu
             if (!_ready)
             {
                 _ready = true;
+                Animator anims = scrolling[_currentIndex].GetComponent<Animator>();
+                anims.SetTrigger("Select");
                 EventBus<PlayerReadyUpEvent>.Publish(new PlayerReadyUpEvent(_id, _currentIndex));
             }
         }
