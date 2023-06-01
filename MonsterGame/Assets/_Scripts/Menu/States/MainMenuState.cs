@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.HID;
@@ -13,7 +14,8 @@ namespace _Scripts.Menu.States
         private Button _target;
         private PlayerInput _input;
         private InputActionMap _map;
-        private InputAction _interact;
+        private InputAction _interact, _move;
+        private long _cooldown;
         public override void StateReset()
         {
             menu.SetActive(true);
@@ -21,11 +23,17 @@ namespace _Scripts.Menu.States
 
         public override void StateStart()
         {
+            _target = playButton;
+            Image image = _target.GetComponent<Image>();
+            image.sprite = playButton.spriteState.highlightedSprite;
             menu.SetActive(true);
             _input = playButton.GetComponent<PlayerInput>();
             _map = _input.actions.FindActionMap("Player");
             _interact = _map.FindAction("interaction");
-            _interact.performed += Invoking;
+            _move = _map.FindAction("move");
+            _interact.started += SwitchButtonPressedActive;
+            _interact.canceled += SwitchButtonPressedUnActive;
+            _move.performed += Moving;
         }
 
         public override void StateUpdate()
@@ -40,14 +48,55 @@ namespace _Scripts.Menu.States
 
         public override void Stop()
         {
-            _interact.performed -= Invoking;
+            _interact.started -= SwitchButtonPressedActive;
+            _interact.canceled -= SwitchButtonPressedUnActive;
+            _move.performed -= Moving;
             if(menu != null)
                 menu.SetActive(false);
         }
 
-        private void Invoking(InputAction.CallbackContext context)
+        private void SwitchButtonPressedActive(InputAction.CallbackContext context)
         {
-            playButton.onClick.Invoke();
+            Image targetImage = _target.GetComponent<Image>();
+            targetImage.sprite = _target.spriteState.pressedSprite;
+        }
+        
+        private void SwitchButtonPressedUnActive(InputAction.CallbackContext context)
+        {
+            Image targetImage = _target.GetComponent<Image>();
+            targetImage.sprite = _target.spriteState.highlightedSprite;
+            _target.onClick.Invoke();
+        }
+
+        private void Moving(InputAction.CallbackContext context)
+        {
+            if (DateTimeOffset.Now.ToUnixTimeMilliseconds() < _cooldown)
+                return;
+            Vector2 vector = _move.ReadValue<Vector2>();
+            bool updated = false;
+            Button oldTarget = _target;
+            if (vector.x >= 0.5 && vector.y <= -0.5)
+            {
+                _target = quitButton;
+                updated = true;
+            }
+            else if (vector.x <= -0.5 && vector.y <= -0.5)
+            {
+                _target = settingsButton;
+                updated = true;
+                
+            }
+            else if (vector.y >= 0.5)
+            {
+                _target = playButton;
+                updated = true;
+            }
+            if (!updated)
+                return;
+            Image targetImage = oldTarget.GetComponent<Image>();
+            targetImage.sprite = oldTarget.spriteState.disabledSprite;
+            targetImage = _target.GetComponent<Image>();
+            targetImage.sprite = _target.spriteState.highlightedSprite;
         }
     }
 }

@@ -753,26 +753,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71356496542a5c47bb4beab3f146a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &110447965 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 85908971875640913, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
-    type: 3}
-  m_PrefabInstance: {fileID: 110447963}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &110447966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110447965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18bf3b7a432e7c34b98000ead41f3f81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _force: 1000
-  _amountTiredApplied: 1
 --- !u!1001 &125638931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3086,6 +3066,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38e5224981ff40b4bb06f0547a0f57d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 9119780734392527552, guid: f9689a0f0d074e84da65ba23cd3befcb, type: 3}
+  - {fileID: 2042832220013433530, guid: b94ba123b08519b468d8148dd32662c5, type: 3}
+  - {fileID: 4024263564084799452, guid: ce2142ef0cbe0f042bda0c01f55b596a, type: 3}
+  - {fileID: 0}
 --- !u!1 &870792549
 GameObject:
   m_ObjectHideFlags: 0
@@ -5561,26 +5546,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515473946}
   m_Mesh: {fileID: -2432090755550338912, guid: d6f61f0ce0057354bb675bf8b3d5537b, type: 3}
---- !u!1 &1565296853 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 85908971875640913, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
-    type: 3}
-  m_PrefabInstance: {fileID: 506328670}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1565296858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1565296853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18bf3b7a432e7c34b98000ead41f3f81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _force: 1000
-  _amountTiredApplied: 1
 --- !u!1 &1602154108
 GameObject:
   m_ObjectHideFlags: 0
