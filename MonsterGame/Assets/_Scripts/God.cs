@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,9 +10,10 @@ namespace _Scripts
 	{
 		[SerializeField] private List<GameObject> playerPrefabs = new List<GameObject>();
 
+		[CanBeNull] private int[] _whoWon;
+		
 		private static God _instance;
-		public static God Instance => _instance;
-
+		public static God instance => _instance;
 		private void Awake()
 		{
 			if (_instance is null)
@@ -21,18 +23,19 @@ namespace _Scripts
 			} else Destroy(gameObject);
 		}
 
-		public static void SwapScene(string pSceneName)
+		public void SwapScene(string pSceneName)
 		{
 			int buildIndex = SceneUtility.GetBuildIndexByScenePath("Assets/Scenes/" + pSceneName + ".unity");
 			if (buildIndex < 0) Debug.LogError("No scene with name " + pSceneName + " found");
 	
+			DontDestroyOnLoad(gameObject);
 			SceneManager.LoadSceneAsync(buildIndex);
 			SceneManager.sceneLoaded += OnSceneLoaded;
 		}
 
-		private static void OnSceneLoaded(Scene pScene, LoadSceneMode pLoadSceneMode)
+		private void OnSceneLoaded(Scene pScene, LoadSceneMode pLoadSceneMode)
 		{
-			SceneManager.MoveGameObjectToScene(_instance.gameObject, SceneManager.GetSceneByBuildIndex(pScene.buildIndex));
+			SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByBuildIndex(pScene.buildIndex));
 			SceneManager.sceneLoaded -= OnSceneLoaded;
 		}
 	}

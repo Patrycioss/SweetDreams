@@ -41,11 +41,11 @@ namespace _Scripts.PlayerScripts
 				else
 				{
 					_tired = 0;
-					// EventBus<PlayerSleepEvent>.Publish(_playerSleepEvent);
+					EventBus<PlayerSleepEvent>.Publish(new PlayerSleepEvent(_player));
 					OnSleep?.Invoke();
 				}
 				OnTiredChanged?.Invoke(_tired);
-				// EventBus<PlayerTiredChangedEvent>.Publish(_playerTiredChangedEvent);
+				EventBus<PlayerTiredChangedEvent>.Publish(new PlayerTiredChangedEvent(_player));
 			}
 		}
 
@@ -61,9 +61,6 @@ namespace _Scripts.PlayerScripts
 			_player = pPlayer;
 			_maxTired = pMaxTired;
 			if (pStartingTired < 0) tired = pMaxTired;
-			
-			_playerSleepEvent = new PlayerSleepEvent(_player);
-			_playerTiredChangedEvent = new PlayerTiredChangedEvent(_player);
 		}
 
 		public void Tire(int pAmount)

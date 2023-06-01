@@ -35,7 +35,6 @@ namespace _Scripts
                     }
                 }
             }
-            
         }
 
         // Update is called once per frame
