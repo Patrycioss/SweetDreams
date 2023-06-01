@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace _Scripts.Powerup
 {
+    [RequireComponent(typeof(Collider))]
     public abstract class Powerup : MonoBehaviour
     {
         [Tooltip("Duration of Powerup in seconds.")]

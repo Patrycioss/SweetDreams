@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace _Scripts.Ragdoll_Movement
 {
-	[RequireComponent(typeof(Rigidbody))]
+	[RequireComponent(typeof(ConfigurableJoint))]
 	public class PlayerController : MonoBehaviour
 	{
 		[SerializeField] private int _playerNumber = 1;

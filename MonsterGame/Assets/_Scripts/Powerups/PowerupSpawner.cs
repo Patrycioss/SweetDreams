@@ -18,11 +18,19 @@ public class PowerupSpawner : MonoBehaviour
 
 	public void Start()
 	{
-		for (int index = 0; index < spawnPositions.Count; index++) 
-			_positionCounts.Add(spawnPositions[index], (index, 1));
+		for (int index = 0; index < spawnPositions.Count; index++)
+		{
+			if (!_positionCounts.ContainsKey(spawnPositions[index])) 
+				_positionCounts.Add(spawnPositions[index], (index, 1));
+			else Debug.LogWarning("Duplicate spawn position found!: " + spawnPositions[index]);
+		}
 
-		for (int index = 0; index < powerupPrefabs.Count; index++) 
-			_powerupCounts.Add(powerupPrefabs[index], (index, 1));
+		for (int index = 0; index < powerupPrefabs.Count; index++)
+		{
+			if (!_powerupCounts.ContainsKey(powerupPrefabs[index]))
+				_powerupCounts.Add(powerupPrefabs[index], (index, 1));
+			else Debug.LogWarning("Duplicate powerup found!: " + powerupPrefabs[index]);
+		}
 	}
 
 	public void SpawnPowerup()
