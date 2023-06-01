@@ -81,7 +81,7 @@ namespace _Scripts.Menu.States
                 ids[i] = _characters[i].DeviceID + "," + _characters[i].Scroller.CurrentCharacter;
             }
             File.WriteAllLines("Assets/Scenes/UserInterface/Backup.txt", ids);
-            SceneManager.LoadScene("PrototypeCopy");
+            SceneManager.LoadScene("GoodPrototype");
         }
         
         private void PlayerDown(PlayerReadyDownEvent pEvent)
