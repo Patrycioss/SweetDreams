@@ -3,14 +3,24 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace _Scripts
 {
 	public class God : MonoBehaviour
 	{
-		[SerializeField] private List<GameObject> playerPrefabs = new List<GameObject>();
+		[SerializeField] private List<GameObject> _playerPrefabs = new List<GameObject>(4);
+		public List<GameObject> players => _playerPrefabs;
+		
+		[SerializeField] private List<GameObject> _animatedPlayers = new List<GameObject>(4);
+		public List<GameObject> animatedPlayers => _animatedPlayers;
 
-		[CanBeNull] private int[] _whoWon;
+		private int[] _ranking = new int[4] {-1, -1, -1, -1};
+		public int[] ranking => _ranking;
+		public void SetRanking(int[] pRanking)
+		{
+			_ranking = pRanking;
+		}
 		
 		private static God _instance;
 		public static God instance => _instance;
