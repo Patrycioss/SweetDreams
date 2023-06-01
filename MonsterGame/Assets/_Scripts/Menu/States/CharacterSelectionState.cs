@@ -78,7 +78,7 @@ namespace _Scripts.Menu.States
             string[] ids = new string[4];
             for (int i = 0; i < _characters.Count; i++)
             {
-                ids[i] = _characters[i].DeviceID + "";
+                ids[i] = _characters[i].DeviceID + "," + _characters[i].Scroller.CurrentCharacter;
             }
             File.WriteAllLines("Assets/Scenes/UserInterface/Backup.txt", ids);
             SceneManager.LoadScene("PrototypeCopy");

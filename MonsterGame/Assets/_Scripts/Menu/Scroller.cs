@@ -138,5 +138,7 @@ namespace _Scripts.Menu
         {
             get => _ready;
         }
+
+        public int CurrentCharacter => _currentIndex;
     }
 }
