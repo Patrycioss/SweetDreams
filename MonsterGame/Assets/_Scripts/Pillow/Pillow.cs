@@ -14,6 +14,7 @@ namespace _Scripts.Pillow
         private void Start()
         {
             _limb = GetComponent<Limb>();
+            if (_limb == null) Debug.LogError("Pillow has no limb component!");
         }
 
         private void OnCollisionEnter(Collision collision)
