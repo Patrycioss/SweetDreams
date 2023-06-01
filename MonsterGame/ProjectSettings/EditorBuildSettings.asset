@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScenes/PrototypeCopy.unity
     guid: df16206b8b59fef4c970e4801a77a7bb
+  - enabled: 1
+    path: Assets/Scenes/TestScenes/GoodPrototype.unity
+    guid: 78a1b4ebcc6c2da4cb7c410abb4f41fd
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: e3114606777892c449b7df1b794bfe23,
       type: 2}
