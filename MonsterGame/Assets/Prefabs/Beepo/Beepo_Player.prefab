@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad88face7511994ab90f5865b3c9162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _id: 1
   _maxSleepiness: 4
   _controller: {fileID: 5453144117595444298}
   _animationMovement: {fileID: 8607285411307283679}
