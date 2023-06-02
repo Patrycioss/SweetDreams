@@ -9,6 +9,10 @@ namespace _Scripts.PlayerScripts
     public class Player : MonoBehaviour
     {
         private static int playerCount = 0;
+
+        [SerializeField] private int _id;
+        public int id => _id;
+        
         
         [SerializeField] private int _maxSleepiness;
         [SerializeField] private PlayerController _controller;

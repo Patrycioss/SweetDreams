@@ -5,26 +5,36 @@ using System.Text.RegularExpressions;
 using _Scripts;
 using OpenCover.Framework.Model;
 using UnityEngine;
-using File = System.IO.File;
-
 public class Finish : MonoBehaviour
 {
 	[SerializeField] private int[] _testRanking;
 
 	public Vector3[] positions = new Vector3[4];
 
+	public void PlayAgain()
+	{
+		God.instance.SwapScene("UserInterface");
+	}
+
 	private void Start()
 	{
 		int[] ranking;
 		
+		foreach (int i in God.instance.ranking)
+		{
+			Debug.Log(i);
+		}
+		
 		if (God.instance.ranking[0] == -1)
 		{
+			Debug.Log("yes");
 			ranking = _testRanking;
 		}
 		else ranking = God.instance.ranking;
 
 		for (int i = 0; i < ranking.Length; i++)
 		{
+			if (ranking[i] == -1) continue;
 			GameObject player = Instantiate(God.instance.animatedPlayers[ranking[i]]);
 			player.transform.position = positions[i];
 			player.transform.parent = transform;

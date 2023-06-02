@@ -17,9 +17,14 @@ namespace _Scripts
 
 		private int[] _ranking = new int[4] {-1, -1, -1, -1};
 		public int[] ranking => _ranking;
-		public void SetRanking(int[] pRanking)
+		public void SetRanking(List<int> pReverseRanking)
 		{
-			_ranking = pRanking;
+			_ranking = new int[4] {-1, -1, -1, -1};
+			for (int i = pReverseRanking.Count -1; i >= 0; i--)
+			{
+				God.instance.ranking[i] = pReverseRanking[i];
+				Debug.Log("Setting ranking to: " + pReverseRanking[i]);
+			}
 		}
 		
 		private static God _instance;
