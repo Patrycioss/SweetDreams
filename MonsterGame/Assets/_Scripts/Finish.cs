@@ -11,6 +11,11 @@ public class Finish : MonoBehaviour
 
 	public Vector3[] positions = new Vector3[4];
 
+	public void PlayAgain()
+	{
+		God.instance.SwapScene("UserInterface");
+	}
+
 	private void Start()
 	{
 		int[] ranking;
