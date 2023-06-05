@@ -142,7 +142,7 @@ namespace _Scripts.Menu.States
         private void SetupScroller(Transform transform1)
         {
             transform1.parent = transform;
-            transform1.position += new Vector3(0, 20 + 10 * characterIndex, 0);
+            transform1.position += new Vector3(0, 20 + 20 * characterIndex, 0);
             UnityEngine.Camera cam = transform1.GetComponentInChildren<UnityEngine.Camera>();
             cam.targetTexture = _textures[_playerInputManager.playerCount - 1];
         }
