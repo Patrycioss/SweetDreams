@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
+using _Scripts.PlayerScripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,30 +18,19 @@ namespace _Scripts
         void Start()
         {
             _manager = GetComponent<PlayerInputManager>();
-            IEnumerable<string> lines = File.ReadLines("Assets/Scenes/UserInterface/Backup.txt");
-            foreach (string line in lines)
+            foreach (KeyValuePair<int, int> pair in God.instance.ChosenCharacters)
             {
-                if (line.Length == 0)
-                    return;
-                string[] lineSplit = Regex.Split(line, ",");
-                int id = Int32.Parse(lineSplit[0]);
-                int character = Int32.Parse(lineSplit[1]);
                 foreach (Gamepad gamepad in Gamepad.all)
                 {
-                    if (gamepad.deviceId == id)
-                    {
-                        _manager.playerPrefab = prefabs[character];
-                        _manager.JoinPlayer(_characterIndex, -1, null, gamepad.device);
-                        _characterIndex++;
-                    }
+                    if (gamepad.deviceId != pair.Key)
+                        continue;
+                    _manager.playerPrefab = prefabs[pair.Value];
+                    PlayerInput playerInput = _manager.JoinPlayer(_characterIndex, -1, null, gamepad.device);
+                    TrackablePlayerCircle circle = playerInput.GetComponentInChildren<TrackablePlayerCircle>();
+                    circle.SetActive(_characterIndex);
+                    _characterIndex++;
                 }
             }
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
         }
     }
 }

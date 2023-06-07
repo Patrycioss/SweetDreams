@@ -29,6 +29,8 @@ namespace _Scripts.Pillow
                 Player player = limb.player;
                 if (player == _limb.player) return;
                 if (player.invincible) return;
+                Player self = _limb.player;
+                if (self.sleepiness.tired <= 0) return;
 
                 GameObject pelvis = player.controller.gameObject;
                 Rigidbody body = pelvis.transform.GetChild(0).GetComponent<Rigidbody>();

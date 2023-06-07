@@ -74,15 +74,12 @@ namespace _Scripts.Menu.States
             character.Display.SetActive(false);
             if (_ready != _playerInputManager.playerCount)
                 return;
-            Directory.CreateDirectory("Assets/Scenes/UserInterface");
-            string[] ids = new string[4];
+            God.instance.ChosenCharacters.Clear();
             for (int i = 0; i < _characters.Count; i++)
             {
-                ids[i] = _characters[i].DeviceID + "," + _characters[i].Scroller.CurrentCharacter;
+                God.instance.ChosenCharacters.Add(_characters[i].DeviceID, _characters[i].Scroller.CurrentCharacter);
             }
-            File.WriteAllLines("Assets/Scenes/UserInterface/Backup.txt", ids);
             God.instance.SwapScene("GoodPrototype");
-            // SceneManager.LoadScene("GoodPrototype");
         }
         
         private void PlayerDown(PlayerReadyDownEvent pEvent)

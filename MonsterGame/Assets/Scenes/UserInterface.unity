@@ -574,12 +574,6 @@ PrefabInstance:
     - {fileID: 5406903830960428633, guid: e73426b0e7690d94fa9e3b27f4d9eca2, type: 3}
     - {fileID: 686598134377145711, guid: e73426b0e7690d94fa9e3b27f4d9eca2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e73426b0e7690d94fa9e3b27f4d9eca2, type: 3}
---- !u!1 &256579671 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8265774096763491481, guid: e73426b0e7690d94fa9e3b27f4d9eca2,
-    type: 3}
-  m_PrefabInstance: {fileID: 79661704}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &365306473 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3048802080354604707, guid: e73426b0e7690d94fa9e3b27f4d9eca2,
@@ -895,12 +889,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3137322cf51812245a1885dfa108f665, type: 3}
---- !u!1 &1305542361 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7160740791106639161, guid: e73426b0e7690d94fa9e3b27f4d9eca2,
-    type: 3}
-  m_PrefabInstance: {fileID: 79661704}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1488581470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,18 +1081,6 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!1 &1632303986 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6206024839588208648, guid: e73426b0e7690d94fa9e3b27f4d9eca2,
-    type: 3}
-  m_PrefabInstance: {fileID: 79661704}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1656396568 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2622043412466496117, guid: e73426b0e7690d94fa9e3b27f4d9eca2,
-    type: 3}
-  m_PrefabInstance: {fileID: 79661704}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1929438309 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 657920981968807988, guid: e73426b0e7690d94fa9e3b27f4d9eca2,
@@ -1145,10 +1121,6 @@ MonoBehaviour:
   _playerInputManager: {fileID: 1552006914}
   whatToEnable:
   - {fileID: 462573316}
-  - {fileID: 256579671}
-  - {fileID: 1656396568}
-  - {fileID: 1305542361}
-  - {fileID: 1632303986}
   _toEnable:
   - {fileID: 2105957587}
   - {fileID: 365306473}

@@ -3258,7 +3258,7 @@ MonoBehaviour:
   m_NotificationBehavior: 3
   m_MaxPlayerCount: 4
   m_AllowJoining: 1
-  m_JoinBehavior: 0
+  m_JoinBehavior: 2
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -7423,7 +7423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
-  offset: {x: 0, y: 5, z: 5}
+  offset: {x: 0, y: 5, z: 10}
   baseOffset: {x: 0, y: 5, z: 5}
 --- !u!114 &2085257594
 MonoBehaviour:

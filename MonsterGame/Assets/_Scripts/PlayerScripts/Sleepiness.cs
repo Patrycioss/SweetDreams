@@ -14,6 +14,7 @@ namespace _Scripts.PlayerScripts
 	{
 		public PlayerSleepEvent(Player pPlayer) : base(pPlayer)
 		{
+			
 		}
 	}
 
