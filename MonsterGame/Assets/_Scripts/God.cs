@@ -9,11 +9,14 @@ namespace _Scripts
 {
 	public class God : MonoBehaviour
 	{
-		[SerializeField] private List<GameObject> _playerPrefabs = new List<GameObject>(4);
+		[SerializeField] private List<GameObject> _playerPrefabs = new(4);
 		public List<GameObject> players => _playerPrefabs;
 		
-		[SerializeField] private List<GameObject> _animatedPlayers = new List<GameObject>(4);
+		[SerializeField] private List<GameObject> _animatedPlayers = new(4);
 		public List<GameObject> animatedPlayers => _animatedPlayers;
+
+		private Dictionary<int, int> _chosenCharacters = new();
+		public Dictionary<int, int> ChosenCharacters => _chosenCharacters;
 
 		private int[] _ranking = new int[4] {-1, -1, -1, -1};
 		public int[] ranking => _ranking;
@@ -22,7 +25,7 @@ namespace _Scripts
 			_ranking = new int[4] {-1, -1, -1, -1};
 			for (int i = pReverseRanking.Count -1; i >= 0; i--)
 			{
-				God.instance.ranking[i] = pReverseRanking[i];
+				instance.ranking[i] = pReverseRanking[i];
 				Debug.Log("Setting ranking to: " + pReverseRanking[i]);
 			}
 		}
@@ -35,7 +38,11 @@ namespace _Scripts
 			{
 				_instance = this;
 				DontDestroyOnLoad(gameObject);
-			} else Destroy(gameObject);
+			}
+			else
+			{
+				Destroy(gameObject);
+			}
 		}
 
 		public void SwapScene(string pSceneName)
@@ -51,6 +58,7 @@ namespace _Scripts
 		private void OnSceneLoaded(Scene pScene, LoadSceneMode pLoadSceneMode)
 		{
 			SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByBuildIndex(pScene.buildIndex));
+			DontDestroyOnLoad(gameObject);
 			SceneManager.sceneLoaded -= OnSceneLoaded;
 		}
 	}

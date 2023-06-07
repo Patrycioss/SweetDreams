@@ -12,8 +12,7 @@ namespace _Scripts.PlayerScripts
 
         [SerializeField] private int _id;
         public int id => _id;
-        
-        
+
         [SerializeField] private int _maxSleepiness;
         [SerializeField] private PlayerController _controller;
         [SerializeField] private AnimationMovement _animationMovement;

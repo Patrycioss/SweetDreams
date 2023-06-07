@@ -35,6 +35,8 @@ namespace _Scripts.Menu
         private void OnDisable()
         {
             _map.Disable();
+            _b.started -= PressB;
+            _interact.started -= PressA;
         }
 
         void PressB(InputAction.CallbackContext context)
@@ -46,7 +48,7 @@ namespace _Scripts.Menu
             }
             else
             {
-                SceneManager.LoadScene("UserInterface");
+                God.instance.SwapScene("UserInterface");
             }
         }
 

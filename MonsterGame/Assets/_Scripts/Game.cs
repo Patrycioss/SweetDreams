@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using _Scripts.PlayerScripts;
 using UnityEngine;
 
@@ -31,11 +32,10 @@ namespace _Scripts
 					_ids.Add(child.GetComponent<Player>().id);
 				}
 			}
-
 			_ranking.Add(pEvent.Player.id);
 			_playersAwake--;
 			_ids.Remove(pEvent.Player.id);
-			if (_playersAwake == 1)
+			if (_playersAwake <= 1)
 			{
 				EndGame();
 			}
@@ -48,7 +48,8 @@ namespace _Scripts
 		{
 			Debug.Log("Ending game");
 			
-			_ranking.Add(_ids[0]);
+			//_ranking.Add(_ids[0]);
+			_ranking.Reverse();
 			God.instance.SetRanking(_ranking);
 			God.instance.SwapScene("FinishScene");
 		}
