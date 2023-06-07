@@ -37,9 +37,9 @@ namespace _Scripts
 			_ids.Remove(pEvent.Player.id);
 			if (_playersAwake <= 1)
 			{
+				_ranking.Add(_ids[0]);
 				EndGame();
 			}
-
 			Debug.Log(_playersAwake);
 			Debug.Log("Player is sleeping");
 		}
