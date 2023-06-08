@@ -1773,6 +1773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 0
+  _slapPowerMultiplier: 0
   _maxSleepiness: 0
   _controller: {fileID: 0}
   _animationMovement: {fileID: 0}
@@ -3332,7 +3333,7 @@ MonoBehaviour:
   - {fileID: 9119780734392527552, guid: f9689a0f0d074e84da65ba23cd3befcb, type: 3}
   - {fileID: 2042832220013433530, guid: b94ba123b08519b468d8148dd32662c5, type: 3}
   - {fileID: 4024263564084799452, guid: ce2142ef0cbe0f042bda0c01f55b596a, type: 3}
-  - {fileID: 0}
+  - {fileID: 7389332370243038577, guid: eee6d4bc61911794896a75721214628b, type: 3}
 --- !u!1 &870792549
 GameObject:
   m_ObjectHideFlags: 0
@@ -5419,6 +5420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 0
+  _slapPowerMultiplier: 0
   _maxSleepiness: 0
   _controller: {fileID: 0}
   _animationMovement: {fileID: 0}
