@@ -11,7 +11,7 @@ namespace _Scripts.Powerup
 
 		protected override void End()
 		{
-			throw new System.NotImplementedException();
+			// throw new System.NotImplementedException();
 		}
 
 		protected override void ValuesToCopyToOther(Powerup pOther)
@@ -22,7 +22,7 @@ namespace _Scripts.Powerup
 
 		protected override void DisplayEffect()
 		{
-			throw new System.NotImplementedException();
+			// throw new System.NotImplementedException();
 		}
 	}
 }
