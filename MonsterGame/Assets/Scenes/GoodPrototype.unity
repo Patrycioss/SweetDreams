@@ -6466,9 +6466,26 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
         type: 3}
+      propertyPath: powerupPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
+        type: 3}
       propertyPath: spawnPositions.Array.size
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
+        type: 3}
+      propertyPath: powerupPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 472705279114728391, guid: 5a5103d93f6a9af48833139803549b59,
+        type: 3}
+    - target: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
+        type: 3}
+      propertyPath: powerupPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 472705279114728391, guid: 07010201efb1cbc47a11fbd6f522c14a,
+        type: 3}
     - target: {fileID: 2478150897483427980, guid: a92a94884cbe31445a73fa45e2c304b2,
         type: 3}
       propertyPath: spawnPositions.Array.data[0].z

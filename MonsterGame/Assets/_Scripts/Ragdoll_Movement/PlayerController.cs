@@ -61,5 +61,11 @@ namespace _Scripts.Ragdoll_Movement
 			_joint.targetRotation = Quaternion.Euler(0, targetAngle - 90, 0);
 			_hips.AddForce(new Vector3(pDirection.x, 0, pDirection.y) * _speed);
 		}
+		
+		public float Speed
+		{
+			get => _speed;
+			set => _speed = value;
+		}
 	}
 }

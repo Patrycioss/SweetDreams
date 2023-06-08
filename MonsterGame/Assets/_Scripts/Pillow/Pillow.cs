@@ -25,24 +25,21 @@ namespace _Scripts.Pillow
             if (limb != null)
             {
                 if (_limb == null) _limb = GetComponent<Limb>();
-
                 Player player = limb.player;
                 if (player == _limb.player) return;
                 if (player.invincible) return;
                 Player self = _limb.player;
                 if (self.sleepiness.tired <= 0) return;
 
+                Rigidbody rb = _limb.GetComponent<Rigidbody>();
+                if (rb.velocity.magnitude < 2.5)
+                    return;
+                
                 GameObject pelvis = player.controller.gameObject;
                 Rigidbody body = pelvis.transform.GetChild(0).GetComponent<Rigidbody>();
-                body.AddForce(gameObject.transform.forward * _force);
+                body.AddForce(collision.GetContact(0).normal * _force);
                 player.sleepiness.Tire(_amountTiredApplied);
             }
-        }
-
-        private GameObject FindPelvis(Transform pStart)
-        {
-            if (pStart.name.Equals("pelvis")) return pStart.gameObject;
-            return FindPelvis(pStart.parent);
         }
     }
 }
