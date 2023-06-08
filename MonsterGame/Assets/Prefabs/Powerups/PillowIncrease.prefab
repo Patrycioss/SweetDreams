@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf146a951bd7c4d479ba31e56a10cb90, type: 2}
+  - {fileID: 2100000, guid: 02860f7481190124686f603788b2cc8d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,7 +93,7 @@ PrefabInstance:
     - target: {fileID: 3125694364635368618, guid: ac56a63d8e04cbe4cbfb6d0ed128fa86,
         type: 3}
       propertyPath: m_Name
-      value: Speed
+      value: PillowIncrease
       objectReference: {fileID: 0}
     - target: {fileID: 8970383802327435504, guid: ac56a63d8e04cbe4cbfb6d0ed128fa86,
         type: 3}
@@ -171,7 +171,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4586755779375981751
+--- !u!114 &3241832756628282692
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,11 +180,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 472705279114728391}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 355232d5641510d4a9cd715283f768c0, type: 3}
+  m_Script: {fileID: 11500000, guid: fa855f574ac5ec540a594bdca3c42002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 4
-  speedMultiplier: 1.25
+  sizeMultiplier: 1.2
 --- !u!4 &5878011213144184733 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8970383802327435504, guid: ac56a63d8e04cbe4cbfb6d0ed128fa86,

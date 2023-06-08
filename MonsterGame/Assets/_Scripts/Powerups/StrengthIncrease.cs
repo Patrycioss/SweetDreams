@@ -1,8 +1,6 @@
-using UnityEngine;
-
-namespace _Scripts.Powerup
+namespace _Scripts.Powerups
 {
-    public class StrengthIncrease : Powerup
+    public class StrengthIncrease : Powerup.Powerup
     {
         protected override void Begin()
         {
@@ -14,7 +12,7 @@ namespace _Scripts.Powerup
             throw new System.NotImplementedException();
         }
 
-        protected override void ValuesToCopyToOther(Powerup pOther)
+        protected override void ValuesToCopyToOther(Powerup.Powerup pOther)
         {
             throw new System.NotImplementedException();
         }

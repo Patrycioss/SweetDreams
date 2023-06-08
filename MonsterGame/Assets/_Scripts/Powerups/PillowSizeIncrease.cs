@@ -1,33 +1,34 @@
 using System;
 using UnityEngine;
 
-namespace _Scripts.Powerup
+namespace _Scripts.Powerups
 {
-    public class PillowSizeIncrease : Powerup
+    public class PillowSizeIncrease : Powerup.Powerup
     {
-        private GameObject _makeBigger;
-
+        [SerializeField] private float sizeMultiplier;
+        private Vector3 _increase;
+        
         protected override void Begin()
         {
-            _makeBigger.transform.localScale = transform.localScale * 2;
-            gameObject.SetActive(false);
-            // _makeBigger = pOther.gameObject;
-            // Power();
+            GameObject pillow = target.pillow1.gameObject;
+            Vector3 scale = pillow.transform.localScale;
+            Vector3 localScale = scale;
+            _increase = localScale * sizeMultiplier - localScale;
+            pillow.transform.localScale += _increase;
         }
 
         protected override void End()
         {
-            _makeBigger.transform.localScale = transform.localScale / 2;
-            Destroy(gameObject);        }
-
-        protected override void ValuesToCopyToOther(Powerup pOther)
-        {
-            throw new NotImplementedException();
+            target.pillow1.transform.localScale -= _increase;
         }
 
-        protected override void DisplayEffect()
+        protected override void ValuesToCopyToOther(Powerup.Powerup pOther)
         {
-            throw new NotImplementedException();
+            if (!(pOther is PillowSizeIncrease)) return;
+            PillowSizeIncrease inc = (PillowSizeIncrease)pOther;
+            inc.sizeMultiplier = sizeMultiplier;
         }
+
+        protected override void DisplayEffect() { }
     }
 }
