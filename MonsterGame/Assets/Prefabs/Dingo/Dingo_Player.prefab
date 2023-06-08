@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 2
+  _slapPowerMultiplier: 1
   _maxSleepiness: 4
   _controller: {fileID: 4539679699211034758}
   _animationMovement: {fileID: 7338242058581014522}

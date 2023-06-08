@@ -22,8 +22,6 @@ namespace _Scripts.Powerups
         {
             if (!(pOther is Speed)) return;
             Speed speed = (Speed)pOther;
-            Debug.Log(speedMultiplier);
-            Debug.Log(speed.speedMultiplier);
             speed.speedMultiplier = speedMultiplier;
         }
 

@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 0
+  _slapPowerMultiplier: 1
   _maxSleepiness: 4
   _controller: {fileID: 8696315032198855142}
   _animationMovement: {fileID: 4076991353772819507}
@@ -484,6 +485,21 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 7782940950812894217}
+    - target: {fileID: 2584702880356463674, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584702880356463674, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584702880356463674, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4784087692195721710, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
         type: 3}
       propertyPath: m_Name
