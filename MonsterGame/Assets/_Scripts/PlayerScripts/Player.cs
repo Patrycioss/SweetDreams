@@ -108,8 +108,14 @@ namespace _Scripts.PlayerScripts
         {
             EventBus<PlayerBootedEvent>.Publish(new PlayerBootedEvent(this));
         }
-        
-        
+
+        public float SlapPower
+        {
+            get => _slapPowerMultiplier;
+            set => _slapPowerMultiplier = value;
+        }
+
+
         // void Update()
         // {
         //     // if (!Input.GetKeyDown(KeyCode.A))
