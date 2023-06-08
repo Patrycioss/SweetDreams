@@ -1,25 +1,30 @@
+using UnityEngine;
+
 namespace _Scripts.Powerups
 {
     public class StrengthIncrease : Powerup.Powerup
     {
+        [SerializeField] private float strengthInc;
+        private float _totalInc;
+        
         protected override void Begin()
         {
-            throw new System.NotImplementedException();
+            _totalInc = target.SlapPower * strengthInc - target.SlapPower;
+            target.SlapPower += _totalInc;
         }
 
         protected override void End()
         {
-            throw new System.NotImplementedException();
+            target.SlapPower -= _totalInc;
         }
 
         protected override void ValuesToCopyToOther(Powerup.Powerup pOther)
         {
-            throw new System.NotImplementedException();
+            if (!(pOther is StrengthIncrease)) return;
+            StrengthIncrease strengthIncrease = (StrengthIncrease)pOther;
+            strengthIncrease.strengthInc = strengthInc;
         }
 
-        protected override void DisplayEffect()
-        {
-            throw new System.NotImplementedException();
-        }
+        protected override void DisplayEffect() {}
     }
 }
