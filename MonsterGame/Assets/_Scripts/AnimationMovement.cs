@@ -34,6 +34,11 @@ namespace _Scripts
 			walkingEnabled = pEnable;
             _animator.SetBool(_Walking, pEnable);
 		}
+
+		public void SetSulk()
+		{
+			_animator.SetTrigger("Sulk");
+		}
 		
 		// private void Start()
 		// {

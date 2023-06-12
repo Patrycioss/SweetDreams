@@ -1045,19 +1045,19 @@ PrefabInstance:
         type: 3}
       propertyPath: _animatedPlayers.Array.data[0]
       value: 
-      objectReference: {fileID: 7178466203548485966, guid: e3abb058ea5e9524cbe52faaffa9083f,
+      objectReference: {fileID: 8819608793038476383, guid: b063b84ef33d33b4a8b01866c8f728d5,
         type: 3}
     - target: {fileID: 7171783107569065325, guid: 3137322cf51812245a1885dfa108f665,
         type: 3}
       propertyPath: _animatedPlayers.Array.data[1]
       value: 
-      objectReference: {fileID: 6796407510262292529, guid: 2410b454849e8e641990ac4d946b2372,
+      objectReference: {fileID: 3426205016366769399, guid: 6e28c0ce163f535469066e3b98540caa,
         type: 3}
     - target: {fileID: 7171783107569065325, guid: 3137322cf51812245a1885dfa108f665,
         type: 3}
       propertyPath: _animatedPlayers.Array.data[2]
       value: 
-      objectReference: {fileID: 3286625984983714303, guid: 6891abd45f9962242816ef8949d50d47,
+      objectReference: {fileID: 7767161269113584429, guid: 27b0c7af74c09934fa154926a1cca589,
         type: 3}
     - target: {fileID: 7171783107569065325, guid: 3137322cf51812245a1885dfa108f665,
         type: 3}
