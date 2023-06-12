@@ -16,6 +16,7 @@ namespace _Scripts.Menu.States
         private InputActionMap _map;
         private InputAction _interact, _move;
         private long _cooldown;
+        
         public override void StateReset()
         {
             menu.SetActive(true);
@@ -75,21 +76,47 @@ namespace _Scripts.Menu.States
             Vector2 vector = _move.ReadValue<Vector2>();
             bool updated = false;
             Button oldTarget = _target;
-            if (vector.x >= 0.5 && vector.y <= -0.5)
+            if (_target.Equals(playButton))
             {
-                _target = quitButton;
-                updated = true;
-            }
-            else if (vector.x <= -0.5 && vector.y <= -0.5)
-            {
-                _target = settingsButton;
-                updated = true;
+                if (vector.x >= 0.1 && vector.y <= -0.5)
+                {
+                    _target = quitButton;
+                    updated = true;
+                }
+                else if (vector.x <= 0 && vector.y <= -0.5)
+                {
+                    _target = settingsButton;
+                    updated = true;
                 
+                }
             }
-            else if (vector.y >= 0.5)
+            else if(_target.Equals(settingsButton))
             {
-                _target = playButton;
-                updated = true;
+                if (vector.x >= 0.5)
+                {
+                    _target = quitButton;
+                    updated = true;
+                }
+                else if (vector.y >= 0.5)
+                {
+                    _target = playButton;
+                    updated = true;
+                
+                }
+            }
+            else if (_target.Equals(quitButton))
+            {
+                if (vector.x <= -0.5)
+                {
+                    _target = settingsButton;
+                    updated = true;
+                }
+                else if (vector.y >= 0.5)
+                {
+                    _target = playButton;
+                    updated = true;
+                
+                }
             }
             if (!updated)
                 return;

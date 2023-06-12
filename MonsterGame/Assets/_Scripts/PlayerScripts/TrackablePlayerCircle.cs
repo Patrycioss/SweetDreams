@@ -24,7 +24,7 @@ namespace _Scripts.PlayerScripts
             Transform transform1 = transform;
             transform1.position = new Vector3(pos.x, transform1.position.y, pos.z);
             Quaternion transform1Rotation = transform1.rotation;
-            transform1Rotation.eulerAngles = new Vector3(0, track.transform.rotation.eulerAngles.y + 180, 0);
+            transform1Rotation.eulerAngles = new Vector3(0, track.transform.rotation.eulerAngles.y, 0);
             transform1.rotation = transform1Rotation;
         }
 

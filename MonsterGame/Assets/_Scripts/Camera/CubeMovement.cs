@@ -26,7 +26,7 @@ namespace _Scripts.Camera
         void Move(InputAction.CallbackContext cont)
         {
             Vector2 vector = _inputMove.ReadValue<Vector2>();
-            Vector3 move = new Vector3(vector.x, 0, vector.y);
+            Vector3 move = new Vector3(-vector.y, 0, vector.x);
             _rb.AddForce(move * 30);
         }
     }
