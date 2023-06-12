@@ -144,20 +144,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7586798693720136054}
     m_Modifications:
+    - target: {fileID: 8514723776687263208, guid: 55fd8fb425c4ccb42844d5db06e8336e,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8514723776687263209, guid: 55fd8fb425c4ccb42844d5db06e8336e,
         type: 3}
       propertyPath: m_SortingOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8514723776687263210, guid: 55fd8fb425c4ccb42844d5db06e8336e,
-        type: 3}
-      propertyPath: _offset.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8514723776687263210, guid: 55fd8fb425c4ccb42844d5db06e8336e,
-        type: 3}
-      propertyPath: _offset.z
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8514723776687263210, guid: 55fd8fb425c4ccb42844d5db06e8336e,
         type: 3}

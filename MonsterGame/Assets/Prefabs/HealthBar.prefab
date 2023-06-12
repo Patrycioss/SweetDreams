@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transformToFollow: {fileID: 0}
-  _offset: {x: 0, y: 0, z: 0}
+  _offset: {x: 0, y: 3, z: 0}
   _healthBarImages:
   - {fileID: 21300000, guid: 7c295728c8272674392556d3cff95d13, type: 3}
   - {fileID: 21300000, guid: 79838bd11a2061a46b0979075d7f90e9, type: 3}
