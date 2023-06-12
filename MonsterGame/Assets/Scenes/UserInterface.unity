@@ -890,9 +890,27 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7171783107569065325, guid: 3137322cf51812245a1885dfa108f665,
         type: 3}
+      propertyPath: _animatedPlayers.Array.data[0]
+      value: 
+      objectReference: {fileID: 8819608793038476383, guid: b063b84ef33d33b4a8b01866c8f728d5,
+        type: 3}
+    - target: {fileID: 7171783107569065325, guid: 3137322cf51812245a1885dfa108f665,
+        type: 3}
+      propertyPath: _animatedPlayers.Array.data[1]
+      value: 
+      objectReference: {fileID: 3426205016366769399, guid: 6e28c0ce163f535469066e3b98540caa,
+        type: 3}
+    - target: {fileID: 7171783107569065325, guid: 3137322cf51812245a1885dfa108f665,
+        type: 3}
+      propertyPath: _animatedPlayers.Array.data[2]
+      value: 
+      objectReference: {fileID: 7767161269113584429, guid: 27b0c7af74c09934fa154926a1cca589,
+        type: 3}
+    - target: {fileID: 7171783107569065325, guid: 3137322cf51812245a1885dfa108f665,
+        type: 3}
       propertyPath: _animatedPlayers.Array.data[3]
       value: 
-      objectReference: {fileID: 2532382902988506628, guid: e95cf3aaf88bb404da88a15ad81ae232,
+      objectReference: {fileID: 5129925319994538287, guid: 024d08d0d408ccb4886fcc3a28fbfac0,
         type: 3}
     - target: {fileID: 8963533894804437335, guid: 3137322cf51812245a1885dfa108f665,
         type: 3}

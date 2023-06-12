@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using _Scripts;
+using _Scripts.PlayerScripts;
 using OpenCover.Framework.Model;
 using UnityEngine;
 public class Finish : MonoBehaviour
@@ -38,6 +39,11 @@ public class Finish : MonoBehaviour
 			GameObject player = Instantiate(God.instance.animatedPlayers[ranking[i]]);
 			player.transform.position = positions[i];
 			player.transform.parent = transform;
+			Animator animator = player.GetComponent<Animator>();
+			if(i == 0)
+				animator.SetTrigger("SelectRepeat");
+			else
+				animator.SetTrigger("Sulk");
 		}
 	}
 
