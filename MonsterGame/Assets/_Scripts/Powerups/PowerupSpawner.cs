@@ -16,7 +16,7 @@ public class PowerupSpawner : MonoBehaviour
 	private Dictionary<GameObject, (int index,int count)> _powerupCounts = new Dictionary<GameObject, (int index, int count)>();
 	private Dictionary<Vector3, (int index, int count)> _positionCounts = new Dictionary<Vector3, (int index, int count)>();
 
-	public void Start()
+	public void Awake()
 	{
 		for (int index = 0; index < spawnPositions.Count; index++)
 		{
@@ -36,7 +36,7 @@ public class PowerupSpawner : MonoBehaviour
 	public void SpawnPowerup()
 	{
 		int posIndex = GetRandomWeightedIndex(_positionCounts.Values);
-		Vector3 position = spawnPositions[_positionCounts.Values.ElementAt(posIndex).index];
+		Vector3 position = spawnPositions[_positionCounts.Values.ElementAt(posIndex).index] + transform.position;
 		
 		int powerupIndex = GetRandomWeightedIndex(_powerupCounts.Values);
 		GameObject powerup = powerupPrefabs[_powerupCounts.Values.ElementAt(powerupIndex).index];
@@ -91,7 +91,7 @@ public class PowerupSpawner : MonoBehaviour
 		Gizmos.color = Color.red;
 		foreach (Vector3 spawnPosition in spawnPositions)
 		{
-			Gizmos.DrawSphere(spawnPosition, 0.3f);
+			Gizmos.DrawSphere(spawnPosition + transform.position, 0.3f);
 		}
 	}
 }

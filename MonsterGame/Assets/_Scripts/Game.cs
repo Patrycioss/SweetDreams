@@ -6,9 +6,15 @@ using UnityEngine;
 
 namespace _Scripts
 {
+	[RequireComponent(typeof(SimpleTimer))]
 	public class Game : MonoBehaviour
 	{
 		[SerializeField] private PlayerManager _playerManager;
+		[SerializeField] private PowerupSpawner _powerupSpawner;
+		[SerializeField] private float _interval;
+		
+		private SimpleTimer _timer;
+		
 		
 		private int _playersAwake = 0;
 
@@ -16,11 +22,23 @@ namespace _Scripts
 		
 		private List<int> _ids = new List<int>();
 
+		private void Awake()
+		{
+			_timer = GetComponent<SimpleTimer>();
+		}
+
 		private void Start()
 		{
 			EventBus<PlayerSleepEvent>.Subscribe(OnPlayerSleep);
-		}	
-		
+			
+			Do();
+			void Do()
+			{
+				_powerupSpawner.SpawnPowerup();
+				_timer.StartTimer(_interval,Do);
+			}
+		}
+
 		private void OnPlayerSleep(PlayerSleepEvent pEvent)
 		{
 			if (_playersAwake == 0)
