@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Scripts.Powerups
 {
-    public class PillowSizeIncrease : Powerup.Powerup
+    public class PillowSizeIncrease : Powerup
     {
         [SerializeField] private float sizeMultiplier;
         private Vector3 _increase;
@@ -21,8 +21,9 @@ namespace _Scripts.Powerups
         {
             target.pillow1.transform.localScale -= _increase;
         }
+        
 
-        protected override void ValuesToCopyToOther(Powerup.Powerup pOther)
+        protected override void ValuesToCopyToOther(Powerup pOther)
         {
             if (!(pOther is PillowSizeIncrease)) return;
             PillowSizeIncrease inc = (PillowSizeIncrease)pOther;

@@ -5,7 +5,7 @@ using _Scripts.PlayerScripts;
 using _Scripts.Ragdoll_Movement;
 using UnityEngine;
 
-namespace _Scripts.Powerup
+namespace _Scripts.Powerups
 {
     public abstract class Powerup : MonoBehaviour
     {

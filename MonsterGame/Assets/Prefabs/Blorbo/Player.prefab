@@ -125,6 +125,7 @@ MonoBehaviour:
   _pillow1: {fileID: 8534708124889186545}
   _pillow2: {fileID: 9016126376461106936}
   _invincibilityDuration: 3
+  _head: {fileID: 6277961845172369398}
 --- !u!114 &480830126944423385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,6 +567,12 @@ Transform:
 --- !u!4 &3566897868102636201 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5273625846334401364, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
+    type: 3}
+  m_PrefabInstance: {fileID: 8696315031900371453}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6277961845172369398 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3436327310288735755, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
     type: 3}
   m_PrefabInstance: {fileID: 8696315031900371453}
   m_PrefabAsset: {fileID: 0}

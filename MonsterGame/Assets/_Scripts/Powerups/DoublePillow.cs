@@ -1,4 +1,4 @@
-﻿namespace _Scripts.Powerup
+﻿namespace _Scripts.Powerups
 {
 	public class DoublePillow : Powerup
 	{
