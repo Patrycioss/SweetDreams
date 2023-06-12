@@ -20,7 +20,8 @@ namespace _Scripts.PlayerScripts
         [SerializeField] private Pillow.Pillow _pillow1;
         [SerializeField] private Pillow.Pillow _pillow2;
         [SerializeField] private float _invincibilityDuration;
-        
+        [SerializeField] private GameObject _head;
+        public GameObject head => _head;
         public PlayerController controller => _controller;
         public AnimationMovement animationMovement => _animationMovement;
         public Pillow.Pillow pillow1 => _pillow1;

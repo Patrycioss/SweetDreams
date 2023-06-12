@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Scripts.Powerup
+namespace _Scripts.Powerups
 {
 	public class TestPowerup : Powerup
 	{

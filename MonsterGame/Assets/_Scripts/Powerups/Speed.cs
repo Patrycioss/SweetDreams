@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace _Scripts.Powerups
 {
-    public class Speed : Powerup.Powerup
+    public class Speed : Powerup
     {
         [SerializeField] private float speedMultiplier;
         private float _speedIncrease;
@@ -18,7 +18,7 @@ namespace _Scripts.Powerups
             target.controller.Speed -= _speedIncrease;
         }
 
-        protected override void ValuesToCopyToOther(Powerup.Powerup pOther)
+        protected override void ValuesToCopyToOther(Powerup pOther)
         {
             if (!(pOther is Speed)) return;
             Speed speed = (Speed)pOther;

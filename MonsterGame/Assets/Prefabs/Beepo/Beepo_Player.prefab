@@ -137,6 +137,7 @@ MonoBehaviour:
   _pillow1: {fileID: 3209270912968830063}
   _pillow2: {fileID: 3081778184827993416}
   _invincibilityDuration: 3
+  _head: {fileID: 6678826708307063612}
 --- !u!1001 &1023311476807362210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -692,6 +693,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71356496542a5c47bb4beab3f146a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6678826708307063612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2927380780802940633, guid: ab0e2e2a29a8d9b41870e7007182efea,
+    type: 3}
+  m_PrefabInstance: {fileID: 8363132617089363429}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9079904336102003642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 724406831375171167, guid: ab0e2e2a29a8d9b41870e7007182efea,
