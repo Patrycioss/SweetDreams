@@ -438,7 +438,7 @@ MonoBehaviour:
   - {fileID: 1998907972}
   - {fileID: 1508665647}
   - {fileID: 419323054}
-  offset: {x: 12, y: 7, z: 0}
+  offset: {x: 1.4, y: 0.6, z: 0}
   baseOffset: {x: 1, y: 2, z: 0}
 --- !u!1 &551900352
 GameObject:

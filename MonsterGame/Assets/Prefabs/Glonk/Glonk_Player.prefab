@@ -467,16 +467,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8514723776687263210, guid: 55fd8fb425c4ccb42844d5db06e8336e,
         type: 3}
-      propertyPath: _offset.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8514723776687263210, guid: 55fd8fb425c4ccb42844d5db06e8336e,
-        type: 3}
-      propertyPath: _offset.z
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8514723776687263210, guid: 55fd8fb425c4ccb42844d5db06e8336e,
-        type: 3}
       propertyPath: _targetPlayer
       value: 
       objectReference: {fileID: 2825914227127365186}
