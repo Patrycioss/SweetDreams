@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -20,15 +21,34 @@ namespace _Scripts.Utils
 
 		private void Update()
 		{
-			foreach (Pausable pausable in _pausableTimers.Values)
+			for (int i = _pausableTimers.Count - 1; i >= 0; i--)
 			{
-				pausable.Update();
+				_pausableTimers.ElementAt(i).Value.Update();
 			}
 		}
 
 		public static void StartTimer(float pDurationSeconds, System.Action pOnEnd)
 		{
 			instance.StartCoroutine(instance.CountDown(pDurationSeconds, pOnEnd));
+		}
+
+		public static void AddTime(int pTimerIndex, float pAmount)
+		{
+			_pausableTimers[pTimerIndex].AddTime(pAmount);
+		}
+
+		public static int StartBetterTimer(float pDurationSeconds, System.Action pOnEnd)
+		{
+			Pausable pausable = new();
+			int id = pausable.GetHashCode();
+
+			pausable.Start(pDurationSeconds, () =>
+			{
+				_pausableTimers.Remove(id);
+				pOnEnd();
+			});
+			_pausableTimers.Add(id, pausable);
+			return id;
 		}
 
 		[CanBeNull]
@@ -82,6 +102,11 @@ namespace _Scripts.Utils
 			{
 				_timePassed = 0;
 				_callback = null;
+			}
+
+			public void AddTime(float pAmount)
+			{
+				_duration += pAmount;
 			}
 		
 			public void Update()
