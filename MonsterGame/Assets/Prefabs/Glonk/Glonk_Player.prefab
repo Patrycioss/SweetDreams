@@ -137,7 +137,7 @@ MonoBehaviour:
   _pillow1: {fileID: 3605381503068875646}
   _pillow2: {fileID: 2879011927807163005}
   _invincibilityDuration: 3
-  _head: {fileID: 3107402437994393115}
+  _head: {fileID: 1900642661070487738}
 --- !u!1001 &927920962312951454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -215,12 +215,6 @@ PrefabInstance:
 --- !u!4 &2659082250795512695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2884087191145489897, guid: 332ff721e8a63574a94eaaa5698cbcf5,
-    type: 3}
-  m_PrefabInstance: {fileID: 927920962312951454}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3107402437994393115 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2882045648219928709, guid: 332ff721e8a63574a94eaaa5698cbcf5,
     type: 3}
   m_PrefabInstance: {fileID: 927920962312951454}
   m_PrefabAsset: {fileID: 0}
@@ -330,6 +324,12 @@ GameObject:
 --- !u!4 &1556331583780134358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3439144094834107073, guid: 8563239f3b5fac14e8272bd343fd1f94,
+    type: 3}
+  m_PrefabInstance: {fileID: 4189324025485836055}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1900642661070487738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2324711107469049773, guid: 8563239f3b5fac14e8272bd343fd1f94,
     type: 3}
   m_PrefabInstance: {fileID: 4189324025485836055}
   m_PrefabAsset: {fileID: 0}
