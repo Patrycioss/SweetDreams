@@ -24,9 +24,10 @@ namespace _Scripts.Pillow
             Limb limb = obj.GetComponent<Limb>();
             if (limb != null)
             {
+                
                 if (_limb == null) _limb = GetComponent<Limb>();
                 Player player = limb.player;
-                if (player == _limb.player) return;
+                if (player == _limb.player || limb.gameObject.Equals(player.pillow1.gameObject) || limb.gameObject.Equals(player.pillow2.gameObject)) return;
                 if (player.invincible) return;
                 Player self = _limb.player;
                 if (self.sleepiness.tired <= 0) return;
