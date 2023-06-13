@@ -4,6 +4,7 @@ using System.Threading;
 using _Scripts.PlayerScripts;
 using _Scripts.Ragdoll_Movement;
 using UnityEngine;
+using Timer = _Scripts.Utils.Timer;
 
 namespace _Scripts.Powerups
 {
@@ -18,6 +19,9 @@ namespace _Scripts.Powerups
             set { _onPlayer = value; }
         }
 
+        private int _timerIndex;
+        public int timerIndex => _timerIndex;
+        
         protected Player target;
         protected abstract void Begin();
         protected abstract void End();
@@ -31,6 +35,15 @@ namespace _Scripts.Powerups
             if (limb != null)
             {
                 target = limb.player;
+
+                Powerup isItThere = target.gameObject.GetComponent<Powerup>();
+                if (isItThere != null)
+                {
+                    Utils.Timer.AddTime(isItThere.timerIndex, _duration);
+                    Destroy(gameObject);
+                    return;
+                }
+                
                 Powerup otherPowerup = (Powerup) target.gameObject.AddComponent(this.GetType());
                 otherPowerup.onPlayer = true;
                 otherPowerup.target = target;
@@ -38,7 +51,13 @@ namespace _Scripts.Powerups
                 ValuesToCopyToOther(otherPowerup);
                 
                 otherPowerup.Begin();
-                Utils.Timer.StartTimer(_duration, () => { otherPowerup.End(); });
+                _timerIndex = Utils.Timer.StartBetterTimer(_duration, () =>
+                {
+                    otherPowerup.End();
+                    Debug.Log("ha");
+                    Destroy(otherPowerup);
+                });
+                otherPowerup._timerIndex = _timerIndex;
                 Destroy(gameObject);
             }
         }
