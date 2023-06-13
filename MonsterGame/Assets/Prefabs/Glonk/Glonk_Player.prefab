@@ -205,6 +205,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3332238654007337406, guid: 332ff721e8a63574a94eaaa5698cbcf5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7171119399529038900, guid: 332ff721e8a63574a94eaaa5698cbcf5,
         type: 3}
       propertyPath: _playerController
@@ -263,6 +268,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ragdoll_Glonk
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991058890666141334, guid: 8563239f3b5fac14e8272bd343fd1f94,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3439144094834107073, guid: 8563239f3b5fac14e8272bd343fd1f94,
         type: 3}
