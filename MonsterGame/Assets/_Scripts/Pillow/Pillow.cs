@@ -31,6 +31,7 @@ namespace _Scripts.Pillow
                 if (player.invincible) return;
                 Player self = _limb.player;
                 if (self.sleepiness.tired <= 0) return;
+                if (player.sleepiness.tired <= 0) return;
 
                 Rigidbody rb = _limb.GetComponent<Rigidbody>();
                 if (rb.velocity.magnitude < 2.5)
