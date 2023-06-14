@@ -36,7 +36,7 @@ public class PowerupSpawner : MonoBehaviour
 	public void SpawnPowerup()
 	{
 		int posIndex = GetRandomWeightedIndex(_positionCounts.Values);
-		Vector3 position = spawnPositions[_positionCounts.Values.ElementAt(posIndex).index] + transform.position;
+		Vector3 position = spawnPositions[_positionCounts.Values.ElementAt(posIndex).index];
 		
 		int powerupIndex = GetRandomWeightedIndex(_powerupCounts.Values);
 		GameObject powerup = powerupPrefabs[_powerupCounts.Values.ElementAt(powerupIndex).index];

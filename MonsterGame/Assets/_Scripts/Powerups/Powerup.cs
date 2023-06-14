@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using _Scripts.PlayerScripts;
 using _Scripts.Ragdoll_Movement;
@@ -37,9 +38,16 @@ namespace _Scripts.Powerups
                 target = limb.player;
 
                 Powerup isItThere = target.gameObject.GetComponent<Powerup>();
+
                 if (isItThere != null)
                 {
-                    Utils.Timer.AddTime(isItThere.timerIndex, _duration);
+                    Debug.Log($"Type isit: {isItThere.GetType()}, type this: {this.GetType()} and equals: {isItThere.GetType().Equals(this.GetType())}");
+                }
+                
+                if (isItThere != null && isItThere.GetType().Equals(this.GetType()))
+                {
+                    Debug.Log("Yes");
+                    Utils.Timer.ResetTimer(isItThere.timerIndex);
                     Destroy(gameObject);
                     return;
                 }

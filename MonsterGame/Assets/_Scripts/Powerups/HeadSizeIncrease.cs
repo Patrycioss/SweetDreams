@@ -11,15 +11,16 @@ namespace _Scripts.Powerups
 		
 		protected override void Begin()
 		{
-			_scale = target.head.transform.localScale;
+			_scale = Vector3.one;
+			// _scale = target.head.transform.localScale;
 			Debug.Log($"{_scale}, scale");
 			Debug.Log(_increaseAmount);
 			
-			target.head.transform.DOScale(_scale * _increaseAmount, 1f);
+			target.head.transform.DOScale(Vector3.one * _increaseAmount, 1f);
 			Debug.Log($"Target scale: {_scale * _increaseAmount}");
 		}
 
-		protected override void End()
+		protected override void End() 
 		{
 			target.head.transform.DOScale(_scale, 1f);
 		}
