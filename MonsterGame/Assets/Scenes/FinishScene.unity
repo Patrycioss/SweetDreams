@@ -582,7 +582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 096984f2e7e696a42b851e49c1d534c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _testRanking: 000000000100000002000000
+  _testRanking: 00000000010000000200000003000000
   positions:
   - {x: 0, y: 0.34, z: -6.039758}
   - {x: 3, y: 0.34, z: -7}
@@ -1063,7 +1063,8 @@ PrefabInstance:
         type: 3}
       propertyPath: _animatedPlayers.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5129925319994538287, guid: 024d08d0d408ccb4886fcc3a28fbfac0,
+        type: 3}
     - target: {fileID: 8963533894804437335, guid: 3137322cf51812245a1885dfa108f665,
         type: 3}
       propertyPath: m_Name
