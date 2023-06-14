@@ -21,13 +21,12 @@ namespace _Scripts.Pillow
         {
             GameObject obj = collision.collider.gameObject;
 
-            Limb limb = obj.GetComponent<Limb>();
-            if (limb != null)
+            Limb hitLimb = obj.GetComponent<Limb>();
+            if (hitLimb != null)
             {
-                
                 if (_limb == null) _limb = GetComponent<Limb>();
-                Player player = limb.player;
-                if (player == _limb.player || limb.gameObject.Equals(player.pillow1.gameObject) || limb.gameObject.Equals(player.pillow2.gameObject)) return;
+                Player player = hitLimb.player;
+                if (player == _limb.player || hitLimb.gameObject.Equals(player.pillow1.gameObject) || hitLimb.gameObject.Equals(player.pillow2.gameObject)) return;
                 if (player.invincible) return;
                 Player self = _limb.player;
                 if (self.sleepiness.tired <= 0) return;
