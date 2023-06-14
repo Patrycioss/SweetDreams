@@ -6289,8 +6289,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
-  offset: {x: 0, y: 0.6, z: 1.18}
-  baseOffset: {x: 0, y: 5, z: 5}
+  offset: {x: 0, y: 0.1, z: 0.35}
+  baseOffset: {x: 0, y: 5, z: 6}
+  fov: 50
+  fovMultiplier: 1
 --- !u!114 &2085257594
 MonoBehaviour:
   m_ObjectHideFlags: 0
