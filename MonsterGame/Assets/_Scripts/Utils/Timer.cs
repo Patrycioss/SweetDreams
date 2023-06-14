@@ -37,6 +37,11 @@ namespace _Scripts.Utils
 			_pausableTimers[pTimerIndex].AddTime(pAmount);
 		}
 
+		public static void ResetTimer(int pTimerIndex)
+		{
+			_pausableTimers[pTimerIndex].Reset();
+		}
+
 		public static int StartBetterTimer(float pDurationSeconds, System.Action pOnEnd)
 		{
 			Pausable pausable = new();
@@ -118,6 +123,11 @@ namespace _Scripts.Utils
 				{
 					if (_callback != null) _callback();
 				}
+			}
+
+			public void Reset()
+			{
+				_timePassed = 0;
 			}
 		}
 	}
