@@ -3067,7 +3067,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 9119780734392527552, guid: f9689a0f0d074e84da65ba23cd3befcb,
+  m_PlayerPrefab: {fileID: 5453075572506299667, guid: d070cc05a86b2404cae555ca37ebbea9,
     type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
@@ -6984,7 +6984,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085257592}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93df4ec683559c64da1c7e99470015ec, type: 3}
   m_Name: 
@@ -6994,6 +6994,9 @@ MonoBehaviour:
   - {fileID: 1367077430}
   offset: {x: 0, y: 0.6, z: 1.18}
   baseOffset: {x: 0, y: 5, z: 5}
+  fov: 0
+  fovMultiplier: 0
+  durationSmoothing: 0
 --- !u!114 &2085257594
 MonoBehaviour:
   m_ObjectHideFlags: 0
