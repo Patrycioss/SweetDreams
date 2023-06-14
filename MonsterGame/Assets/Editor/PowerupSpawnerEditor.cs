@@ -17,7 +17,8 @@ namespace Editor
 			for (int i = 0; i < spawner.spawnPositions.Count; i++)
 			{
 				EditorGUI.BeginChangeCheck();
-				Vector3 pos = Handles.PositionHandle(spawner.spawnPositions[i] + spawner.transform.position, Quaternion.identity);
+				Vector3 pos = Handles.PositionHandle(spawner.spawnPositions[i], Quaternion.identity);
+				pos.y = spawner.transform.position.y;
 				
 				if (EditorGUI.EndChangeCheck()) {
 					Undo.RecordObject(spawner, "Move spawn position"); 
