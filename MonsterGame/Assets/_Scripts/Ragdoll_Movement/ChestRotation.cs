@@ -34,7 +34,7 @@ namespace _Scripts.Ragdoll_Movement
 		{
 			float x = _rotate.ReadValue<Vector2>().x;
 			
-			_animator.SetFloat("Chest", x + 1);
+			_animator.SetFloat("Chest", (x + 1)/2);
 		}
 	}
 }
