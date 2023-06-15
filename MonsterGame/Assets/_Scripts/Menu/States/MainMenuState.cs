@@ -11,11 +11,13 @@ namespace _Scripts.Menu.States
     {
         [SerializeField] private GameObject menu;
         [SerializeField] private Button playButton, settingsButton, quitButton;
+        [SerializeField] private Slider musicSlider, soundSlider;
         private Button _target;
         private PlayerInput _input;
         private InputActionMap _map;
         private InputAction _interact, _move;
         private long _cooldown;
+        private bool _settingsMenuFocus;
         
         public override void StateReset()
         {
@@ -56,6 +58,12 @@ namespace _Scripts.Menu.States
                 menu.SetActive(false);
         }
 
+        public void SetSettingFocus(bool settings)
+        {
+            _settingsMenuFocus = settings;
+            //_target = musicSlider;
+        }
+
         private void SwitchButtonPressedActive(InputAction.CallbackContext context)
         {
             Image targetImage = _target.GetComponent<Image>();
@@ -76,47 +84,54 @@ namespace _Scripts.Menu.States
             Vector2 vector = _move.ReadValue<Vector2>();
             bool updated = false;
             Button oldTarget = _target;
-            if (_target.Equals(playButton))
+            if (!_settingsMenuFocus)
             {
-                if (vector.x >= 0.1 && vector.y <= -0.5)
+                if (_target.Equals(playButton))
                 {
-                    _target = quitButton;
-                    updated = true;
-                }
-                else if (vector.x <= 0 && vector.y <= -0.5)
-                {
-                    _target = settingsButton;
-                    updated = true;
+                    if (vector.x >= 0.1 && vector.y <= -0.5)
+                    {
+                        _target = quitButton;
+                        updated = true;
+                    }
+                    else if (vector.x <= 0 && vector.y <= -0.5)
+                    {
+                        _target = settingsButton;
+                        updated = true;
                 
+                    }
+                }
+                else if(_target.Equals(settingsButton))
+                {
+                    if (vector.x >= 0.5)
+                    {
+                        _target = quitButton;
+                        updated = true;
+                    }
+                    else if (vector.y >= 0.5)
+                    {
+                        _target = playButton;
+                        updated = true;
+                
+                    }
+                }
+                else if (_target.Equals(quitButton))
+                {
+                    if (vector.x <= -0.5)
+                    {
+                        _target = settingsButton;
+                        updated = true;
+                    }
+                    else if (vector.y >= 0.5)
+                    {
+                        _target = playButton;
+                        updated = true;
+                
+                    }
                 }
             }
-            else if(_target.Equals(settingsButton))
+            else
             {
-                if (vector.x >= 0.5)
-                {
-                    _target = quitButton;
-                    updated = true;
-                }
-                else if (vector.y >= 0.5)
-                {
-                    _target = playButton;
-                    updated = true;
                 
-                }
-            }
-            else if (_target.Equals(quitButton))
-            {
-                if (vector.x <= -0.5)
-                {
-                    _target = settingsButton;
-                    updated = true;
-                }
-                else if (vector.y >= 0.5)
-                {
-                    _target = playButton;
-                    updated = true;
-                
-                }
             }
             if (!updated)
                 return;
