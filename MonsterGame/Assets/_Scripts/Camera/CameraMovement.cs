@@ -51,21 +51,30 @@ namespace _Scripts.Camera
             }
             transform.position = original + (offset * distanceMod + baseOffset);*/
             float distanceMod = 0.0f;
-            List<KeyValuePair<Vector3, Vector3>> keys = new List<KeyValuePair<Vector3, Vector3>>();
-            for (int i = 0; i < players.Count; i++)
+            Vector3 origin = new Vector3();
+            List<KeyValuePair<Vector3, Vector3>> pos = null;
+            if (players.Count > 1)
             {
-                for (int x = 0; x < players.Count; x++)
+                List<KeyValuePair<Vector3, Vector3>> keys = new List<KeyValuePair<Vector3, Vector3>>();
+                for (int i = 0; i < players.Count; i++)
                 {
-                    if(!players[i].transform.position.Equals(players[x].transform.position))
-                        keys.Add(new KeyValuePair<Vector3, Vector3>(players[i].transform.position, players[x].transform.position));
+                    for (int x = 0; x < players.Count; x++)
+                    {
+                        if(!players[i].transform.position.Equals(players[x].transform.position))
+                            keys.Add(new KeyValuePair<Vector3, Vector3>(players[i].transform.position, players[x].transform.position));
+                    }
                 }
+                pos = keys.OrderBy(pair => Vector3.Distance(pair.Key, pair.Value)).ToList();
+                pos.Reverse();
+                origin = pos[0].Key + pos[0].Value;
+                origin /= 2;
             }
-            List<KeyValuePair<Vector3, Vector3>> pos = keys.OrderBy(pair => Vector3.Distance(pair.Key, pair.Value)).ToList();
-            pos.Reverse();
-            Vector3 origin = pos[0].Key + pos[0].Value;
-            origin /= 2;
-            _camera.fieldOfView = fov + Vector3.Distance(pos[0].Key, pos[0].Value) * fovMultiplier;
-            transform.DOMove(origin + offset * Vector3.Distance(pos[0].Key, pos[0].Value) + baseOffset, durationSmoothing);
+            else
+            {
+                origin = players[0].transform.position;
+            }
+            _camera.fieldOfView = fov + (players.Count > 1 ? Vector3.Distance(pos[0].Key, pos[0].Value) * fovMultiplier : 10.0f * fovMultiplier);
+            transform.DOMove(origin + offset * (players.Count > 1 ? Vector3.Distance(pos[0].Key, pos[0].Value) : 1.0f) + baseOffset, durationSmoothing);
             /*Vector3 origin = new Vector3();
             float distanceMod = 0.0f;
             for (int i = 0; i < players.Count; i++)
