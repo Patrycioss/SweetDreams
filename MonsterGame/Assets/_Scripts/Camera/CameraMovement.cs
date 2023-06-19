@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using UnityEngine;
 
 namespace _Scripts.Camera
@@ -23,10 +25,16 @@ namespace _Scripts.Camera
         private float durationSmoothing;
         private UnityEngine.Camera _camera;
 
+        private TweenerCore<Vector3, Vector3, VectorOptions> _tweenerCore;
 
         private void OnEnable()
         {
             _camera = GetComponent<UnityEngine.Camera>();
+            _tweenerCore = transform.DOMove(new Vector3(0, 0, 0), durationSmoothing);
+            _tweenerCore.onComplete = () =>
+            {
+                _tweenerCore.Restart();
+            };
         }
 
         public void AddPlayer(GameObject pPlayer)
@@ -41,15 +49,6 @@ namespace _Scripts.Camera
         
         private void Update()
         {
-            /*Vector3 original = players[0].transform.position;
-            float distanceMod = 0.0f;
-            for (int i = 1; i < players.Count; i++)
-            {
-                Vector3 totalVec = (players[i].transform.position - original);
-                original += totalVec / 2.0f;
-                distanceMod += totalVec.magnitude / 20.0f;
-            }
-            transform.position = original + (offset * distanceMod + baseOffset);*/
             float distanceMod = 0.0f;
             Vector3 origin = new Vector3();
             List<KeyValuePair<Vector3, Vector3>> pos = null;
@@ -74,35 +73,19 @@ namespace _Scripts.Camera
                 origin = players[0].transform.position;
             }
             _camera.fieldOfView = fov + (players.Count > 1 ? Vector3.Distance(pos[0].Key, pos[0].Value) * fovMultiplier : 10.0f * fovMultiplier);
-            transform.DOMove(origin + offset * (players.Count > 1 ? Vector3.Distance(pos[0].Key, pos[0].Value) : 1.0f) + baseOffset, durationSmoothing);
-            /*Vector3 origin = new Vector3();
-            float distanceMod = 0.0f;
-            for (int i = 0; i < players.Count; i++)
-            {
-                Vector3 prev = new Vector3();
-                if (i - 1 < 0)
-                {
-                    prev = players[^1].transform.position;
-                }
-                else
-                {
-                    prev = players[i - 1].transform.position;
-                }
-                origin += players[i].transform.position;
-                Vector3 totalVec = (players[i].transform.position - prev);
-                distanceMod += totalVec.magnitude;
-            }
-            origin /= players.Count;
-            distanceMod /= 4.0f;
-            
-            transform.position = origin + offset * distanceMod + baseOffset;*/
-            
+            _tweenerCore.ChangeValues(transform.position, origin +
+                                                          offset * (players.Count > 1
+                                                              ? Vector3.Distance(pos[0].Key, pos[0].Value)
+                                                              : 1.0f) + baseOffset, durationSmoothing);
         }
 
         private void Reset()
         {
-            offset = new Vector3(12, 7, 0);
-            baseOffset = new Vector3(1, 2, 0);
+            offset = new Vector3(0, 0.09f, 0.35f);
+            baseOffset = new Vector3(0, 8, 10);
+            fov = 40;
+            fovMultiplier = 0.5f;
+            durationSmoothing = 1.25f;
         }
     }
 }

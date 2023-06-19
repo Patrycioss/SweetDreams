@@ -11,7 +11,7 @@ namespace _Scripts.Menu.States
     public class CharacterSelectionState : CustomState
     {
         [SerializeField] private PlayerInputManager _playerInputManager;
-        [SerializeField] private List<GameObject> whatToEnable;
+        [SerializeField] private List<GameObject> _enableOnJoin;
         [SerializeField] private List<GameObject> _toEnable;
         [SerializeField] private List<RenderTexture> _textures;
         [Serialize] private List<Character> _characters;
@@ -21,18 +21,12 @@ namespace _Scripts.Menu.States
         
         public override void StateReset()
         {
-            foreach (GameObject obj in whatToEnable)
-            {
-                obj.SetActive(true);
-            }
+            
         }
 
         public override void StateStart()
         {
-            foreach (GameObject obj in whatToEnable)
-            {
-                obj.SetActive(true);
-            }
+            
             _characters = new List<Character>();
             EventBus<PlayerReadyUpEvent>.Subscribe(PlayersReady);
             EventBus<PlayerReadyDownEvent>.Subscribe(PlayerDown);
@@ -96,6 +90,7 @@ namespace _Scripts.Menu.States
             Scroller scroll = transform1.GetComponent<Scroller>();
             scroll.ID = Guid.NewGuid();
             Character character = new Character(scroll, _toEnable[_playerInputManager.playerCount - 1], scroll.ID);
+            _enableOnJoin[_playerInputManager.playerCount - 1].SetActive(true);
             Debug.Log(pPlayerInput.user.pairedDevices[0].name);
             character.DeviceID = pPlayerInput.user.pairedDevices[0].deviceId;
             _characters.Add(character);
@@ -155,10 +150,12 @@ namespace _Scripts.Menu.States
                     index = i;
                 }
             }
+            Debug.Log(index);
             if (index >= _characters.Count - 1)
             {
                 character.Display.SetActive(false);
                 Destroy(character.Scroller.gameObject);
+                _enableOnJoin[index].SetActive(false);
                 _characters.Remove(character);
             }
             else
@@ -168,8 +165,10 @@ namespace _Scripts.Menu.States
                 _characters.Remove(character);
                 for (int i = index; i < 4; i++)
                 {
+                    _enableOnJoin[i].SetActive(false);
                     if (i < _characters.Count)
                     {
+                        _enableOnJoin[i].SetActive(true);
                         Character tempChar = _characters[i];
                         RenderTexture text = _textures[i];
                         GameObject arrows = _toEnable[i];
