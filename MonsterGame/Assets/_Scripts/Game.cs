@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _Scripts.Camera;
 using _Scripts.PlayerScripts;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace _Scripts
 	{
 		[SerializeField] private PlayerManager _playerManager;
 		[SerializeField] private PowerupSpawner _powerupSpawner;
+		[SerializeField] private CameraMovement _cameraMovement;
 		[SerializeField] private float _interval;
 		
 		private SimpleTimer _timer;
@@ -51,6 +53,7 @@ namespace _Scripts
 				}
 			}
 			_ranking.Add(pEvent.Player.id);
+			_cameraMovement.RemovePlayer(pEvent.Player.controller.gameObject);
 			_playersAwake--;
 			_ids.Remove(pEvent.Player.id);
 			if (_playersAwake <= 1)

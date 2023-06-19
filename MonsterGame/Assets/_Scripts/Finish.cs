@@ -1,10 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using _Scripts;
-using _Scripts.PlayerScripts;
-using OpenCover.Framework.Model;
 using UnityEngine;
 public class Finish : MonoBehaviour
 {

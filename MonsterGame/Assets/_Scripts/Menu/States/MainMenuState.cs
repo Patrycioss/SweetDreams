@@ -1,8 +1,6 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.HID;
 using UnityEngine.UI;
 
 namespace _Scripts.Menu.States
@@ -10,9 +8,8 @@ namespace _Scripts.Menu.States
     public class MainMenuState : CustomState
     {
         [SerializeField] private GameObject menu;
-        [SerializeField] private Button playButton, settingsButton, quitButton;
-        [SerializeField] private Slider musicSlider, soundSlider;
-        private Button _target;
+        [SerializeField] private Selectable playButton, settingsButton, quitButton, musicSlider, soundSlider;
+        private Selectable _target;
         private PlayerInput _input;
         private InputActionMap _map;
         private InputAction _interact, _move;
@@ -74,16 +71,20 @@ namespace _Scripts.Menu.States
         {
             Image targetImage = _target.GetComponent<Image>();
             targetImage.sprite = _target.spriteState.highlightedSprite;
-            _target.onClick.Invoke();
+            if (_target.Equals(playButton) || _target.Equals(settingsButton) || _target.Equals(quitButton))
+            {
+                Button button = _target.GetComponent<Button>();
+                button.onClick.Invoke();
+            }
         }
 
         private void Moving(InputAction.CallbackContext context)
         {
             if (DateTimeOffset.Now.ToUnixTimeMilliseconds() < _cooldown)
                 return;
+            Selectable oldTarget = GetComponent<Selectable>();
             Vector2 vector = _move.ReadValue<Vector2>();
             bool updated = false;
-            Button oldTarget = _target;
             if (!_settingsMenuFocus)
             {
                 if (_target.Equals(playButton))
@@ -131,7 +132,10 @@ namespace _Scripts.Menu.States
             }
             else
             {
-                
+                if (_target.Equals(musicSlider) || _target.Equals(soundSlider))
+                {
+                    
+                }
             }
             if (!updated)
                 return;
