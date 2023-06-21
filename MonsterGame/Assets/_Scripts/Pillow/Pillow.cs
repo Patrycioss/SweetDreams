@@ -12,11 +12,8 @@ namespace _Scripts.Pillow
         [SerializeField] private int _amountTiredApplied = 1;
 
         private Collider _collider;
-
         private Limb _thisLimb;
         
-        private int a = 0;
-
         private void Awake()
         {
             _collider = GetComponent<Collider>();
