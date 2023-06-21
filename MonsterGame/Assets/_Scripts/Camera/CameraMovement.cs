@@ -49,7 +49,6 @@ namespace _Scripts.Camera
         
         private void Update()
         {
-            float distanceMod = 0.0f;
             Vector3 origin = new Vector3();
             List<KeyValuePair<Vector3, Vector3>> pos = null;
             if (players.Count > 1)

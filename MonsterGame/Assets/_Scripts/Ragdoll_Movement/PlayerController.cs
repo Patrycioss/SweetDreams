@@ -1,3 +1,4 @@
+using _Scripts.PlayerScripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,14 +8,15 @@ namespace _Scripts.Ragdoll_Movement
 	public class PlayerController : MonoBehaviour
 	{
 		[SerializeField] private int _playerNumber = 1;
+		[SerializeField] private Player _player;
+		public Player player => _player;
+		
 		public int number => _playerNumber;
 		
 		[SerializeField] private InputActionAsset _keyMap;
 		[SerializeField] private float _speed = 150;
 
 		private Rigidbody _hips;
-		private Transform _leftShin;
-		private Transform _rightShin;
 		private ConfigurableJoint _joint;
 	
 		private void OnValidate()
