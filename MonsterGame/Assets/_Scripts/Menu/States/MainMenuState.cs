@@ -151,7 +151,6 @@ namespace _Scripts.Menu.States
             bool updated = false;
             if (!_settingsMenuFocus)
             {
-                Debug.Log("Here we are");
                 if (_target.Equals(playButton))
                     updated = SetNewTarget(new MenuNav(quitButton, settingsButton).SetConditions(
                         (vector.x >= 0.1 && vector.y <= -0.5), (vector.x <= 0 && vector.y <= -0.5)));
@@ -164,7 +163,6 @@ namespace _Scripts.Menu.States
             }
             else
             {
-                Debug.Log("Ok");
                 if (_backAction.IsPressed())
                 {
                     _back.GetComponentInChildren<Button>().onClick.Invoke();
