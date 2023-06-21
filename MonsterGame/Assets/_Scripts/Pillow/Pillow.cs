@@ -11,51 +11,53 @@ namespace _Scripts.Pillow
         [SerializeField] private float _force = 1000;
         [SerializeField] private int _amountTiredApplied = 1;
 
-        private Limb _limb;        
+        private Collider _collider;
+
+        private Limb _thisLimb;
+        
+        private int a = 0;
+
+        private void Awake()
+        {
+            _collider = GetComponent<Collider>();
+        }
+
         private void Start()
         {
-            _limb = GetComponent<Limb>();
-            if (_limb == null) Debug.LogError("Pillow has no limb component!");
+            _thisLimb = GetComponent<Limb>();
+            if (_thisLimb == null) Debug.LogError("Pillow has no limb component!");
         }
 
         private void OnCollisionEnter(Collision collision)
         {
-            Debug.Log("Hit");
-            if (collision.collider == this.gameObject) return;
+            if (_thisLimb.player.sleepiness.tired <= 0) return;
             
             GameObject obj = collision.collider.gameObject;
-            
+            if (obj.GetComponent<Pillow>() != null) return;
 
-            Limb hitLimb = obj.GetComponent<Limb>();
-            if (hitLimb != null)
+            Player hitPlayer;
+            Limb limb;
+            PlayerController playerController = obj.GetComponent<PlayerController>();
+            if (playerController != null)
+                hitPlayer = playerController.player;
+            else
             {
-                if (_limb == null) _limb = GetComponent<Limb>();
-                Debug.Log("1");
-
-                Player player = hitLimb.player;
-                if (hitLimb.gameObject.Equals(player.pillow1.gameObject) || hitLimb.gameObject.Equals(player.pillow2.gameObject)) return;
-                Debug.Log("2");
-
-                if (player.invincible) return;
-                Player self = _limb.player;
-                Debug.Log("3");
-
-                if (self.sleepiness.tired <= 0) return;
-                Debug.Log("4");
-                if (player.sleepiness.tired <= 0) return;
-
-                Debug.Log("yes yes");
-                
-                Rigidbody rb = this.GetComponent<Rigidbody>();
-                if (rb.velocity.magnitude < 2.5)
-                    return;
-                else Debug.Log("Didn't make threshold");
-                
-                GameObject pelvis = player.controller.gameObject;
-                Rigidbody body = pelvis.transform.GetChild(0).GetComponent<Rigidbody>();
-                body.AddForce(collision.GetContact(0).normal * -1 * _force * self.SlapPower);
-                player.sleepiness.Tire(_amountTiredApplied);
+                limb = obj.GetComponent<Limb>();
+                if (limb == null) return;
+                hitPlayer = limb.player;
             }
+
+            if (hitPlayer.invincible) return;
+            if (hitPlayer.sleepiness.tired <= 0) return;
+
+            Rigidbody rb = this.GetComponent<Rigidbody>();
+            if (rb.velocity.magnitude < 2.5)
+                return;
+            
+            GameObject pelvis = hitPlayer.controller.gameObject;
+            Rigidbody body = pelvis.transform.GetChild(0).GetComponent<Rigidbody>();
+            body.AddForce(collision.GetContact(0).normal * -1 * _force * _thisLimb.player.SlapPower);
+            hitPlayer.sleepiness.Tire(_amountTiredApplied);
         }
     }
 }

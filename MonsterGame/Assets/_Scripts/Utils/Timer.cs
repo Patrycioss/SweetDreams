@@ -66,11 +66,11 @@ namespace _Scripts.Utils
 		{
 			Pausable pausable = new Pausable();
 			pausable.Start(pDurationSeconds, pOnEnd);
-			void StartTimer()
-			{
-				pOnEnd();
-				pausable.Start(pDurationSeconds, pOnEnd);
-			}
+			// void StartTimer()
+			// {
+			// 	pOnEnd();
+			// 	pausable.Start(pDurationSeconds, pOnEnd);
+			// }
 			
 			int id = pausable.GetHashCode();
 			_pausableTimers.Add(id, pausable);
