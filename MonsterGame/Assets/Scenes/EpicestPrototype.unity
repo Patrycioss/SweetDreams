@@ -6479,6 +6479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerManager: {fileID: 868296151}
   _powerupSpawner: {fileID: 0}
+  _cameraMovement: {fileID: 0}
   _interval: 0
 --- !u!114 &585793264
 MonoBehaviour:
