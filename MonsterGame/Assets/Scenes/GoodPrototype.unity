@@ -3477,6 +3477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25da015e1cd33db46ad9b58347933f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _overlays: []
   _cameraMovement: {fileID: 2085257593}
 --- !u!114 &868296152
 MonoBehaviour:
@@ -4112,6 +4113,80 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1278681083}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1311371786
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 444596813280505390, guid: f78b7959d88b42543944827c0b244a92,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 444596813280505390, guid: f78b7959d88b42543944827c0b244a92,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 444596813280505390, guid: f78b7959d88b42543944827c0b244a92,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 444596813280505390, guid: f78b7959d88b42543944827c0b244a92,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 444596813280505390, guid: f78b7959d88b42543944827c0b244a92,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 444596813280505390, guid: f78b7959d88b42543944827c0b244a92,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 444596813280505390, guid: f78b7959d88b42543944827c0b244a92,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 444596813280505390, guid: f78b7959d88b42543944827c0b244a92,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 444596813280505390, guid: f78b7959d88b42543944827c0b244a92,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 444596813280505390, guid: f78b7959d88b42543944827c0b244a92,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 444596813280505390, guid: f78b7959d88b42543944827c0b244a92,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722467180376993339, guid: f78b7959d88b42543944827c0b244a92,
+        type: 3}
+      propertyPath: m_Name
+      value: FaceOverlay
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722467180376993339, guid: f78b7959d88b42543944827c0b244a92,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f78b7959d88b42543944827c0b244a92, type: 3}
 --- !u!1001 &1322387077
 PrefabInstance:
   m_ObjectHideFlags: 0

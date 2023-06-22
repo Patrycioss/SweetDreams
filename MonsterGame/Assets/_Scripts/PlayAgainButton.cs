@@ -15,7 +15,7 @@ namespace _Scripts
 		private InputActionMap _map;
 		private InputAction _interact;
 		private Image _buttonImage;
-
+        //D
 		private void Awake()
 		{
 			_button = GetComponent<Button>();
