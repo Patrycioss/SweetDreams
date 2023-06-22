@@ -12,6 +12,7 @@ namespace _Scripts
     public class PlayerInstanceManager : MonoBehaviour
     {
         [SerializeField] private SpawnPositions _spawnPositions;
+        [SerializeField] private List<FaceOverlay> _overlays;
         [SerializeField] private List<GameObject> prefabs;
         private PlayerInputManager _manager;
         
