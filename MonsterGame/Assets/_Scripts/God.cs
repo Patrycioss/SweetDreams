@@ -29,21 +29,16 @@ namespace _Scripts
 				Debug.Log("Setting ranking to: " + pReverseRanking[i]);
 			}
 		}
-		
+		//D
 		private static God _instance;
 		public static God instance => _instance;
 		private void Awake()
 		{
-			if (_instance is null)
-			{
-				_instance = this;
-				DontDestroyOnLoad(gameObject);
-			}
-			else
-			{
-				Destroy(gameObject);
-			}
-		}
+			if (_instance != null)
+				return;
+			_instance = this;
+			DontDestroyOnLoad(gameObject);
+	}
 
 		public void SwapScene(string pSceneName)
 		{
@@ -60,6 +55,15 @@ namespace _Scripts
 			SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByBuildIndex(pScene.buildIndex));
 			DontDestroyOnLoad(gameObject);
 			SceneManager.sceneLoaded -= OnSceneLoaded;
+		}
+
+		private void OnApplicationQuit()
+		{
+			if (_instance != null)
+			{
+				Destroy(_instance);
+				_instance = null;
+			}
 		}
 	}
 }
