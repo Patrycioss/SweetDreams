@@ -79,4 +79,7 @@ crashlytics-build.properties
 [Aa]ssets/Adaptive*Performance/*
 [Aa]ssets/Adaptive*Performance.meta
 
+MonsterGame/Assets/FastScriptReload
+MonsterGame/Assets/FastScriptReload.meta
+
 *.bak

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using _Scripts.Camera;
 using _Scripts.PlayerScripts;
 using UnityEngine;
@@ -17,7 +18,6 @@ namespace _Scripts
             
             _playerInputManager.onPlayerJoined += OnPlayerJoined;
             _playerInputManager.onPlayerLeft += OnPlayerLeft;
-            
         }
         
         private void OnPlayerJoined(PlayerInput pPlayerInput)
