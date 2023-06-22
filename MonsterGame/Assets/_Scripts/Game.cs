@@ -4,6 +4,7 @@ using System.Linq;
 using _Scripts.Camera;
 using _Scripts.PlayerScripts;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _Scripts
 {
@@ -14,6 +15,9 @@ namespace _Scripts
 		[SerializeField] private PowerupSpawner _powerupSpawner;
 		[SerializeField] private CameraMovement _cameraMovement;
 		[SerializeField] private float _interval;
+
+		[SerializeField] private List<GameObject> _stages = new();
+		
 		
 		private SimpleTimer _timer;
 		
@@ -27,10 +31,16 @@ namespace _Scripts
 		private void Awake()
 		{
 			_timer = GetComponent<SimpleTimer>();
+			
+			if (_stages.Count == 0) Debug.LogError("No stages assigned to Game");
 		}
 
 		private void Start()
 		{
+			GameObject stage = _stages[Random.Range(0, _stages.Count)];
+			stage.SetActive(true);
+			
+			
 			EventBus<PlayerSleepEvent>.Subscribe(OnPlayerSleep);
 			
 			Do();
