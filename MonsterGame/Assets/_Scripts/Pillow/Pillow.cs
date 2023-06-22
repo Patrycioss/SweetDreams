@@ -3,11 +3,14 @@ using System.Net;
 using _Scripts.PlayerScripts;
 using _Scripts.Ragdoll_Movement;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace _Scripts.Pillow
 {
     public class Pillow : MonoBehaviour
     {
+        [SerializeField] private GameObject _hitVFX;
+
         [SerializeField] private float _force = 1000;
         [SerializeField] private int _amountTiredApplied = 1;
 
@@ -54,6 +57,12 @@ namespace _Scripts.Pillow
             GameObject pelvis = hitPlayer.controller.gameObject;
             pelvis.GetComponent<Rigidbody>().AddForce(collision.GetContact(0).normal * _force * _thisLimb.player.SlapPower);
             hitPlayer.sleepiness.Tire(_amountTiredApplied);
+            
+            
+            GameObject hitVFX = Instantiate(_hitVFX, collision.GetContact(0).point, Quaternion.identity);
+            hitVFX.transform.forward = collision.GetContact(0).normal;
+            hitVFX.transform.parent = collision.collider.transform;
+            Destroy(hitVFX, hitVFX.transform.GetChild(0).GetComponent<VisualEffect>().GetFloat("StarLifetime"));
         }
     }
 }
