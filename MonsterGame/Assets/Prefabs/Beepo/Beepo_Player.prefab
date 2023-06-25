@@ -131,8 +131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 1
-  _minAmbientDelay: 5
-  _maxAmbientDelay: 10
+  _minAmbientDelay: 10
+  _maxAmbientDelay: 30
   _slapPowerMultiplier: 1
   _maxSleepiness: 4
   _controller: {fileID: 5453144117595444298}
