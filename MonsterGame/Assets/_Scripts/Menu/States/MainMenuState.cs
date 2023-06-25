@@ -171,9 +171,11 @@ namespace _Scripts.Menu.States
                 }
                 if (_target.Equals(musicSlider) || _target.Equals(soundSlider))
                 {
+                    //DDD
                     float addition = 0.6f * vector.x * Time.deltaTime;
                     Slider slider = _target.GetComponentInChildren<Slider>();
-                    slider.value += addition;
+                    if(vector.x >= 0.1f || vector.x <= -0.1f)
+                        slider.value += addition;
                 }
                 if (_target.Equals(musicSlider))
                     updated = SetNewTarget(new MenuNav(soundSlider).SetConditions(vector.y <= -0.75f));
