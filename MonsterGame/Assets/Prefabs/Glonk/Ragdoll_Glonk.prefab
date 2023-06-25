@@ -1201,6 +1201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerNumber: 1
+  _player: {fileID: 0}
   _keyMap: {fileID: -944628639613478452, guid: 3332ec466576cf44c9bebc78579daf61, type: 3}
   _speed: 150
 --- !u!1 &5524183113209670983 stripped
@@ -2516,6 +2517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18bf3b7a432e7c34b98000ead41f3f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hitVFX: {fileID: 451708477006373187, guid: 70a8f258039d6ac4d800d40048ea81b5, type: 3}
   _force: 1000
   _amountTiredApplied: 1
 --- !u!1001 &7543157345570428490
@@ -2751,5 +2753,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18bf3b7a432e7c34b98000ead41f3f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hitVFX: {fileID: 451708477006373187, guid: 70a8f258039d6ac4d800d40048ea81b5, type: 3}
   _force: 1000
   _amountTiredApplied: 1

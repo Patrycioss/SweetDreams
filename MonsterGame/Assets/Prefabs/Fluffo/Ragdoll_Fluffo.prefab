@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18bf3b7a432e7c34b98000ead41f3f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hitVFX: {fileID: 451708477006373187, guid: 70a8f258039d6ac4d800d40048ea81b5, type: 3}
   _force: 1000
   _amountTiredApplied: 1
 --- !u!1001 &4338002511070091659
@@ -1099,7 +1100,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5029970817664998906}
-  m_Material: {fileID: 13400000, guid: 3be5f5b3fd442934e856cc55090c9f58, type: 2}
+  m_Material: {fileID: 13400000, guid: 313b3c6d64478884eaf25f4c149e480c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1214,6 +1215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerNumber: 1
+  _player: {fileID: 0}
   _keyMap: {fileID: -944628639613478452, guid: 3332ec466576cf44c9bebc78579daf61, type: 3}
   _speed: 80
 --- !u!114 &3926023114813185301
@@ -1828,5 +1830,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18bf3b7a432e7c34b98000ead41f3f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hitVFX: {fileID: 451708477006373187, guid: 70a8f258039d6ac4d800d40048ea81b5, type: 3}
   _force: 1000
   _amountTiredApplied: 1

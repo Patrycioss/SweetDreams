@@ -78,6 +78,11 @@ namespace _Scripts.Camera
                                                               : 1.0f) + baseOffset, durationSmoothing);
         }
 
+        public void SetTween(Vector3 pTarget, float pDuration)
+        {
+            _tweenerCore.ChangeValues(transform.position, pTarget, pDuration);
+        }
+
         private void Reset()
         {
             offset = new Vector3(0, 0.09f, 0.35f);

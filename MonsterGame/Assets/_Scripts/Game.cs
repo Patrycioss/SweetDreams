@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _Scripts.Camera;
 using _Scripts.PlayerScripts;
+using _Scripts.Utils;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -17,15 +18,14 @@ namespace _Scripts
 		[SerializeField] private float _interval;
 
 		[SerializeField] private List<GameObject> _stages = new();
-		
+
+		[SerializeField] private float _transitionDuration = 2f;
+		[SerializeField] private float _zoomDuration = 2f;
 		
 		private SimpleTimer _timer;
-		
-		
 		private int _playersAwake = 0;
 
 		private List<int> _ranking = new List<int>();
-		
 		private List<int> _ids = new List<int>();
 
 		private void Awake()
@@ -39,7 +39,6 @@ namespace _Scripts
 		{
 			GameObject stage = _stages[Random.Range(0, _stages.Count)];
 			stage.SetActive(true);
-			
 			
 			EventBus<PlayerSleepEvent>.Subscribe(OnPlayerSleep);
 			
@@ -71,18 +70,27 @@ namespace _Scripts
 				_ranking.Add(_ids[0]);
 				EndGame();
 			}
-			Debug.Log(_playersAwake);
-			Debug.Log("Player is sleeping");
 		}
 
 		private void EndGame()
 		{
-			Debug.Log("Ending game");
-			
-			//_ranking.Add(_ids[0]);
 			_ranking.Reverse();
-			God.instance.SetRanking(_ranking);
-			God.instance.SwapScene("FinishScene");
+			
+			foreach (Transform child in _playerManager.transform)
+			{
+				Player player = child.GetComponent<Player>();
+				if (player != null && player.id == _ranking[0])
+				{
+					_cameraMovement.SetTween(player.controller.transform.position, _zoomDuration);
+					break;
+				}
+			}
+			
+			Timer.StartTimer(_transitionDuration, () =>
+			{
+				God.instance.SetRanking(_ranking);
+				God.instance.SwapScene("FinishScene");
+			});
 		}
 
 		private void OnDisable()
