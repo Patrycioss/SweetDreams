@@ -1,17 +1,26 @@
+using System;
+using System.Collections.Generic;
 using _Scripts.Ragdoll_Movement;
+using _Scripts.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace _Scripts.PlayerScripts
 {
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(SimpleTimer))]
+    [RequireComponent(typeof(AudioSource))]
     public class Player : MonoBehaviour
     {
         private static int playerCount = 0;
 
         [SerializeField] private int _id;
         public int id => _id;
+
+        [SerializeField] private float _minAmbientDelay = 5;
+        [SerializeField] private float _maxAmbientDelay = 10;
+        
 
         [SerializeField] private float _slapPowerMultiplier;
         [SerializeField] private int _maxSleepiness;
@@ -21,6 +30,47 @@ namespace _Scripts.PlayerScripts
         [SerializeField] private Pillow.Pillow _pillow2;
         [SerializeField] private float _invincibilityDuration;
         [SerializeField] private GameObject _head;
+
+
+        [SerializeField] private List<AudioClip> _ambientSounds = new();
+        [SerializeField] private List<AudioClip> _beingHitSounds = new();
+        [SerializeField] private List<AudioClip> _hitSounds = new();
+        [SerializeField] private AudioClip _sleepSound;
+        
+        private AudioSource _audioSource;
+
+        public enum SoundType
+        {
+            Ambient,
+            BeingHit,
+            Hit,
+            Sleep
+        }
+        
+        public void PlaySound(SoundType pType)
+        {
+            switch (pType)
+            {
+                case SoundType.Ambient:
+                    _audioSource.clip = _ambientSounds[UnityEngine.Random.Range(0, _ambientSounds.Count)];
+                    _audioSource.Play();
+                    break;
+                case SoundType.BeingHit:
+                    _audioSource.clip = _beingHitSounds[UnityEngine.Random.Range(0, _beingHitSounds.Count)];
+                    _audioSource.Play();
+                    break;
+                case SoundType.Hit:
+                    _audioSource.clip = _hitSounds[UnityEngine.Random.Range(0, _hitSounds.Count)];
+                    _audioSource.Play();
+                    break;
+                case SoundType.Sleep:
+                    _audioSource.clip = _sleepSound;
+                    _audioSource.Play();
+                    break;
+            }
+        }
+        
+        
         public GameObject head => _head;
         public PlayerController controller => _controller;
         public AnimationMovement animationMovement => _animationMovement;
@@ -38,6 +88,8 @@ namespace _Scripts.PlayerScripts
 
         public bool invincible { get; private set; } = false;
 
+        private int _runningAmbientTimerID = -1;
+
         private void SetGameLayerRecursive(GameObject pGameObject, int pLayer)
         {
             pGameObject.layer = pLayer;
@@ -51,6 +103,8 @@ namespace _Scripts.PlayerScripts
 
         private void Awake()
         {
+            _audioSource = GetComponent<AudioSource>();
+            
             _timer = GetComponent<SimpleTimer>();
             
             playerCount++;
@@ -72,9 +126,34 @@ namespace _Scripts.PlayerScripts
                     Debug.LogError("No action with name Move found in action map: 'Player'");
             }
         }
+        
+        private void Start()
+        {
+            EventBus<PlayerBootedEvent>.Publish(new PlayerBootedEvent(this));
+            EventBus<PlayerSleepEvent>.Subscribe(OnPlayerSleep);
+            AmbientLoop();
+        }
+
+        private void OnPlayerSleep(PlayerSleepEvent pEvent)
+        {
+            if (pEvent.Player == this)
+            {
+                PlaySound(SoundType.Sleep);
+                Timer.RemoveTimer(_runningAmbientTimerID);
+            }
+        }
+
+        private void AmbientLoop()
+        {
+            PlaySound(SoundType.Ambient);
+            _runningAmbientTimerID = Timer.StartBetterTimer(
+                UnityEngine.Random.Range(_minAmbientDelay, _maxAmbientDelay), 
+                () => AmbientLoop());
+        }
 
         private void OnTiredChanged(int pAmount)
         {
+            PlaySound(SoundType.BeingHit);
             invincible = true;
             _timer.StartTimer(_invincibilityDuration, () => invincible = false);
         }
@@ -105,10 +184,7 @@ namespace _Scripts.PlayerScripts
             else if (_animationMovement.walkingEnabled) _animationMovement.Enable(false);
         }
 
-        private void Start()
-        {
-            EventBus<PlayerBootedEvent>.Publish(new PlayerBootedEvent(this));
-        }
+     
 
         public float SlapPower
         {
