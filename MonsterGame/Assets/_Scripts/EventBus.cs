@@ -84,4 +84,9 @@ namespace _Scripts
         public Guid ID => _id;
         public int CurrentCharacter => _currentCharacter;
     }
+
+    public sealed class PlayerReadyUpTutorialEvent : UnityEvent
+    {
+        
+    }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace _Scripts.Menu.States
 {
@@ -10,7 +11,7 @@ namespace _Scripts.Menu.States
     {
         private MenuStateManager _instance;
         private static List<CustomState> _states = new();
-
+        private static List<PlayerInput> _inputs = new();
         [CanBeNull]
         private static CustomState FindState(string pName)
         {
@@ -73,6 +74,21 @@ namespace _Scripts.Menu.States
         private void OnDisable()
         {
             if (_currentState != null) _currentState.Stop();
+        }
+
+        public static void AddPlayer(PlayerInput input)
+        {
+            _inputs.Add(input);
+        }
+        
+        public static void RemovePlayer(PlayerInput input)
+        {
+            _inputs.Add(input);
+        }
+
+        public static List<PlayerInput> GetPlayers()
+        {
+            return _inputs;
         }
     }
 }
