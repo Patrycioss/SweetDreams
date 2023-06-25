@@ -153,6 +153,7 @@ namespace _Scripts.PlayerScripts
 
         private void OnTiredChanged(int pAmount)
         {
+            PlaySound(SoundType.BeingHit);
             invincible = true;
             _timer.StartTimer(_invincibilityDuration, () => invincible = false);
         }
