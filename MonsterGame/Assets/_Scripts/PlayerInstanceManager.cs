@@ -30,6 +30,10 @@ namespace _Scripts
                     _manager.playerPrefab = prefabs[pair.Value];
                     PlayerInput playerInput = _manager.JoinPlayer(_characterIndex, -1, null, gamepad.device);
                     playerInput.transform.position = _spawnPositions.spawnPositions[_characterIndex];
+                    Player player = playerInput.gameObject.GetComponent<Player>();
+                    FaceOverlay overlay = _overlays[_characterIndex];
+                    overlay.gameObject.SetActive(true);
+                    overlay.Initialize(player, pair.Value, _characterIndex);
                     TrackablePlayerCircle circle = playerInput.GetComponentInChildren<TrackablePlayerCircle>();
                     circle.SetActive(_characterIndex);
                     _characterIndex++;
