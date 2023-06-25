@@ -49,10 +49,13 @@ namespace _Scripts.Pillow
 
             if (hitPlayer.invincible) return;
             if (hitPlayer.sleepiness.tired <= 0) return;
+            _thisLimb.player.PlaySound(Player.SoundType.Hit);
+
 
             Rigidbody rb = this.GetComponent<Rigidbody>();
             if (rb.velocity.magnitude < 2.5)
                 return;
+
             
             GameObject pelvis = hitPlayer.controller.gameObject;
             pelvis.GetComponent<Rigidbody>().AddForce(collision.GetContact(0).normal * _force * _thisLimb.player.SlapPower);
