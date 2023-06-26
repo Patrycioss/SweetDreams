@@ -10,6 +10,8 @@ namespace _Scripts.Menu.States
 {
     public class CharacterSelectionState : CustomState
     {
+        [SerializeField] private TutorialMenuState _tutorialMenuState;
+        [SerializeField] private GameObject characterSelection;
         [SerializeField] private PlayerInputManager _playerInputManager;
         [SerializeField] private List<GameObject> _enableOnJoin;
         [SerializeField] private List<GameObject> _toEnable;
@@ -26,7 +28,7 @@ namespace _Scripts.Menu.States
 
         public override void StateStart()
         {
-            
+            characterSelection.SetActive(true);
             _characters = new List<Character>();
             EventBus<PlayerReadyUpEvent>.Subscribe(PlayersReady);
             EventBus<PlayerReadyDownEvent>.Subscribe(PlayerDown);
@@ -38,7 +40,7 @@ namespace _Scripts.Menu.States
             foreach (Gamepad gamepad in Gamepad.all)
             {
                 characterIndex++;
-                _playerInputManager.JoinPlayer(characterIndex, -1, null, gamepad.device);
+                MenuStateManager.AddPlayer(_playerInputManager.JoinPlayer(characterIndex, -1, null, gamepad.device));
             }
         }
 
@@ -66,14 +68,18 @@ namespace _Scripts.Menu.States
             _ready += 1;
             Character character = _characters.Find(x => x.ID.Equals(pEvent.ID));
             character.Display.SetActive(false);
-            if (_ready != _playerInputManager.playerCount)
+            int maxReady = 1;
+            if (_playerInputManager.playerCount >= 2)
+                maxReady = _playerInputManager.playerCount;
+            if (_ready != maxReady)
                 return;
             God.instance.ChosenCharacters.Clear();
             for (int i = 0; i < _characters.Count; i++)
             {
                 God.instance.ChosenCharacters.Add(_characters[i].DeviceID, _characters[i].Scroller.CurrentCharacter);
             }
-            God.instance.SwapScene("GoodPrototype");
+            MenuStateManager.SetState(typeof(TutorialMenuState));
+            //God.instance.SwapScene("GoodPrototype");
         }
         
         private void PlayerDown(PlayerReadyDownEvent pEvent)
@@ -126,7 +132,7 @@ namespace _Scripts.Menu.States
                     if (character != null)
                         return;
                     characterIndex++;
-                    _playerInputManager.JoinPlayer(characterIndex, -1, null, device);
+                    MenuStateManager.AddPlayer(_playerInputManager.JoinPlayer(characterIndex, -1, null, device));
                     break;
             }
         }
@@ -150,17 +156,18 @@ namespace _Scripts.Menu.States
                     index = i;
                 }
             }
-            Debug.Log(index);
             if (index >= _characters.Count - 1)
             {
                 character.Display.SetActive(false);
                 Destroy(character.Scroller.gameObject);
                 _enableOnJoin[index].SetActive(false);
+                MenuStateManager.RemovePlayer(character.Scroller.GetComponent<PlayerInput>());
                 _characters.Remove(character);
             }
             else
             {
                 character.Display.SetActive(false);
+                MenuStateManager.RemovePlayer(character.Scroller.GetComponent<PlayerInput>());
                 Destroy(character.Scroller.gameObject);
                 _characters.Remove(character);
                 for (int i = index; i < 4; i++)
@@ -170,6 +177,8 @@ namespace _Scripts.Menu.States
                     {
                         _enableOnJoin[i].SetActive(true);
                         Character tempChar = _characters[i];
+                        if (i == 0)
+                            tempChar.Scroller.First = true;
                         RenderTexture text = _textures[i];
                         GameObject arrows = _toEnable[i];
                         UnityEngine.Camera cam = tempChar.Scroller.GetComponentInChildren<UnityEngine.Camera>();

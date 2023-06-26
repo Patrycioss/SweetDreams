@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _Scripts.Menu.States;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -46,8 +47,9 @@ namespace _Scripts.Menu
                 _ready = false;
                 EventBus<PlayerReadyDownEvent>.Publish(new PlayerReadyDownEvent(_id, _currentIndex));
             }
-            else
+            else if(_first)
             {
+                MenuStateManager.Clear();
                 God.instance.SwapScene("UserInterface");
             }
         }

@@ -69,11 +69,12 @@ namespace _Scripts.Menu.States
         public void SaveSettings()
         {
             Toggle toggle = _inverted.GetComponentInChildren<Toggle>();
-            Slider musicSlider = _inverted.GetComponentInChildren<Slider>();
-            Slider soundSlider = _inverted.GetComponentInChildren<Slider>();
+            Slider musicSlider = this.musicSlider.GetComponentInChildren<Slider>();
+            Slider soundSlider = this.soundSlider.GetComponentInChildren<Slider>();
             PlayerPrefs.SetString("inverted", toggle.isOn.ToString());
             PlayerPrefs.SetFloat("music", musicSlider.value);
             PlayerPrefs.SetFloat("sound", soundSlider.value);
+            PlayerPrefs.Save();
         }
 
         private void SwitchButtonPressedActive(InputAction.CallbackContext context)
