@@ -41,11 +41,10 @@ namespace _Scripts
 			stage.SetActive(true);
 			
 			EventBus<PlayerSleepEvent>.Subscribe(OnPlayerSleep);
-			Debug.Log("Here we go");
+			
 			Do();
 			void Do()
 			{
-				Debug.Log("Doing the doining");
 				_powerupSpawner.SpawnPowerup();
 				_timer.StartTimer(_interval,Do);
 			}

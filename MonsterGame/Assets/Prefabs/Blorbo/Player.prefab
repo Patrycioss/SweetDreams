@@ -599,12 +599,12 @@ PrefabInstance:
     - target: {fileID: 409884024336664325, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
         type: 3}
       propertyPath: _force
-      value: 5000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 1071535243059968268, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
         type: 3}
       propertyPath: _force
-      value: 5000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 2584702880356463674, guid: 0b93b2f72023cdb4da7226b7e0e2e727,
         type: 3}

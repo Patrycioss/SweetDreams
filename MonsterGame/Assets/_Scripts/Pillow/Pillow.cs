@@ -58,9 +58,7 @@ namespace _Scripts.Pillow
 
             
             GameObject pelvis = hitPlayer.controller.gameObject;
-            Vector3 vectorNormal = -collision.GetContact(0).normal;
-            vectorNormal.y = 0;
-            pelvis.GetComponent<Rigidbody>().AddForce(vectorNormal * _force * _thisLimb.player.SlapPower);
+            pelvis.GetComponent<Rigidbody>().AddForce(-collision.GetContact(0).normal * _force * _thisLimb.player.SlapPower);
             hitPlayer.sleepiness.Tire(_amountTiredApplied);
             
             

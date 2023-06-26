@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using _Scripts.Attributes;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -36,19 +35,15 @@ public class PowerupSpawner : MonoBehaviour
 
 	public void SpawnPowerup()
 	{
-		//int posIndex = GetRandomWeightedIndex(_positionCounts.Values);
-		Debug.Log("Gotem");
-		//Debug.Log(posIndex);
-		/*if (posIndex == -1) return;*/
-		Debug.Log("Past");
-		Vector3 position = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Count)];
-		// Vector3 position = spawnPositions[_positionCounts.Values.ElementAt(posIndex).index];
+		int posIndex = GetRandomWeightedIndex(_positionCounts.Values);
+		if (posIndex == -1) return;
+		Vector3 position = spawnPositions[_positionCounts.Values.ElementAt(posIndex).index];
 		
-		/*int powerupIndex = GetRandomWeightedIndex(_powerupCounts.Values);*/
-		GameObject powerup = powerupPrefabs[UnityEngine.Random.Range(0,powerupPrefabs.Count)];
+		int powerupIndex = GetRandomWeightedIndex(_powerupCounts.Values);
+		GameObject powerup = powerupPrefabs[_powerupCounts.Values.ElementAt(powerupIndex).index];
 		Instantiate(powerup, position, Quaternion.identity);
 		
-		/*for (int i = 0; i < spawnPositions.Count; i++)
+		for (int i = 0; i < spawnPositions.Count; i++)
 		{
 			if (spawnPositions[i] != position)
 			{
@@ -68,7 +63,7 @@ public class PowerupSpawner : MonoBehaviour
 				_powerupCounts[powerupPrefabs[i]] = pair;
 				break;
 			}
-		}*/
+		}
 	}
 	
 	public int GetRandomWeightedIndex(ICollection<(int, int count)> pCounts)
