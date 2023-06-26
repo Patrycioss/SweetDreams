@@ -189,18 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30bf9e457033454479034a4e6b0df839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &419460914 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8692843246546194748, guid: e73426b0e7690d94fa9e3b27f4d9eca2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1712800600}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &578597559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,6 +1179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b06e98e6644534f9436fb85122c554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _allowOnePlayer: 1
   _tutorialMenuState: {fileID: 1968983288}
   characterSelection: {fileID: 1232911195}
   _playerInputManager: {fileID: 1552006914}
@@ -1227,7 +1216,6 @@ MonoBehaviour:
   quitButton: {fileID: 1932547220}
   musicSlider: {fileID: 675939577}
   soundSlider: {fileID: 82602687}
-  _inverted: {fileID: 419460914}
   _back: {fileID: 964000371}
 --- !u!114 &1968983286
 MonoBehaviour:
