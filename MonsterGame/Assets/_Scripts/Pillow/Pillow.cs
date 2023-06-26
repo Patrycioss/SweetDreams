@@ -64,7 +64,6 @@ namespace _Scripts.Pillow
             
             GameObject hitVFX = Instantiate(_hitVFX, collision.GetContact(0).point, Quaternion.identity);
             hitVFX.transform.forward = collision.GetContact(0).normal;
-            hitVFX.transform.parent = collision.collider.transform;
             Destroy(hitVFX, hitVFX.transform.GetChild(0).GetComponent<VisualEffect>().GetFloat("StarLifetime"));
         }
     }
