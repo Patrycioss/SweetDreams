@@ -320,6 +320,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1504104919648911043}
     m_Modifications:
+    - target: {fileID: 2959849024715371475, guid: 1f31d736dfc89e24aa0aa29082aeb63c,
+        type: 3}
+      propertyPath: _force
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 3022151029893975325, guid: 1f31d736dfc89e24aa0aa29082aeb63c,
         type: 3}
       propertyPath: m_ConnectedBody
