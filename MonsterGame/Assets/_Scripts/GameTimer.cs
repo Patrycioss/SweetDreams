@@ -23,7 +23,7 @@ public class GameTimer : MonoBehaviour
     private void Update()
     {
         float percent = (float)(DateTimeOffset.Now.ToUnixTimeMilliseconds() - _start) / (float)(_timer - _start);
-        Debug.Log(percent);
+        // Debug.Log(percent);
         var transformRotation = sun.transform.rotation;
         transformRotation.eulerAngles = baseRotation + new Vector3(percent * rotationDecrease, 0, 0);
         sun.transform.rotation = transformRotation;

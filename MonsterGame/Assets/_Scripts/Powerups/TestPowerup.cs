@@ -6,7 +6,7 @@ namespace _Scripts.Powerups
 	{
 		protected override void Begin()
 		{
-			Debug.Log($"{target} Picked up test");
+			// Debug.Log($"{target} Picked up test");
 		}
 
 		protected override void End()
@@ -16,7 +16,7 @@ namespace _Scripts.Powerups
 
 		protected override void ValuesToCopyToOther(Powerup pOther)
 		{
-			Debug.Log("Copying");
+			// Debug.Log("Copying");
 			// throw new System.NotImplementedException();
 		}
 

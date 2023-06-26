@@ -60,7 +60,6 @@ namespace _Scripts.Ragdoll_Movement
 
 		public void Move(Vector2 pDirection)
 		{
-			// Debug.Log($"Speed: {new Vector3(pDirection.x, 0, pDirection.y) * _speed}");
 			float targetAngle = Mathf.Atan2(pDirection.y, pDirection.x) * Mathf.Rad2Deg;
 				
 			_joint.targetRotation = Quaternion.Euler(0, targetAngle - 90, 0);

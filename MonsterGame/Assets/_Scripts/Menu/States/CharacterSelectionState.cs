@@ -97,7 +97,7 @@ namespace _Scripts.Menu.States
             scroll.ID = Guid.NewGuid();
             Character character = new Character(scroll, _toEnable[_playerInputManager.playerCount - 1], scroll.ID);
             _enableOnJoin[_playerInputManager.playerCount - 1].SetActive(true);
-            Debug.Log(pPlayerInput.user.pairedDevices[0].name);
+            // Debug.Log(pPlayerInput.user.pairedDevices[0].name);
             character.DeviceID = pPlayerInput.user.pairedDevices[0].deviceId;
             _characters.Add(character);
             character.Display.SetActive(true);

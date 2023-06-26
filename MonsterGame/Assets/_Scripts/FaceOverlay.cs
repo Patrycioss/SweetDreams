@@ -57,7 +57,6 @@ namespace _Scripts
                 return;
             Sleepiness sleepiness = _player.sleepiness;
             float percentage = (float)sleepiness.tired / sleepiness.maxTired;
-            Debug.Log(percentage);
             if (percentage >= 0.51f)
                 _portrait.sprite = _chosen[0];
             else if (percentage <= 0.51f && percentage >= 0.01f)
