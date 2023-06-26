@@ -68,7 +68,7 @@ namespace _Scripts.Menu.States
             _ready += 1;
             Character character = _characters.Find(x => x.ID.Equals(pEvent.ID));
             character.Display.SetActive(false);
-            int maxReady = 1;
+            int maxReady = 2;
             if (_playerInputManager.playerCount >= 2)
                 maxReady = _playerInputManager.playerCount;
             if (_ready != maxReady)
