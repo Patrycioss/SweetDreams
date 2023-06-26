@@ -34,6 +34,9 @@ namespace _Scripts.Ragdoll_Movement
 		public void Disable()
 		{
 			_hips.constraints = RigidbodyConstraints.None;
+			_joint.angularXMotion = ConfigurableJointMotion.Free;
+			_joint.angularYMotion = ConfigurableJointMotion.Free;
+			_joint.angularZMotion = ConfigurableJointMotion.Free;
 			_joint.targetRotation = Quaternion.Euler(90, _hips.rotation.eulerAngles.y, 0);
 
 			DisableConstraints(transform);
