@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b06e98e6644534f9436fb85122c554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutorialMenuState: {fileID: 0}
+  _tutorialMenuState: {fileID: 1968983288}
   characterSelection: {fileID: 1232911195}
   _playerInputManager: {fileID: 1552006914}
   _enableOnJoin:
