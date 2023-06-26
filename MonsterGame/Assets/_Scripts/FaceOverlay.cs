@@ -26,6 +26,7 @@ namespace _Scripts
         {
             _player = player;
             _prefab = prefab;
+            _characterIndex = characterIndex;
             _circle.color = _colors[_characterIndex];
             switch (_prefab)
             {
@@ -45,7 +46,7 @@ namespace _Scripts
                     _chosen = _spaghettos;
                     break;
             }
-            _portrait.sprite = _chosen[2];
+            _portrait.sprite = _chosen[0];
         }
 
         private void PlayerTired(PlayerTiredChangedEvent pEvent)
@@ -56,13 +57,13 @@ namespace _Scripts
                 return;
             Sleepiness sleepiness = _player.sleepiness;
             float percentage = (float)sleepiness.tired / sleepiness.maxTired;
-            Debug.Log("This is the percentage: " + percentage);
+            Debug.Log(percentage);
             if (percentage >= 0.51f)
                 _portrait.sprite = _chosen[0];
-            if (percentage <= 0.51f && percentage >= 0.01f)
+            else if (percentage <= 0.51f && percentage >= 0.01f)
                 _portrait.sprite = _chosen[1];
             else
                 _portrait.sprite = _chosen[2];
-        }  
+        }
     }
 }
