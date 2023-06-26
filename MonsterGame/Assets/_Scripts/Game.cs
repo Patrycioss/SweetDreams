@@ -48,6 +48,8 @@ namespace _Scripts
 				_powerupSpawner.SpawnPowerup();
 				_timer.StartTimer(_interval,Do);
 			}
+			
+			Jukebox.instance.PlayRandom();
 		}
 
 		private void OnPlayerSleep(PlayerSleepEvent pEvent)
@@ -85,6 +87,8 @@ namespace _Scripts
 					break;
 				}
 			}
+			
+			Jukebox.instance.Stop();
 			
 			Timer.StartTimer(_transitionDuration, () =>
 			{

@@ -55,8 +55,11 @@ namespace _Scripts.Menu.States
         public void Adding(PlayerReadyUpTutorialEvent pEvent)
         {
             ready += 1;
+            
+            
             if(ready >= max)
-                God.instance.SwapScene("GoodPrototype");
+                Jukebox.instance.Stop(() => God.instance.SwapScene("GoodPrototype"));
+                
         }
     }
 }
