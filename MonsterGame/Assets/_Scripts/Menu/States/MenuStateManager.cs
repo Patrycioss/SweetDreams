@@ -39,6 +39,7 @@ namespace _Scripts.Menu.States
         private void Start()
         {
             SetState(typeof(MainMenuState));
+            Jukebox.instance.PlayRandom();
         }
 
         [CanBeNull] 
