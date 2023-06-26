@@ -50,7 +50,6 @@ namespace _Scripts.Menu.States
         public override void Stop()
         {
             EventBus<PlayerReadyUpTutorialEvent>.UnSubscribe(Adding);
-            //tutorialMenu.SetActive(false);
         }
 
         public void Adding(PlayerReadyUpTutorialEvent pEvent)

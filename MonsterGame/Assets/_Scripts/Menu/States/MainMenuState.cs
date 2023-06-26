@@ -8,7 +8,7 @@ namespace _Scripts.Menu.States
     public class MainMenuState : CustomState
     {
         [SerializeField] private GameObject menu;
-        [SerializeField] private Selectable playButton, settingsButton, quitButton, musicSlider, soundSlider, _inverted, _back;
+        [SerializeField] private Selectable playButton, settingsButton, quitButton, musicSlider, soundSlider, _back;
         private Selectable _target;
         private PlayerInput _input;
         private InputActionMap _map;
@@ -23,8 +23,6 @@ namespace _Scripts.Menu.States
 
         public override void StateStart()
         {
-            if (PlayerPrefs.HasKey("inverted"))
-                _inverted.GetComponent<Toggle>().isOn = Boolean.Parse((ReadOnlySpan<char>)PlayerPrefs.GetString("inverted"));
             if (PlayerPrefs.HasKey("sound"))
                 soundSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("sound");
             if (PlayerPrefs.HasKey("music"))
@@ -68,10 +66,8 @@ namespace _Scripts.Menu.States
 
         public void SaveSettings()
         {
-            Toggle toggle = _inverted.GetComponentInChildren<Toggle>();
             Slider musicSlider = this.musicSlider.GetComponentInChildren<Slider>();
             Slider soundSlider = this.soundSlider.GetComponentInChildren<Slider>();
-            PlayerPrefs.SetString("inverted", toggle.isOn.ToString());
             PlayerPrefs.SetFloat("music", musicSlider.value);
             PlayerPrefs.SetFloat("sound", soundSlider.value);
             PlayerPrefs.Save();
@@ -95,11 +91,6 @@ namespace _Scripts.Menu.States
                     Button button = _target.GetComponentInChildren<Button>();
                     button.onClick.Invoke();
                 }
-            }
-            else if (_target.Equals(_inverted))
-            {
-                Toggle toggle = _target.GetComponentInChildren<Toggle>();
-                toggle.isOn = !toggle.isOn;
             }
         }
 
@@ -181,9 +172,7 @@ namespace _Scripts.Menu.States
                 if (_target.Equals(musicSlider))
                     updated = SetNewTarget(new MenuNav(soundSlider).SetConditions(vector.y <= -0.75f));
                 else if (_target.Equals(soundSlider))
-                    updated = SetNewTarget(new MenuNav(musicSlider, _inverted).SetConditions(vector.y >= 0.75f, vector.y <= -0.75f));
-                else if (_target.Equals(_inverted))
-                    updated = SetNewTarget(new MenuNav(soundSlider).SetConditions(vector.y >= 0.75f));
+                    updated = SetNewTarget(new MenuNav(musicSlider).SetConditions(vector.y >= 0.75f));
             }
             if (!updated && oldTarget == null)
                 return;

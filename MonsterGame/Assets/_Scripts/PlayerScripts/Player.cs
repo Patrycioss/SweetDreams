@@ -104,6 +104,7 @@ namespace _Scripts.PlayerScripts
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
+            _audioSource.volume *= PlayerPrefs.GetFloat("sound");
             
             _timer = GetComponent<SimpleTimer>();
             
