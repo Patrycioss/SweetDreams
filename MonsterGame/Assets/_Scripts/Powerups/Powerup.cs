@@ -38,15 +38,9 @@ namespace _Scripts.Powerups
                 target = limb.player;
 
                 Powerup isItThere = target.gameObject.GetComponent<Powerup>();
-
-                if (isItThere != null)
-                {
-                    Debug.Log($"Type isit: {isItThere.GetType()}, type this: {this.GetType()} and equals: {isItThere.GetType().Equals(this.GetType())}");
-                }
                 
                 if (isItThere != null && isItThere.GetType().Equals(this.GetType()))
                 {
-                    Debug.Log("Yes");
                     Utils.Timer.ResetTimer(isItThere.timerIndex);
                     Destroy(gameObject);
                     return;
@@ -62,7 +56,6 @@ namespace _Scripts.Powerups
                 _timerIndex = Utils.Timer.StartBetterTimer(_duration, () =>
                 {
                     otherPowerup.End();
-                    Debug.Log("ha");
                     Destroy(otherPowerup);
                 });
                 otherPowerup._timerIndex = _timerIndex;

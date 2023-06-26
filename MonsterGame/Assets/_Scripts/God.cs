@@ -26,7 +26,6 @@ namespace _Scripts
 			for (int i = pReverseRanking.Count -1; i >= 0; i--)
 			{
 				instance.ranking[i] = pReverseRanking[i];
-				Debug.Log("Setting ranking to: " + pReverseRanking[i]);
 			}
 		}
 		//D

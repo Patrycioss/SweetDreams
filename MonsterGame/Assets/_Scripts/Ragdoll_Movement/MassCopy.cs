@@ -21,11 +21,7 @@ namespace _Scripts.Ragdoll_Movement
 				if (i >= b.childCount) continue; //Debug.LogError("Child count mismatch! for " + a.name + " and " + b.name
 				Transform childB = b.GetChild(i);
 
-				if (childA == null || childB == null)
-				{
-					Debug.Log("Why the fuck?");
-					continue;
-				}
+				if (childA == null || childB == null) continue;
 
 				if (childA.gameObject.GetComponent<ConfigurableJoint>() != null)
 				{

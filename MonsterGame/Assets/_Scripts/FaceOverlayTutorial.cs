@@ -66,7 +66,6 @@ namespace _Scripts
 
         private void OnDisable()
         {
-            Debug.Log("In here lmao bozo");
             _interact.performed -= ReadyUp;
         }
 
@@ -75,7 +74,6 @@ namespace _Scripts
             Color color = _portrait.color;
             color.a = 1.0f;
             _portrait.color = color;
-            Debug.Log("I am in here.");
             EventBus<PlayerReadyUpTutorialEvent>.Publish(new PlayerReadyUpTutorialEvent());
         }
 
