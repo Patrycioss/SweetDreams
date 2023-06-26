@@ -50,14 +50,11 @@ namespace _Scripts.Menu.States
         public override void Stop()
         {
             EventBus<PlayerReadyUpTutorialEvent>.UnSubscribe(Adding);
-            //tutorialMenu.SetActive(false);
         }
 
         public void Adding(PlayerReadyUpTutorialEvent pEvent)
         {
             ready += 1;
-            Debug.Log("Ready: " + ready);
-            Debug.Log("Max: " + max);
             if(ready >= max)
                 God.instance.SwapScene("GoodPrototype");
         }
