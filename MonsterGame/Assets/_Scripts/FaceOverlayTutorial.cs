@@ -25,10 +25,11 @@ namespace _Scripts
             _portrait = transform.GetChild(1).GetComponent<Image>();
         }
 
-        public void Initialize(int prefab)
+        public void Initialize(int prefab, int characterIndex)
         {
             gameObject.SetActive(true);
             _prefab = prefab;
+            _characterIndex = characterIndex;
             _circle.color = _colors[_characterIndex];
             switch (_prefab)
             {
@@ -65,15 +66,16 @@ namespace _Scripts
 
         private void OnDisable()
         {
+            Debug.Log("In here lmao bozo");
             _interact.performed -= ReadyUp;
         }
 
         public void ReadyUp(InputAction.CallbackContext context)
         {
             Color color = _portrait.color;
-            color.a = 0.5f;
+            color.a = 1.0f;
             _portrait.color = color;
-            Debug.Log("Readied up");
+            Debug.Log("I am in here.");
             EventBus<PlayerReadyUpTutorialEvent>.Publish(new PlayerReadyUpTutorialEvent());
         }
 

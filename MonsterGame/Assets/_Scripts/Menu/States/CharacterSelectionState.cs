@@ -161,6 +161,7 @@ namespace _Scripts.Menu.States
                 character.Display.SetActive(false);
                 Destroy(character.Scroller.gameObject);
                 _enableOnJoin[index].SetActive(false);
+                MenuStateManager.RemovePlayer(character.Scroller.GetComponent<PlayerInput>());
                 _characters.Remove(character);
             }
             else
@@ -176,6 +177,8 @@ namespace _Scripts.Menu.States
                     {
                         _enableOnJoin[i].SetActive(true);
                         Character tempChar = _characters[i];
+                        if (i == 0)
+                            tempChar.Scroller.First = true;
                         RenderTexture text = _textures[i];
                         GameObject arrows = _toEnable[i];
                         UnityEngine.Camera cam = tempChar.Scroller.GetComponentInChildren<UnityEngine.Camera>();

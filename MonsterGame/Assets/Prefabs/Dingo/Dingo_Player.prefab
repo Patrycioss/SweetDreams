@@ -505,6 +505,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ragdoll_Dingo
       objectReference: {fileID: 0}
+    - target: {fileID: 505544376658528984, guid: af71b633c1e412b44b47dfb9d562b8cd,
+        type: 3}
+      propertyPath: _force
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 1048972356105243248, guid: af71b633c1e412b44b47dfb9d562b8cd,
         type: 3}
       propertyPath: m_RootOrder
@@ -653,7 +658,7 @@ PrefabInstance:
     - target: {fileID: 8211978592725037929, guid: af71b633c1e412b44b47dfb9d562b8cd,
         type: 3}
       propertyPath: _force
-      value: 8000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 8261978423093387856, guid: af71b633c1e412b44b47dfb9d562b8cd,
         type: 3}

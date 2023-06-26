@@ -83,12 +83,17 @@ namespace _Scripts.Menu.States
         
         public static void RemovePlayer(PlayerInput input)
         {
-            _inputs.Add(input);
+            _inputs.Remove(input);
         }
 
         public static List<PlayerInput> GetPlayers()
         {
             return _inputs;
+        }
+
+        public static void Clear()
+        {
+            _inputs.Clear();
         }
     }
 }

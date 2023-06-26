@@ -29,10 +29,12 @@ namespace _Scripts.Menu.States
             foreach (KeyValuePair<int, int> chosen in _chosen)
             {
                 _faceOverlayTutorials[index].SetPlayerInput(_playerInputs[index]);
-                _faceOverlayTutorials[index].Initialize(chosen.Value);
+                _faceOverlayTutorials[index].Initialize(chosen.Value, index);
                 index++;
             }
             max = index;
+            ready = 0;
+            MenuStateManager.Clear();
         }
 
         public override void StateUpdate()
@@ -47,12 +49,15 @@ namespace _Scripts.Menu.States
 
         public override void Stop()
         {
-            tutorialMenu.SetActive(false);
+            EventBus<PlayerReadyUpTutorialEvent>.UnSubscribe(Adding);
+            //tutorialMenu.SetActive(false);
         }
 
         public void Adding(PlayerReadyUpTutorialEvent pEvent)
         {
             ready += 1;
+            Debug.Log("Ready: " + ready);
+            Debug.Log("Max: " + max);
             if(ready >= max)
                 God.instance.SwapScene("GoodPrototype");
         }
