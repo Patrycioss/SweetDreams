@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _Scripts.Camera;
 using _Scripts.PlayerScripts;
+using _Scripts.Powerups;
 using _Scripts.Utils;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -18,6 +19,7 @@ namespace _Scripts
 		[SerializeField] private float _interval;
 
 		[SerializeField] private List<GameObject> _stages = new();
+		private GameObject _activeStage;
 
 		[SerializeField] private float _transitionDuration = 2f;
 		[SerializeField] private float _zoomDuration = 2f;
@@ -39,7 +41,9 @@ namespace _Scripts
 		{
 			GameObject stage = _stages[Random.Range(0, _stages.Count)];
 			stage.SetActive(true);
-			
+
+			_powerupSpawner = stage.GetComponentInChildren <PowerupSpawner>();
+
 			EventBus<PlayerSleepEvent>.Subscribe(OnPlayerSleep);
 			
 			Do();

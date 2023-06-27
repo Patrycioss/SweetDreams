@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts.Powerups;
 using UnityEngine;
 
 public class Test : MonoBehaviour
