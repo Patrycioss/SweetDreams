@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,7 +12,8 @@ public class Jukebox : MonoBehaviour
 	[SerializeField] private List<MusicClip> _musicClips = new();
 	[SerializeField] private float _stopTransitionDuration = 1f;
 	[SerializeField] private float _playTransitionDuration = 1f;
-
+	[SerializeField] private bool _finish;
+	private int index;
 	
 	[Serializable]
 	private class MusicClip
@@ -30,6 +32,29 @@ public class Jukebox : MonoBehaviour
 		if (instance != null) Destroy(instance.gameObject);
 		instance = this;
 		_audioSource = GetComponent<AudioSource>();
+		if (_finish)
+		{
+			float volume = PlayerPrefs.GetFloat("music", 1f);
+			_audioSource.clip = _musicClips[index].clip;
+			_audioSource.volume = 0;
+			_audioSource.Play();
+			_audioSource.DOFade(volume * _musicClips[index].volumeModifier, _playTransitionDuration);
+			StartCoroutine(WaitUntillPlayed());
+		}
+	}
+
+	private IEnumerator WaitUntillPlayed()
+	{
+		yield return new WaitUntil(() => _audioSource.isPlaying == false);
+		index++;
+		if (index <= _musicClips.Count)
+			yield return null;
+		float volume = PlayerPrefs.GetFloat("music", 1f);
+		_audioSource.loop = true;
+		_audioSource.clip = _musicClips[index].clip;
+		_audioSource.volume = 0;
+		_audioSource.Play();
+		_audioSource.DOFade(volume * _musicClips[index].volumeModifier, _playTransitionDuration);
 	}
 
 	public void PlayRandom()
@@ -54,7 +79,7 @@ public class Jukebox : MonoBehaviour
 
 	public void Update()
 	{
-		if (_shouldBePlaying && !_audioSource.isPlaying) PlayRandom();
+		if (_shouldBePlaying && !_audioSource.isPlaying && !_finish) PlayRandom();
 	}
 
 	public void Pause()
