@@ -40,6 +40,11 @@ namespace _Scripts.Menu.States
             _interact.canceled += SwitchButtonPressedUnActive;
         }
 
+        void Changed(MusicVolumeChangeEvent pEvent)
+        {
+            Debug.Log("Value: " + pEvent.Volume);
+        }
+
         public override void StateUpdate()
         {
             Moving();
@@ -166,8 +171,14 @@ namespace _Scripts.Menu.States
                     //DDD
                     float addition = 0.6f * vector.x * Time.deltaTime;
                     Slider slider = _target.GetComponentInChildren<Slider>();
-                    if(vector.x >= 0.1f || vector.x <= -0.1f)
+                    if (vector.x >= 0.1f || vector.x <= -0.1f)
+                    {
                         slider.value += addition;
+                        if(_target.Equals(musicSlider))
+                            EventBus<MusicVolumeChangeEvent>.Publish(new MusicVolumeChangeEvent(slider.value));
+                        else if(_target.Equals(soundSlider))
+                            EventBus<SoundVolumeChangeEvent>.Publish(new SoundVolumeChangeEvent(slider.value));
+                    }
                 }
                 if (_target.Equals(musicSlider))
                     updated = SetNewTarget(new MenuNav(soundSlider).SetConditions(vector.y <= -0.75f));

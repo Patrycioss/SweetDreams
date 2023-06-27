@@ -97,6 +97,7 @@ namespace _Scripts
 			Timer.StartTimer(_transitionDuration, () =>
 			{
 				God.instance.SetRanking(_ranking);
+				Player.ResetPlayerCount();
 				God.instance.SwapScene("FinishScene");
 			});
 		}

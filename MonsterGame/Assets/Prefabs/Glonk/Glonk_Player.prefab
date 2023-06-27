@@ -133,7 +133,7 @@ MonoBehaviour:
   _id: 3
   _minAmbientDelay: 10
   _maxAmbientDelay: 30
-  _slapPowerMultiplier: 0
+  _slapPowerMultiplier: 1
   _maxSleepiness: 4
   _controller: {fileID: 5972991354002536959}
   _animationMovement: {fileID: 8026624185203298986}

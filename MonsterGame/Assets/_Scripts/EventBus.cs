@@ -89,4 +89,28 @@ namespace _Scripts
     {
         
     }
+
+    public sealed class MusicVolumeChangeEvent : UnityEvent
+    {
+        private float _volume;
+
+        public MusicVolumeChangeEvent(float volume)
+        {
+            _volume = volume;
+        }
+
+        public float Volume => _volume;
+    }
+    
+    public sealed class SoundVolumeChangeEvent : UnityEvent
+    {
+        private float _volume;
+
+        public SoundVolumeChangeEvent(float volume)
+        {
+            _volume = volume;
+        }
+
+        public float Volume => _volume;
+    }
 }
