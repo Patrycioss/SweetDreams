@@ -31,11 +31,19 @@ namespace _Scripts.PlayerScripts
         [SerializeField] private float _invincibilityDuration;
         [SerializeField] private GameObject _head;
 
+        private float _baseVolume = 1;
 
-        [SerializeField] private List<AudioClip> _ambientSounds = new();
-        [SerializeField] private List<AudioClip> _beingHitSounds = new();
-        [SerializeField] private List<AudioClip> _hitSounds = new();
-        [SerializeField] private AudioClip _sleepSound;
+        [Serializable]
+        private class Sound
+        {
+            public AudioClip clip;
+            public float volumeModifier = 1;
+        }
+        
+        [SerializeField] private List<Sound> _ambientSounds = new();
+        [SerializeField] private List<Sound> _beingHitSounds = new();
+        [SerializeField] private List<Sound> _hitSounds = new();
+        [SerializeField] private Sound _sleepSound;
         
         private AudioSource _audioSource;
 
@@ -49,22 +57,30 @@ namespace _Scripts.PlayerScripts
         
         public void PlaySound(SoundType pType)
         {
+            int index;
             switch (pType)
             {
                 case SoundType.Ambient:
-                    _audioSource.clip = _ambientSounds[UnityEngine.Random.Range(0, _ambientSounds.Count)];
+                    index = UnityEngine.Random.Range(0, _ambientSounds.Count);
+                    _audioSource.clip = _ambientSounds[index].clip;
+                    _audioSource.volume = _baseVolume * _ambientSounds[index].volumeModifier;
                     _audioSource.Play();
                     break;
                 case SoundType.BeingHit:
-                    _audioSource.clip = _beingHitSounds[UnityEngine.Random.Range(0, _beingHitSounds.Count)];
+                    index = UnityEngine.Random.Range(0, _beingHitSounds.Count);
+                    _audioSource.clip = _beingHitSounds[index].clip;
+                    _audioSource.volume = _baseVolume * _beingHitSounds[index].volumeModifier;
                     _audioSource.Play();
                     break;
                 case SoundType.Hit:
-                    _audioSource.clip = _hitSounds[UnityEngine.Random.Range(0, _hitSounds.Count)];
+                    index = UnityEngine.Random.Range(0, _hitSounds.Count);
+                    _audioSource.clip = _hitSounds[index].clip;
+                    _audioSource.volume = _baseVolume * _hitSounds[index].volumeModifier;
                     _audioSource.Play();
                     break;
                 case SoundType.Sleep:
-                    _audioSource.clip = _sleepSound;
+                    _audioSource.clip = _sleepSound.clip;
+                    _audioSource.volume = _baseVolume * _sleepSound.volumeModifier;
                     _audioSource.Play();
                     break;
             }
@@ -104,7 +120,7 @@ namespace _Scripts.PlayerScripts
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
-            _audioSource.volume *= PlayerPrefs.GetFloat("sound");
+            _baseVolume = PlayerPrefs.GetFloat("sound",1.0f);
             
             _timer = GetComponent<SimpleTimer>();
             
