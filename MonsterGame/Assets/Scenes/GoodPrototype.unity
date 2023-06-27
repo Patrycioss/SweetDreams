@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17292523, g: 0.21610911, b: 0.29807818, a: 1}
+  m_IndirectSpecularColor: {r: 0.17292523, g: 0.21610913, b: 0.29807818, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5400,7 +5400,9 @@ MonoBehaviour:
   _ambientSounds: []
   _beingHitSounds: []
   _hitSounds: []
-  _sleepSound: {fileID: 0}
+  _sleepSound:
+    clip: {fileID: 0}
+    volumeModifier: 1
 --- !u!114 &464765375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14805,7 +14807,9 @@ MonoBehaviour:
   _ambientSounds: []
   _beingHitSounds: []
   _hitSounds: []
-  _sleepSound: {fileID: 0}
+  _sleepSound:
+    clip: {fileID: 0}
+    volumeModifier: 1
 --- !u!114 &1367077437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17363,7 +17367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1627863093
 Transform:
   m_ObjectHideFlags: 0
