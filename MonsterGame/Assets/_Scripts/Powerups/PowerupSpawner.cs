@@ -39,7 +39,7 @@ namespace _Scripts.Powerups
 		
 			int powerupIndex = GetRandomWeightedIndex(_powerupCounts.Values);
 			GameObject powerup = powerupPrefabs[_powerupCounts.Values.ElementAt(powerupIndex).index];
-			Instantiate(powerup, position, Quaternion.identity);
+			Instantiate(powerup, position + transform.position, Quaternion.identity);
 		
 			for (int i = 0; i < spawnPositions.Count; i++)
 			{

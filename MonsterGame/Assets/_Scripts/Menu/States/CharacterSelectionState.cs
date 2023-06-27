@@ -11,8 +11,6 @@ namespace _Scripts.Menu.States
     public class CharacterSelectionState : CustomState
     {
         [SerializeField] private bool _allowOnePlayer = false;
-        
-        
         [SerializeField] private TutorialMenuState _tutorialMenuState;
         [SerializeField] private GameObject characterSelection;
         [SerializeField] private PlayerInputManager _playerInputManager;
@@ -20,6 +18,7 @@ namespace _Scripts.Menu.States
         [SerializeField] private List<GameObject> _toEnable;
         [SerializeField] private List<RenderTexture> _textures;
         [Serialize] private List<Character> _characters;
+        private AudioSource _audioSource;
         private int _ready;
         private bool _first;
         private int characterIndex;
@@ -31,6 +30,7 @@ namespace _Scripts.Menu.States
 
         public override void StateStart()
         {
+            _audioSource = GetComponent<AudioSource>();
             characterSelection.SetActive(true);
             _characters = new List<Character>();
             EventBus<PlayerReadyUpEvent>.Subscribe(PlayersReady);
@@ -69,6 +69,7 @@ namespace _Scripts.Menu.States
         private void PlayersReady(PlayerReadyUpEvent pEvent)
         {
             Debug.Log("player ready :)");
+            _audioSource.Play();
             _ready += 1;
             Character character = _characters.Find(x => x.ID.Equals(pEvent.ID));
             character.Display.SetActive(false);
@@ -87,6 +88,7 @@ namespace _Scripts.Menu.States
         
         private void PlayerDown(PlayerReadyDownEvent pEvent)
         {
+            _audioSource.Play();
             Character character = _characters.Find(x => x.ID.Equals(pEvent.ID));
             character.Display.SetActive(true);
             _ready -= 1;

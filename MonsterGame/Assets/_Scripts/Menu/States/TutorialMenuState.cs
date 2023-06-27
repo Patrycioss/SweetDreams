@@ -12,6 +12,7 @@ namespace _Scripts.Menu.States
     {
         [SerializeField] private GameObject tutorialMenu;
         [SerializeField] private List<FaceOverlayTutorial> _faceOverlayTutorials;
+        private AudioSource _audioSource;
         private int ready, max;
 
         public override void StateReset()
@@ -21,6 +22,7 @@ namespace _Scripts.Menu.States
 
         public override void StateStart()
         {
+            _audioSource = GetComponent<AudioSource>();
             EventBus<PlayerReadyUpTutorialEvent>.Subscribe(Adding);
             tutorialMenu.SetActive(true);
             List<PlayerInput> _playerInputs = MenuStateManager.GetPlayers();
@@ -55,8 +57,7 @@ namespace _Scripts.Menu.States
         public void Adding(PlayerReadyUpTutorialEvent pEvent)
         {
             ready += 1;
-            
-            
+            _audioSource.Play();
             if(ready >= max)
                 Jukebox.instance.Stop(() => God.instance.SwapScene("GoodPrototype"));
                 
