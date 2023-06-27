@@ -90,7 +90,7 @@ namespace _Scripts.Powerups
 			Gizmos.color = Color.red;
 			foreach (Vector3 spawnPosition in spawnPositions)
 			{
-				Gizmos.DrawSphere(spawnPosition + transform.localPosition, 0.3f);
+				Gizmos.DrawSphere(transform.position + spawnPosition, 0.3f);
 			}
 		}
 	}
