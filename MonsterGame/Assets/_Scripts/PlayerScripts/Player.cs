@@ -201,5 +201,10 @@ namespace _Scripts.PlayerScripts
         //     // health -= 1;
         //     // EventBus<PlayerDamagedEvent>.Publish(new PlayerDamagedEvent(this));
         // }
+
+        public static void ResetPlayerCount()
+        {
+            playerCount = 0;
+        }
     }
 }
