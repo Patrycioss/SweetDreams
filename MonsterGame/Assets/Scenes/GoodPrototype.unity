@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17292523, g: 0.21610913, b: 0.29807818, a: 1}
+  m_IndirectSpecularColor: {r: 0.17292523, g: 0.21610911, b: 0.29807818, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9819,7 +9819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &820896850
 Transform:
   m_ObjectHideFlags: 0
@@ -10225,7 +10225,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 9119780734392527552, guid: f9689a0f0d074e84da65ba23cd3befcb,
+  m_PlayerPrefab: {fileID: 5453075572506299667, guid: d070cc05a86b2404cae555ca37ebbea9,
     type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
@@ -17561,11 +17561,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicClips:
   - clip: {fileID: 8300000, guid: 3abdb5817135ffd44afc34c51206a600, type: 3}
-    volumeModifier: 0.3
+    volumeModifier: 0.1
   - clip: {fileID: 8300000, guid: 32c493772973fea44a1de951636b369b, type: 3}
-    volumeModifier: 0.3
+    volumeModifier: 0.15
   - clip: {fileID: 8300000, guid: 0dcba711fc1efc64d90a082901af70e6, type: 3}
-    volumeModifier: 0.4
+    volumeModifier: 0.2
   _stopTransitionDuration: 1
   _playTransitionDuration: 1
 --- !u!82 &1629653729

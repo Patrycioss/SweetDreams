@@ -142,18 +142,29 @@ MonoBehaviour:
   _invincibilityDuration: 3
   _head: {fileID: 4416067790593532390}
   _ambientSounds:
-  - {fileID: 8300000, guid: 95d297346b85dc54e9c1c2ee20729b39, type: 3}
-  - {fileID: 8300000, guid: cc0b2aef7215de34dbd14cd02791355b, type: 3}
-  - {fileID: 8300000, guid: 3f1d197081a5d5a429af8504dc87bc2d, type: 3}
+  - clip: {fileID: 8300000, guid: 95d297346b85dc54e9c1c2ee20729b39, type: 3}
+    volumeModifier: 1
+  - clip: {fileID: 8300000, guid: cc0b2aef7215de34dbd14cd02791355b, type: 3}
+    volumeModifier: 1
+  - clip: {fileID: 8300000, guid: 3f1d197081a5d5a429af8504dc87bc2d, type: 3}
+    volumeModifier: 1
   _beingHitSounds:
-  - {fileID: 8300000, guid: c4099eb9b79b94f4797ab9b530c53175, type: 3}
-  - {fileID: 8300000, guid: 00cb8b9f0c10ca54283753e2c076d354, type: 3}
-  - {fileID: 8300000, guid: 5a0c325179058254780984a13fcc4ef0, type: 3}
+  - clip: {fileID: 8300000, guid: c4099eb9b79b94f4797ab9b530c53175, type: 3}
+    volumeModifier: 1
+  - clip: {fileID: 8300000, guid: 00cb8b9f0c10ca54283753e2c076d354, type: 3}
+    volumeModifier: 1
+  - clip: {fileID: 8300000, guid: 5a0c325179058254780984a13fcc4ef0, type: 3}
+    volumeModifier: 1
   _hitSounds:
-  - {fileID: 8300000, guid: 563b320364aa68d4d855555b8181ca63, type: 3}
-  - {fileID: 8300000, guid: 8eb840f5158ee3541adf268cfc59cd97, type: 3}
-  - {fileID: 8300000, guid: 3ef419c5c0ed9cf4f88dfc417da5b17d, type: 3}
-  _sleepSound: {fileID: 8300000, guid: eff34c0de081b7246befce388c63e3d3, type: 3}
+  - clip: {fileID: 8300000, guid: 563b320364aa68d4d855555b8181ca63, type: 3}
+    volumeModifier: 1
+  - clip: {fileID: 8300000, guid: 8eb840f5158ee3541adf268cfc59cd97, type: 3}
+    volumeModifier: 1
+  - clip: {fileID: 8300000, guid: 3ef419c5c0ed9cf4f88dfc417da5b17d, type: 3}
+    volumeModifier: 1
+  _sleepSound:
+    clip: {fileID: 8300000, guid: eff34c0de081b7246befce388c63e3d3, type: 3}
+    volumeModifier: 1
 --- !u!82 &7486866689984676305
 AudioSource:
   m_ObjectHideFlags: 0
@@ -165,7 +176,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.496
   m_Pitch: 1
   Loop: 0
