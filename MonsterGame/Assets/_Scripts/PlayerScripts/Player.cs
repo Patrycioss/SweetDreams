@@ -44,6 +44,9 @@ namespace _Scripts.PlayerScripts
         [SerializeField] private List<Sound> _beingHitSounds = new();
         [SerializeField] private List<Sound> _hitSounds = new();
         [SerializeField] private Sound _sleepSound;
+
+        [SerializeField] private GameObject _sleepVFX;
+        
         
         private AudioSource _audioSource;
 
@@ -156,6 +159,14 @@ namespace _Scripts.PlayerScripts
             if (pEvent.Player == this)
             {
                 PlaySound(SoundType.Sleep);
+                
+                if (_sleepVFX != null)
+                {
+                    GameObject sleepVFX = Instantiate(_sleepVFX, transform.position, Quaternion.identity);
+                    Destroy(sleepVFX, 5);
+                }
+
+                
                 Timer.RemoveTimer(_runningAmbientTimerID);
             }
         }
