@@ -10,6 +10,7 @@ namespace _Scripts.Menu.States
     {
         [SerializeField] private GameObject menu;
         [SerializeField] private Selectable playButton, settingsButton, quitButton, musicSlider, soundSlider, _back;
+        [SerializeField] private AudioSource buttonSound;
         private Selectable _target;
         private PlayerInput _input;
         private InputActionMap _map;
@@ -97,6 +98,7 @@ namespace _Scripts.Menu.States
                 if (_target.Equals(playButton) || _target.Equals(settingsButton) || _target.Equals(quitButton))
                 {
                     Button button = _target.GetComponentInChildren<Button>();
+                    buttonSound.Play();
                     button.onClick.Invoke();
                 }
             }
