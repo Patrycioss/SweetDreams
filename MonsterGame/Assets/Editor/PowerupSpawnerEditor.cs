@@ -23,7 +23,7 @@ namespace Editor
 				if (EditorGUI.EndChangeCheck()) {
 					Undo.RecordObject(spawner, "Move spawn position"); 
 					EditorUtility.SetDirty(spawner);
-					spawner.spawnPositions[i] = pos;
+					spawner.spawnPositions[i] = pos - spawner.transform.position;
 				}
 			}
 		}
