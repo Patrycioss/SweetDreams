@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ namespace _Scripts.Menu.States
         private InputAction _interact, _move, _backAction;
         private long _cooldown;
         private bool _settingsMenuFocus;
+        private int now;
         
         public override void StateReset()
         {
@@ -23,10 +25,10 @@ namespace _Scripts.Menu.States
 
         public override void StateStart()
         {
-            if (PlayerPrefs.HasKey("sound"))
-                soundSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("sound");
             if (PlayerPrefs.HasKey("music"))
-                musicSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("music");
+                musicSlider.GetComponentInChildren<Slider>().value = PlayerPrefs.GetFloat("music");
+            if (PlayerPrefs.HasKey("sound"))
+                soundSlider.GetComponentInChildren<Slider>().value = PlayerPrefs.GetFloat("sound");
             _target = playButton;
             Image image = _target.GetComponent<Image>();
             image.sprite = playButton.spriteState.highlightedSprite;
@@ -38,11 +40,6 @@ namespace _Scripts.Menu.States
             _backAction = _map.FindAction("b");
             _interact.started += SwitchButtonPressedActive;
             _interact.canceled += SwitchButtonPressedUnActive;
-        }
-
-        void Changed(MusicVolumeChangeEvent pEvent)
-        {
-            Debug.Log("Value: " + pEvent.Volume);
         }
 
         public override void StateUpdate()
@@ -71,8 +68,14 @@ namespace _Scripts.Menu.States
 
         public void SaveSettings()
         {
+            if (now == 0)
+            {
+                now++;
+                return;
+            }
             Slider musicSlider = this.musicSlider.GetComponentInChildren<Slider>();
             Slider soundSlider = this.soundSlider.GetComponentInChildren<Slider>();
+            Debug.Log(musicSlider.value);
             PlayerPrefs.SetFloat("music", musicSlider.value);
             PlayerPrefs.SetFloat("sound", soundSlider.value);
             PlayerPrefs.Save();
