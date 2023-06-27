@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -9,11 +10,14 @@ using Timer = _Scripts.Utils.Timer;
 
 namespace _Scripts.Powerups
 {
+    [RequireComponent(typeof(AudioSource))]
     public abstract class Powerup : MonoBehaviour
     {
         [Tooltip("Duration of Powerup in seconds.")]
         [SerializeField] private float _duration;
         private bool _onPlayer = false;
+
+        private AudioSource _audioSource;
         public bool onPlayer
         {
             get { return _onPlayer; }
@@ -28,7 +32,12 @@ namespace _Scripts.Powerups
         protected abstract void End();
         protected abstract void ValuesToCopyToOther(Powerup pOther);
         protected abstract void DisplayEffect();
-        
+
+        private void Awake()
+        {
+            _audioSource = GetComponent<AudioSource>();
+        }
+
         private void OnTriggerEnter(Collider otherCollider)
         {
             if (onPlayer) return;
@@ -36,8 +45,11 @@ namespace _Scripts.Powerups
             if (limb != null)
             {
                 target = limb.player;
+                _audioSource.Play();
 
                 Powerup isItThere = target.gameObject.GetComponent<Powerup>();
+                
+                
                 
                 if (isItThere != null && isItThere.GetType().Equals(this.GetType()))
                 {

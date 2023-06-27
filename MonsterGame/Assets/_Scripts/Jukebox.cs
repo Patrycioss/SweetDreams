@@ -42,7 +42,7 @@ public class Jukebox : MonoBehaviour
 		
 		void PlayRandomInternal()
 		{
-			float volume = PlayerPrefs.GetFloat("Music", 1f);
+			float volume = PlayerPrefs.GetFloat("music", 1f);
 			int index = Random.Range(0, _musicClips.Count);
 			_audioSource.clip = _musicClips[index].clip;
 			_audioSource.volume = 0;
