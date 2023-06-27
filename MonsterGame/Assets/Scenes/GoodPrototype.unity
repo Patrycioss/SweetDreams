@@ -17361,11 +17361,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicClips:
   - clip: {fileID: 8300000, guid: 3abdb5817135ffd44afc34c51206a600, type: 3}
-    volumeModifier: 1
+    volumeModifier: 0.3
   - clip: {fileID: 8300000, guid: 32c493772973fea44a1de951636b369b, type: 3}
-    volumeModifier: 1
+    volumeModifier: 0.3
   - clip: {fileID: 8300000, guid: 0dcba711fc1efc64d90a082901af70e6, type: 3}
-    volumeModifier: 1
+    volumeModifier: 0.4
   _stopTransitionDuration: 1
   _playTransitionDuration: 1
 --- !u!82 &1629653729
