@@ -10,6 +10,9 @@ namespace _Scripts.Menu.States
 {
     public class CharacterSelectionState : CustomState
     {
+        [SerializeField] private bool _allowOnePlayer = false;
+        
+        
         [SerializeField] private TutorialMenuState _tutorialMenuState;
         [SerializeField] private GameObject characterSelection;
         [SerializeField] private PlayerInputManager _playerInputManager;
@@ -65,10 +68,11 @@ namespace _Scripts.Menu.States
         
         private void PlayersReady(PlayerReadyUpEvent pEvent)
         {
+            Debug.Log("player ready :)");
             _ready += 1;
             Character character = _characters.Find(x => x.ID.Equals(pEvent.ID));
             character.Display.SetActive(false);
-            int maxReady = 1;
+            int maxReady = _allowOnePlayer ? 1 : 2;
             if (_playerInputManager.playerCount >= 2)
                 maxReady = _playerInputManager.playerCount;
             if (_ready != maxReady)
@@ -79,7 +83,6 @@ namespace _Scripts.Menu.States
                 God.instance.ChosenCharacters.Add(_characters[i].DeviceID, _characters[i].Scroller.CurrentCharacter);
             }
             MenuStateManager.SetState(typeof(TutorialMenuState));
-            //God.instance.SwapScene("GoodPrototype");
         }
         
         private void PlayerDown(PlayerReadyDownEvent pEvent)
