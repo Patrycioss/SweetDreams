@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using _Scripts.Ragdoll_Movement;
-using _Scripts.Utils;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using Timer = _Scripts.Utils.Timer;
 
 namespace _Scripts.PlayerScripts
 {
@@ -62,6 +63,8 @@ namespace _Scripts.PlayerScripts
         
         public void PlaySound(SoundType pType)
         {
+            if (_audioSource == null) _audioSource = GetComponent<AudioSource>();
+            if (_audioSource == null) _audioSource = gameObject.AddComponent<AudioSource>();
             int index;
             switch (pType)
             {
