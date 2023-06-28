@@ -7,6 +7,12 @@ namespace _Scripts.Ragdoll_Movement
     {
         [SerializeField] private Transform _target;
         
+        public Transform target
+        {
+            get => _target;
+            set => _target = value;
+        }
+        
         private float _distance;
 
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using _Scripts.Ragdoll_Movement;
 using _Scripts.Utils;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -44,6 +45,9 @@ namespace _Scripts.PlayerScripts
         [SerializeField] private List<Sound> _beingHitSounds = new();
         [SerializeField] private List<Sound> _hitSounds = new();
         [SerializeField] private Sound _sleepSound;
+
+        [SerializeField] private GameObject _sleepVFX;
+        
         
         private AudioSource _audioSource;
 
@@ -151,11 +155,29 @@ namespace _Scripts.PlayerScripts
             AmbientLoop();
         }
 
+        [Button("Test")]
+        private void Test()
+        {
+            if (_sleepVFX != null)
+            {
+                GameObject sleepVFX = Instantiate(_sleepVFX, head.transform.position, Quaternion.identity);
+                Destroy(sleepVFX, 5);
+            }
+        }
         private void OnPlayerSleep(PlayerSleepEvent pEvent)
         {
             if (pEvent.Player == this)
             {
                 PlaySound(SoundType.Sleep);
+                
+                if (_sleepVFX != null)
+                {
+                    GameObject sleepVFX = Instantiate(_sleepVFX, head.transform.position, Quaternion.identity);
+                    sleepVFX.AddComponent<FollowTarget>().target = head.transform;
+                    Destroy(sleepVFX, 5);
+                }
+
+                
                 Timer.RemoveTimer(_runningAmbientTimerID);
             }
         }

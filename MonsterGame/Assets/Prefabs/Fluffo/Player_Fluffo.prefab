@@ -166,6 +166,8 @@ MonoBehaviour:
   _sleepSound:
     clip: {fileID: 8300000, guid: 685a88a7f46808e409d8f2f68fe68356, type: 3}
     volumeModifier: 1
+  _sleepVFX: {fileID: 7268945863127110352, guid: 21635e5f14eddaa43b42e7d9b9876f4e,
+    type: 3}
 --- !u!82 &6685688531672054450
 AudioSource:
   m_ObjectHideFlags: 0

@@ -93,7 +93,7 @@ namespace _Scripts
 				}
 			}
 			
-			_confettiLauncher.Launch();
+			if (_confettiLauncher != null) _confettiLauncher.Launch();
 			
 			Timer.StartTimer(_transitionDuration, () =>
 			{
