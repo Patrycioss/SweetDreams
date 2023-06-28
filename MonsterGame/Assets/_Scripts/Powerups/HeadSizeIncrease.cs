@@ -12,12 +12,14 @@ namespace _Scripts.Powerups
 		protected override void Begin()
 		{
 			_scale = Vector3.one;
-			target.head.transform.DOScale(Vector3.one * _increaseAmount, 1f);
+			if (target.isFluffo) target.controller.transform.DOScale(Vector3.one * _increaseAmount, 1f);
+			else target.head.transform.DOScale(Vector3.one * _increaseAmount, 1f);
 		}
 
 		protected override void End() 
 		{
-			target.head.transform.DOScale(_scale, 1f);
+			if (target.isFluffo) target.controller.transform.DOScale(_scale, 1f);
+			else target.head.transform.DOScale(_scale, 1f);
 		}
 
 		protected override void ValuesToCopyToOther(Powerup pOther)
