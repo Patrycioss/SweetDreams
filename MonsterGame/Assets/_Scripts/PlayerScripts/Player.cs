@@ -179,11 +179,11 @@ namespace _Scripts.PlayerScripts
         {
             _inputActionMap.Disable();
             _controller.Disable();
-            
         }
 
         private void OnDisable()
         {
+            EventBus<PlayerSleepEvent>.UnSubscribe(OnPlayerSleep);
             _sleepiness.OnSleep -= Disable;
             _sleepiness.OnTiredChanged -= OnTiredChanged;
         }
