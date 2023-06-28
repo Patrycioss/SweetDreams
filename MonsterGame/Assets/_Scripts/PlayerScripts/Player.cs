@@ -63,8 +63,9 @@ namespace _Scripts.PlayerScripts
         
         public void PlaySound(SoundType pType)
         {
+            if (this == null) return;/*
             if (_audioSource == null) _audioSource = GetComponent<AudioSource>();
-            if (_audioSource == null) _audioSource = gameObject.AddComponent<AudioSource>();
+            if (_audioSource == null) _audioSource = gameObject.AddComponent<AudioSource>();*/
             int index;
             switch (pType)
             {
