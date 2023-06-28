@@ -1471,9 +1471,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicClips:
   - clip: {fileID: 8300000, guid: cef2034a430e6b84792c7027c05731e1, type: 3}
-    volumeModifier: 1
+    volumeModifier: 0.3
   _stopTransitionDuration: 1
   _playTransitionDuration: 1
+  _finish: 0
 --- !u!82 &2119919882
 AudioSource:
   m_ObjectHideFlags: 0

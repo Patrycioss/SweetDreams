@@ -2851,11 +2851,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _musicClips:
-  - clip: {fileID: 8300000, guid: e010bc8b4aa93424b9503ac39a082c0f, type: 3}
-    volumeModifier: 1
+  - clip: {fileID: 8300000, guid: 44cf5700fae6c2d478a0c15bd2ac9f1f, type: 3}
+    volumeModifier: 0.3
   - clip: {fileID: 8300000, guid: ce386c3af77851449b43a073bcbd6321, type: 3}
-    volumeModifier: 1
-  _stopTransitionDuration: 1
+    volumeModifier: 0.3
+  _stopTransitionDuration: 0
   _playTransitionDuration: 1
   _finish: 1
 --- !u!1 &748165016
