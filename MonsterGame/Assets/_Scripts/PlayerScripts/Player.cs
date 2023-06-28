@@ -154,16 +154,7 @@ namespace _Scripts.PlayerScripts
             EventBus<PlayerSleepEvent>.Subscribe(OnPlayerSleep);
             AmbientLoop();
         }
-
-        [Button("Test")]
-        private void Test()
-        {
-            if (_sleepVFX != null)
-            {
-                GameObject sleepVFX = Instantiate(_sleepVFX, head.transform.position, Quaternion.identity);
-                Destroy(sleepVFX, 5);
-            }
-        }
+        
         private void OnPlayerSleep(PlayerSleepEvent pEvent)
         {
             if (pEvent.Player == this)
