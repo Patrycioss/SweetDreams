@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -31,6 +32,7 @@ public class Jukebox : MonoBehaviour
 	{
 		if (instance != null) Destroy(instance.gameObject);
 		instance = this;
+		EventBus<MusicVolumeChangeEvent>.Subscribe(ChangeMusicVolume);
 		_audioSource = GetComponent<AudioSource>();
 		if (_finish)
 		{
@@ -55,6 +57,11 @@ public class Jukebox : MonoBehaviour
 		_audioSource.volume = 0;
 		_audioSource.Play();
 		_audioSource.DOFade(volume * _musicClips[index].volumeModifier, _playTransitionDuration);
+	}
+
+	void ChangeMusicVolume(MusicVolumeChangeEvent pEvent)
+	{
+		_audioSource.volume = pEvent.Volume * _musicClips[index].volumeModifier;
 	}
 
 	public void PlayRandom()
@@ -85,6 +92,11 @@ public class Jukebox : MonoBehaviour
 	public void Pause()
 	{
 		_audioSource.Pause();
+	}
+
+	private void OnDisable()
+	{
+		EventBus<MusicVolumeChangeEvent>.UnSubscribe(ChangeMusicVolume);
 	}
 
 	public void Stop()

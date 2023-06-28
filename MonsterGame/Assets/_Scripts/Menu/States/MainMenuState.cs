@@ -77,7 +77,6 @@ namespace _Scripts.Menu.States
             }
             Slider musicSlider = this.musicSlider.GetComponentInChildren<Slider>();
             Slider soundSlider = this.soundSlider.GetComponentInChildren<Slider>();
-            Debug.Log(musicSlider.value);
             PlayerPrefs.SetFloat("music", musicSlider.value);
             PlayerPrefs.SetFloat("sound", soundSlider.value);
             PlayerPrefs.Save();
