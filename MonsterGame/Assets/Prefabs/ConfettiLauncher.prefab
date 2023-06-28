@@ -50,8 +50,14 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 1000
+      - m_Value: 200
         m_Name: Confetti Amount
+        m_Overridden: 1
+      - m_Value: 0.3
+        m_Name: Confetti size
+        m_Overridden: 1
+      - m_Value: 5
+        m_Name: Confetti Lifetime
         m_Overridden: 1
     m_Vector2f:
       m_Array: []
@@ -160,3 +166,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _confettiLaunchers:
   - {fileID: 372711515376436474}
+  _loopInterval: 2.5
