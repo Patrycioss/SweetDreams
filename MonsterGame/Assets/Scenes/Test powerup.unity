@@ -7546,7 +7546,7 @@ MonoBehaviour:
   _playerManager: {fileID: 868296151}
   _powerupSpawner: {fileID: 1859207358}
   _cameraMovement: {fileID: 2085257593}
-  _interval: 5
+  _interval: 1
   _stages:
   - {fileID: 1627863092}
   - {fileID: 2005937980}
@@ -10700,7 +10700,7 @@ MonoBehaviour:
   m_NotificationBehavior: 3
   m_MaxPlayerCount: 4
   m_AllowJoining: 1
-  m_JoinBehavior: 2
+  m_JoinBehavior: 0
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []

@@ -6,85 +6,54 @@ namespace _Scripts.Powerups
 {
 	public class PowerupSpawner : MonoBehaviour
 	{
+		[SerializeField] private Vector3 _offset = new Vector3(0, 1, 0);
+		
 		public List<Vector3> spawnPositions = new List<Vector3>();
-	
+		
+		private List<Vector3> _editedSpawnPositions = new List<Vector3>();
+
 		[SerializeField] private List<GameObject> powerupPrefabs = new List<GameObject>();
-	
-		private Dictionary<GameObject, (int index,int count)> _powerupCounts = new Dictionary<GameObject, (int index, int count)>();
-		private Dictionary<Vector3, (int index, int count)> _positionCounts = new Dictionary<Vector3, (int index, int count)>();
+
+		private Dictionary<Vector3, bool> _occupied = new Dictionary<Vector3, bool>();
 
 		public void Awake()
 		{
-			Debug.Log(spawnPositions.Count);
-			for (int index = 0; index < spawnPositions.Count; index++)
-			{
-				if (!_positionCounts.ContainsKey(spawnPositions[index]))
-					_positionCounts.Add(spawnPositions[index], (index, 1));
-				else Debug.LogWarning("Duplicate spawn position found!: " + spawnPositions[index]);
-			}
+			_editedSpawnPositions = spawnPositions.Select(pos => pos + _offset).ToList();
 
-			for (int index = 0; index < powerupPrefabs.Count; index++)
-			{
-				if (!_powerupCounts.ContainsKey(powerupPrefabs[index]))
-					_powerupCounts.Add(powerupPrefabs[index], (index, 1));
-				else Debug.LogWarning("Duplicate powerup found!: " + powerupPrefabs[index]);
-			}
+			for (int index = 0; index < _editedSpawnPositions.Count; index++) 
+				_occupied.Add(_editedSpawnPositions[index], false);
+			
+		}
+
+		public bool IsOccupied(Vector3 pPosition)
+		{
+			return _occupied[pPosition];
+		}
+		
+		public void FreePosition(Vector3 pPosition)
+		{
+			_occupied[pPosition] = false;
 		}
 
 		public void SpawnPowerup()
 		{
-			int posIndex = GetRandomWeightedIndex(_positionCounts.Values);
-			if (posIndex == -1) return;
-			Vector3 position = spawnPositions[_positionCounts.Values.ElementAt(posIndex).index];
-		
-			int powerupIndex = GetRandomWeightedIndex(_powerupCounts.Values);
-			GameObject powerup = powerupPrefabs[_powerupCounts.Values.ElementAt(powerupIndex).index];
-			Instantiate(powerup, position + transform.position, Quaternion.identity);
-		
-			for (int i = 0; i < spawnPositions.Count; i++)
-			{
-				if (spawnPositions[i] != position)
-				{
-					(int,int count) pair = _positionCounts[spawnPositions[i]];
-					pair.count++;
-					_positionCounts[spawnPositions[i]] = pair;
-					break;
-				}
-			}
-		
-			for (int i = 0; i < powerupPrefabs.Count; i++)
-			{
-				if (powerupPrefabs[i] != powerup)
-				{
-					(int,int count) pair = _powerupCounts[powerupPrefabs[i]];
-					pair.count++;
-					_powerupCounts[powerupPrefabs[i]] = pair;
-					break;
-				}
-			}
-		}
-	
-		public int GetRandomWeightedIndex(ICollection<(int, int count)> pCounts)
-		{
-			int total = 0;
-			foreach ((int, int count) pair in pCounts) 
-				total += pair.Item2;
+			List<Vector3> freePositions = new List<Vector3>();
+			foreach (KeyValuePair<Vector3, bool> pair in _occupied)
+				if (!pair.Value)
+					freePositions.Add(pair.Key);
 
-			int randomIndex = UnityEngine.Random.Range(0, total);
-			int countIndex = 0;
-		
-			for (int i = 0; i < pCounts.Count; i++)
-			{
-				(int, int count) tuple = pCounts.ElementAt(i);
-			
-				if (randomIndex < tuple.count + countIndex)
-					return i;
+			if (freePositions.Count == 0) return;
+			int posIndex = UnityEngine.Random.Range(0, freePositions.Count);
+			Vector3 position = freePositions[posIndex];
 
-				countIndex += tuple.count;
-			}
-			return -1;
+			_occupied[position] = true;
+		
+			int powerupIndex = UnityEngine.Random.Range(0, powerupPrefabs.Count);
+			if (powerupIndex == -1) return;
+			GameObject powerup = powerupPrefabs[powerupIndex];
+			Instantiate(powerup, position, Quaternion.identity).GetComponent<Powerup>().spawner = this;
 		}
-	
+		
 		private void OnDrawGizmos()
 		{
 			Gizmos.color = Color.red;
