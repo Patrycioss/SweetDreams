@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using _Scripts.Ragdoll_Movement;
 using _Scripts.Utils;
-using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
