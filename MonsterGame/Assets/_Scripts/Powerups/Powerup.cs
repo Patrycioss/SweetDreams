@@ -43,7 +43,7 @@ namespace _Scripts.Powerups
         private void OnDestroy()
         {
             if (spawner != null) 
-                spawner.FreePosition(this.transform.position);
+                spawner.FreePosition(this.transform.position - spawner.transform.position);
             else Debug.Log("Spawner not set properly for " + this.GetType() + " powerup!");
         }
 
