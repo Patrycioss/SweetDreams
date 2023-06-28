@@ -17,6 +17,8 @@ namespace _Scripts.Powerups
         [SerializeField] private float _duration;
         private bool _onPlayer = false;
 
+        public PowerupSpawner spawner;
+        
         private AudioSource _audioSource;
         public bool onPlayer
         {
@@ -36,6 +38,13 @@ namespace _Scripts.Powerups
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
+        }
+
+        private void OnDestroy()
+        {
+            if (spawner != null) 
+                spawner.FreePosition(this.transform.position);
+            else Debug.Log("Spawner not set properly for " + this.GetType() + " powerup!");
         }
 
         private void OnTriggerEnter(Collider otherCollider)
@@ -62,6 +71,7 @@ namespace _Scripts.Powerups
                 otherPowerup.onPlayer = true;
                 otherPowerup.target = target;
                 otherPowerup._duration = _duration;
+                otherPowerup.spawner = spawner;
                 ValuesToCopyToOther(otherPowerup);
                 
                 otherPowerup.Begin();
