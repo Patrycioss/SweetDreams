@@ -47,6 +47,8 @@ namespace _Scripts.PlayerScripts
         [SerializeField] private Sound _sleepSound;
 
         [SerializeField] private GameObject _sleepVFX;
+        [SerializeField] private bool _isFluffo;
+        public bool isFluffo => _isFluffo;
         
         
         private AudioSource _audioSource;
