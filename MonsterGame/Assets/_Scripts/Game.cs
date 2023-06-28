@@ -83,9 +83,18 @@ namespace _Scripts
 		{
 			_ranking.Reverse();
 			
+			
+			
 			foreach (Transform child in _playerManager.transform)
 			{
 				Player player = child.GetComponent<Player>();
+
+				Powerup[] activePowerups = player.GetComponents<Powerup>();
+				foreach (Powerup powerup in activePowerups)
+				{
+					Timer.RemoveTimer(powerup.timerIndex);
+				}
+				
 				if (player != null && player.id == _ranking[0])
 				{
 					_cameraMovement.SetTween(player.controller.transform.position, _zoomDuration);

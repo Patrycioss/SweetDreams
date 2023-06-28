@@ -5648,6 +5648,8 @@ MonoBehaviour:
   _sleepSound:
     clip: {fileID: 0}
     volumeModifier: 1
+  _sleepVFX: {fileID: 0}
+  _isFluffo: 0
 --- !u!114 &464765375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10177,7 +10179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &820896850
 Transform:
   m_ObjectHideFlags: 0
@@ -15651,6 +15653,8 @@ MonoBehaviour:
   _sleepSound:
     clip: {fileID: 0}
     volumeModifier: 1
+  _sleepVFX: {fileID: 0}
+  _isFluffo: 0
 --- !u!114 &1367077437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18402,6 +18406,7 @@ MonoBehaviour:
     volumeModifier: 0.2
   _stopTransitionDuration: 1
   _playTransitionDuration: 1
+  _finish: 0
 --- !u!82 &1629653729
 AudioSource:
   m_ObjectHideFlags: 0
