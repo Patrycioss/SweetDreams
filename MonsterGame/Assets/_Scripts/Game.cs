@@ -13,6 +13,8 @@ namespace _Scripts
 	[RequireComponent(typeof(SimpleTimer))]
 	public class Game : MonoBehaviour
 	{
+		[SerializeField] private ConfettiLauncher _confettiLauncher;
+		
 		[SerializeField] private PlayerManager _playerManager;
 		[SerializeField] private PowerupSpawner _powerupSpawner;
 		[SerializeField] private CameraMovement _cameraMovement;
@@ -43,7 +45,6 @@ namespace _Scripts
 			stage.SetActive(true);
 
 			_powerupSpawner = stage.GetComponentInChildren <PowerupSpawner>();
-
 			EventBus<PlayerSleepEvent>.Subscribe(OnPlayerSleep);
 			
 			Do();
@@ -92,10 +93,11 @@ namespace _Scripts
 				}
 			}
 			
-			Jukebox.instance.Stop();
+			_confettiLauncher.Launch();
 			
 			Timer.StartTimer(_transitionDuration, () =>
 			{
+				Jukebox.instance.Stop();
 				God.instance.SetRanking(_ranking);
 				Player.ResetPlayerCount();
 				God.instance.SwapScene("FinishScene");

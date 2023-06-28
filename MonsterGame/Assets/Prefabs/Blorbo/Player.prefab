@@ -132,24 +132,24 @@ MonoBehaviour:
   _ambientSounds:
   - clip: {fileID: 8300000, guid: 08b007ece393555469d1fe008a15af7c, type: 3}
     volumeModifier: 1
-  - clip: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 0266297fcaf9aa741b81da7e0b205a2b, type: 3}
     volumeModifier: 1
   _beingHitSounds:
-  - clip: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 456355afe73e5b04281ae583934c5e40, type: 3}
     volumeModifier: 1
-  - clip: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 4f24d6cbee839344b95025b024ad1fbd, type: 3}
     volumeModifier: 1
-  - clip: {fileID: 0}
+  - clip: {fileID: 8300000, guid: de97186ae13a9de4692c9d77b854c2a9, type: 3}
     volumeModifier: 1
   _hitSounds:
-  - clip: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 21ce012255570c44f92519eba70a7d92, type: 3}
     volumeModifier: 1
-  - clip: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 703699a364e189f4eb036260f53bc086, type: 3}
     volumeModifier: 1
-  - clip: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 4d4338dde98609b41a9c487e91917369, type: 3}
     volumeModifier: 1
   _sleepSound:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 8b463194e2e92ad4c8401b803ca32117, type: 3}
     volumeModifier: 1
 --- !u!114 &480830126944423385
 MonoBehaviour:
@@ -174,7 +174,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.3
   m_Pitch: 1
   Loop: 0

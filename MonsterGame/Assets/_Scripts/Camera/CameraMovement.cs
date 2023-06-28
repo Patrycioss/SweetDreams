@@ -69,7 +69,8 @@ namespace _Scripts.Camera
             }
             else
             {
-                origin = players[0].transform.position;
+                if(players.Count >= 1)
+                    origin = players[0].transform.position;
             }
             _camera.fieldOfView = fov + (players.Count > 1 ? Vector3.Distance(pos[0].Key, pos[0].Value) * fovMultiplier : 10.0f * fovMultiplier);
             _tweenerCore.ChangeValues(transform.position, origin +

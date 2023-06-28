@@ -142,17 +142,27 @@ MonoBehaviour:
   _invincibilityDuration: 3
   _head: {fileID: 2713736420550306192}
   _ambientSounds:
-  - {fileID: 8300000, guid: bc18dde1ccadc2745820614dc80262af, type: 3}
-  - {fileID: 8300000, guid: 85d7d39bc8288ab46871e54c06eae90d, type: 3}
+  - clip: {fileID: 8300000, guid: bc18dde1ccadc2745820614dc80262af, type: 3}
+    volumeModifier: 1
+  - clip: {fileID: 8300000, guid: 85d7d39bc8288ab46871e54c06eae90d, type: 3}
+    volumeModifier: 1
   _beingHitSounds:
-  - {fileID: 8300000, guid: d52256ee879f4d24489db70e80d67c15, type: 3}
-  - {fileID: 8300000, guid: c30507514a0b8dd4c8d16f418448581e, type: 3}
-  - {fileID: 8300000, guid: 820f4c6fa786cd64392495acf8d29d35, type: 3}
+  - clip: {fileID: 8300000, guid: d52256ee879f4d24489db70e80d67c15, type: 3}
+    volumeModifier: 1
+  - clip: {fileID: 8300000, guid: c30507514a0b8dd4c8d16f418448581e, type: 3}
+    volumeModifier: 1
+  - clip: {fileID: 8300000, guid: 820f4c6fa786cd64392495acf8d29d35, type: 3}
+    volumeModifier: 1
   _hitSounds:
-  - {fileID: 8300000, guid: 9c9baecea5028ea4b93994f5182e850d, type: 3}
-  - {fileID: 8300000, guid: b33c0754511e52548b9a439c7026d486, type: 3}
-  - {fileID: 8300000, guid: 8527b35e4a79959438e0baa183ca796f, type: 3}
-  _sleepSound: {fileID: 8300000, guid: 344d5dfe9c9a75d4694e982f84cf7d43, type: 3}
+  - clip: {fileID: 8300000, guid: 9c9baecea5028ea4b93994f5182e850d, type: 3}
+    volumeModifier: 1
+  - clip: {fileID: 8300000, guid: b33c0754511e52548b9a439c7026d486, type: 3}
+    volumeModifier: 1
+  - clip: {fileID: 8300000, guid: 8527b35e4a79959438e0baa183ca796f, type: 3}
+    volumeModifier: 1
+  _sleepSound:
+    clip: {fileID: 8300000, guid: 344d5dfe9c9a75d4694e982f84cf7d43, type: 3}
+    volumeModifier: 1
 --- !u!82 &1964430682969259986
 AudioSource:
   m_ObjectHideFlags: 0
@@ -164,7 +174,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
