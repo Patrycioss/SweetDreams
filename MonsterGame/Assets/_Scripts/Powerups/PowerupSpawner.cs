@@ -18,7 +18,7 @@ namespace _Scripts.Powerups
 
 		public void Awake()
 		{
-			_editedSpawnPositions = spawnPositions.Select(pos => pos + _offset).ToList();
+			_editedSpawnPositions = spawnPositions.ToList();
 
 			for (int index = 0; index < _editedSpawnPositions.Count; index++) 
 				_occupied.Add(_editedSpawnPositions[index], false);
@@ -32,6 +32,7 @@ namespace _Scripts.Powerups
 		
 		public void FreePosition(Vector3 pPosition)
 		{
+			Debug.Log("Freed!: " + pPosition);
 			_occupied[pPosition] = false;
 		}
 
@@ -51,7 +52,8 @@ namespace _Scripts.Powerups
 			int powerupIndex = UnityEngine.Random.Range(0, powerupPrefabs.Count);
 			if (powerupIndex == -1) return;
 			GameObject powerup = powerupPrefabs[powerupIndex];
-			Instantiate(powerup, position, Quaternion.identity).GetComponent<Powerup>().spawner = this;
+			Debug.Log(position);
+			Instantiate(powerup, position + transform.position, Quaternion.identity).GetComponent<Powerup>().spawner = this;
 		}
 		
 		private void OnDrawGizmos()
