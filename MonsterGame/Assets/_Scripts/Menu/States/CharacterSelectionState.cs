@@ -131,7 +131,10 @@ namespace _Scripts.Menu.States
                 case InputDeviceChange.Removed:
                     if (character == null)
                         return;
+                    if(character.Scroller.Ready)
+                        _ready -= 1;
                     UpdateOrder(character);
+                    Debug.Log("Character Left: " + _ready);
                     break;
                 case InputDeviceChange.Added:
                     if (character != null)

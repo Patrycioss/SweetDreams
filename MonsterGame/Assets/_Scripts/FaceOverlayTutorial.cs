@@ -17,6 +17,7 @@ namespace _Scripts
         [SerializeField] private List<Color> _colors;
         private Sprite _chosen;
         private Image _portrait, _circle;
+        private bool _ready;
 
         private void OnEnable()
         {
@@ -70,6 +71,9 @@ namespace _Scripts
 
         public void ReadyUp(InputAction.CallbackContext context)
         {
+            if (_ready)
+                return;
+            _ready = true;
             Color color = _portrait.color;
             color.a = 1.0f;
             _portrait.color = color;
